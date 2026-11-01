@@ -1,0 +1,685 @@
+<style>
+/* ==========================================================================
+   Site Header Styles - Dark Theme by Default
+   ========================================================================== */
+
+{%- set hf = hf_config if hf_config is defined and hf_config else None -%}
+{%- set header_heights = {"Slim": "56px", "Standard": "64px", "Tall": "76px"} -%}
+:root {
+	--header-bg: {{ colors.bg if colors else '#1a1a1a' }};
+	--header-text: {{ colors.text if colors else '#ffffff' }};
+	--header-text-muted: {{ colors.text if colors else '#ffffff' }}cc;
+	--header-border: {{ colors.text if colors else '#ffffff' }}1a;
+	--header-hover-bg: {{ colors.text if colors else '#ffffff' }}10;
+	--cta-bg: {{ colors.cta_bg if colors and colors.cta_bg else 'var(--primary-color, #6366f1)' }};
+	--cta-text: {{ colors.cta_text if colors and colors.cta_text else '#ffffff' }};
+	--header-height: {{ header_heights.get(hf.get("header_height") if hf else None, "64px") }};
+}
+
+.site-header {
+	position: relative;
+	background: var(--header-bg);
+	border-bottom: {{ "none" if hf and hf.get("header_border") == "None" else "1px solid var(--header-border)" }};
+	z-index: 1000;
+}
+
+.site-header--sticky {
+	position: sticky;
+	top: 0;
+}
+
+/* ==========================================================================
+   What the bar does while you scroll. Set by the script in header.html.
+   ========================================================================== */
+
+/* Hide going down — the bar slides out of the way as you read, and comes back
+   the instant you scroll up. Only meaningful on a sticky header: a static one
+   is already out of the way. */
+.site-header--sticky {
+	transition: transform var(--transition, 200ms ease);
+	will-change: transform;
+}
+
+.site-header--sticky.is-hidden {
+	/* 120% clears the shadow as well as the bar */
+	transform: translateY(-120%);
+}
+
+/* Floating keeps its top margin, so it has further to travel. */
+.site-header--floating.site-header--sticky.is-hidden {
+	transform: translateY(calc(-100% - 24px));
+}
+
+/* Shrink — it stays, just takes less room once you are into the page. */
+.site-header.is-compact .site-header__container {
+	height: calc(var(--header-height, 64px) - 12px);
+}
+
+.site-header.is-compact {
+	box-shadow: var(--shadow-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.site-header--sticky {
+		transition: none;
+	}
+	/* someone who asked for less motion should not lose the menu entirely */
+	.site-header--sticky.is-hidden {
+		transform: none;
+	}
+}
+
+/* ==========================================================================
+   Header presets — how the bar sits on the page.
+   Orthogonal to data-layout, which only decides where the logo goes: any
+   preset works with any layout. Each one is a complete, deliberate look
+   rather than a pile of switches the user has to combine correctly.
+   ========================================================================== */
+
+/* Floating — a detached bar OVER the content. Sticky or not, it keeps its
+   margins, so it never touches the edges of the viewport.
+
+   Same negative margin as the transparent preset: the bar keeps its place in
+   the flow (so sticky still works) but gives back the vertical space it
+   takes. Without it the page starts below the bar and the hero sits under a
+   white band the height of the header — which is not a floating header, it is
+   a normal one with padding. */
+.site-header--floating {
+	background: transparent;
+	border-bottom: none;
+	padding: 12px var(--container-padding, 24px);
+	margin-bottom: calc(-1 * (var(--header-height, 64px) + 24px));
+}
+
+.site-header--floating.site-header--sticky {
+	top: 12px;
+}
+
+.site-header--floating .site-header__container {
+	background: var(--header-bg);
+	border: 1px solid var(--header-border);
+	border-radius: var(--radius-lg, 14px);
+	box-shadow: var(--shadow, 0 10px 30px rgba(0, 0, 0, 0.12));
+	padding: 0 20px;
+	max-width: var(--container-width, 1280px);
+}
+
+/* Transparent — sits OVER the hero and turns solid once scrolled past it.
+   The .is-solid class is set by the script in header.html.
+
+   The negative margin is what makes it overlay: the bar keeps its place in
+   the flow (so sticky still works) but gives back the vertical space it
+   takes, and the first section starts at the very top of the page. */
+.site-header--transparent {
+	background: transparent;
+	border-bottom: none;
+	margin-bottom: calc(-1 * var(--header-height, 64px));
+	transition: background var(--transition, 200ms ease), border-color var(--transition, 200ms ease), box-shadow var(--transition, 200ms ease);
+}
+
+/* Over a hero the configured header colours no longer apply — that palette
+   was chosen against the header's own background, which is now the image.
+   White reads on the overwhelming majority of heroes; once solid, the site's
+   real colours come back. */
+.site-header--transparent:not(.is-solid) {
+	--header-text: var(--header-transparent-text, #ffffff);
+	--header-text-muted: var(--header-transparent-text, #ffffff);
+	--header-hover-bg: rgba(255, 255, 255, 0.16);
+	text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* The style is site-wide, but only the home page is guaranteed to open on a
+   hero. On a pale interior page white links would vanish, so the bar carries
+   its own scrim: invisible over a dark photo, just enough over a light one. */
+.site-header--transparent:not(.is-solid)::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0));
+	pointer-events: none;
+	z-index: -1;
+}
+
+.site-header--transparent {
+	isolation: isolate;
+}
+
+.site-header--transparent.is-solid {
+	background: var(--header-bg);
+	border-bottom: 1px solid var(--header-border);
+	box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
+	text-shadow: none;
+}
+
+/* Minimal — no chrome at all: the bar disappears into the page and only the
+   logo and the links remain. */
+.site-header--minimal {
+	background: transparent;
+	border-bottom: none;
+}
+
+.site-header--minimal .site-header__container {
+	height: calc(var(--header-height, 64px) - 8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.site-header--transparent {
+		transition: none;
+	}
+}
+
+.site-header__container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: var(--container-width, 1280px);
+	margin: 0 auto;
+	padding: 0 var(--container-padding, 24px);
+	/* 64px default: slimmer, less invasive bar (was 72px) — still overridable
+	   per site via --header-height */
+	height: var(--header-height, 64px);
+	gap: 24px;
+}
+
+/* Layout sections */
+.site-header__left,
+.site-header__center,
+.site-header__right {
+	display: flex;
+	align-items: center;
+}
+
+.site-header__left {
+	flex-shrink: 0;
+}
+
+.site-header__center {
+	flex: 1;
+	justify-content: center;
+}
+
+.site-header__center--right {
+	justify-content: flex-end;
+	padding-right: 24px;
+}
+
+.site-header__right {
+	flex-shrink: 0;
+	gap: 12px;
+}
+
+/* Logo */
+.site-logo {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: var(--header-text);
+}
+
+.site-logo__text {
+	font-size: 1.25rem;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	color: var(--header-text);
+}
+
+.site-logo__image {
+	height: 36px;
+	width: auto;
+	object-fit: contain;
+}
+
+/* Navigation */
+.site-nav {
+	display: flex;
+	align-items: center;
+	gap: 32px;
+}
+
+.site-nav__link {
+	font-size: 0.9375rem;
+	font-weight: 500;
+	color: var(--header-text-muted);
+	text-decoration: none;
+	transition: color 0.2s ease;
+	white-space: nowrap;
+}
+
+.site-nav__link:hover {
+	color: var(--header-text);
+}
+
+/* Header icons */
+.site-header__icons {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.header-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border: none;
+	background: transparent;
+	color: var(--header-text-muted);
+	cursor: pointer;
+	border-radius: 8px;
+	transition: background-color 0.2s ease, color 0.2s ease;
+	position: relative;
+	text-decoration: none;
+}
+
+.header-icon:hover {
+	background: var(--header-hover-bg);
+	color: var(--header-text);
+}
+
+.header-icon__badge,
+.cart-badge {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	min-width: 18px;
+	height: 18px;
+	padding: 0 5px;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 18px;
+	text-align: center;
+	color: var(--header-bg);
+	background: var(--header-text);
+	border-radius: 9px;
+}
+
+/* CTA Button — discreet by default; the per-site theme drives its colors */
+.site-cta {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px 18px;
+	font-size: 0.875rem;
+	font-weight: 500;
+	text-decoration: none;
+	border-radius: var(--radius, 8px);
+	transition: all var(--transition, 0.2s ease);
+	white-space: nowrap;
+}
+
+/* CTA shape variants (cta_shape) */
+.site-cta--shape-pill { border-radius: 9999px; }
+.site-cta--shape-square { border-radius: var(--radius-sm, 4px); }
+
+/* CTA size variants (cta_size) */
+.site-cta--size-small {
+	padding: 6px 14px;
+	font-size: 0.8125rem;
+}
+
+.site-cta--primary {
+	background: var(--cta-bg);
+	color: var(--cta-text);
+	border: 2px solid var(--cta-bg);
+}
+
+.site-cta--primary:hover {
+	background: transparent;
+	color: var(--cta-bg);
+	border-color: var(--cta-bg);
+}
+
+.site-cta--secondary {
+	background: var(--header-hover-bg);
+	color: var(--header-text);
+	border: 2px solid transparent;
+}
+
+.site-cta--secondary:hover {
+	background: var(--header-text);
+	color: var(--header-bg);
+}
+
+.site-cta--outline {
+	background: transparent;
+	color: var(--header-text);
+	border: 2px solid var(--header-text);
+}
+
+.site-cta--outline:hover {
+	background: var(--header-text);
+	color: var(--header-bg);
+}
+
+/* Burger menu button */
+.site-header__burger {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	padding: 0;
+}
+
+.burger-icon {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 24px;
+	height: 24px;
+	position: relative;
+}
+
+.burger-icon span {
+	display: block;
+	width: 20px;
+	height: 2px;
+	background: var(--header-text);
+	border-radius: 1px;
+	transition: all 0.3s ease;
+}
+
+.burger-icon span:nth-child(1) {
+	transform: translateY(-6px);
+}
+
+.burger-icon span:nth-child(3) {
+	transform: translateY(6px);
+}
+
+.site-header__burger[aria-expanded="true"] .burger-icon span:nth-child(1) {
+	transform: translateY(0) rotate(45deg);
+}
+
+.site-header__burger[aria-expanded="true"] .burger-icon span:nth-child(2) {
+	opacity: 0;
+}
+
+.site-header__burger[aria-expanded="true"] .burger-icon span:nth-child(3) {
+	transform: translateY(0) rotate(-45deg);
+}
+
+/* Mobile menu */
+.site-header__mobile-menu {
+	display: none;
+	position: fixed;
+	inset: 0;
+	z-index: 1001;
+}
+
+.site-header__mobile-menu[aria-hidden="false"] {
+	display: block;
+}
+
+.mobile-menu__overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.6);
+	animation: fadeIn 0.3s ease;
+}
+
+.mobile-menu__content {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: min(320px, 85vw);
+	height: 100%;
+	background: var(--header-bg);
+	display: flex;
+	flex-direction: column;
+	animation: slideInRight 0.3s ease;
+}
+
+.mobile-menu__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 20px;
+	border-bottom: 1px solid var(--header-border);
+}
+
+.mobile-menu__close {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border: none;
+	background: transparent;
+	color: var(--header-text);
+	cursor: pointer;
+	border-radius: 8px;
+}
+
+.mobile-menu__close:hover {
+	background: var(--header-hover-bg);
+}
+
+.mobile-menu__nav {
+	flex: 1;
+	overflow-y: auto;
+	padding: 16px 0;
+}
+
+.mobile-menu__link {
+	display: block;
+	padding: 14px 20px;
+	font-size: 1rem;
+	font-weight: 500;
+	color: var(--header-text-muted);
+	text-decoration: none;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.mobile-menu__link:hover {
+	background: var(--header-hover-bg);
+	color: var(--header-text);
+}
+
+.mobile-menu__cta {
+	padding: 16px 20px;
+	border-top: 1px solid var(--header-border);
+}
+
+.mobile-menu__cta .site-cta {
+	width: 100%;
+}
+
+/* Full width search bar at bottom - always dark */
+.site-header__search-bar-full {
+	border-top: 1px solid rgba(255,255,255,0.1);
+	background: #1a1a1a;
+	padding: 12px 0;
+}
+
+.site-header__search-bar-full .builder-search-bar__wrapper {
+	background: rgba(255,255,255,0.1) !important;
+	border-color: rgba(255,255,255,0.1) !important;
+}
+
+.site-header__search-bar-full .builder-search-bar__wrapper:hover {
+	background: rgba(255,255,255,0.15) !important;
+	border-color: rgba(255,255,255,0.3) !important;
+}
+
+.site-header__search-bar-full .builder-search-bar__wrapper:focus-within {
+	background: rgba(255,255,255,0.15) !important;
+	border-color: #ffffff !important;
+	box-shadow: 0 0 0 3px rgba(255,255,255,0.1) !important;
+}
+
+.site-header__search-bar-full .builder-search-bar__input {
+	color: #ffffff !important;
+	background-color: transparent;
+	border: none !important;
+}
+
+.site-header__search-bar-full .builder-search-bar__input::placeholder {
+	color: rgba(255,255,255,0.5) !important;
+}
+
+.site-header__search-bar-full .builder-search-bar__icon {
+	color: rgba(255,255,255,0.6) !important;
+}
+
+.site-header__search-bar-full .builder-search-bar__wrapper:focus-within .builder-search-bar__icon {
+	color: #ffffff !important;
+}
+
+.site-header__search-bar-full .builder-search-bar__clear {
+	background: rgba(255,255,255,0.3) !important;
+	color: #1a1a1a !important;
+}
+
+.site-header__search-bar-full .builder-search-bar__clear:hover {
+	background: #ffffff !important;
+}
+
+.site-header__search-bar-full-container {
+	max-width: var(--container-width, 1280px);
+	margin: 0 auto;
+	padding: 0 var(--container-padding, 24px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+	.site-nav {
+		gap: 24px;
+	}
+}
+
+@media (max-width: 768px) {
+	.site-header__container {
+		padding: 0 16px;
+		height: 64px;
+	}
+
+	.site-header__center,
+	.site-header__right .site-cta {
+		display: none;
+	}
+
+	/* Icons aligned to the right next to burger menu */
+	.site-header__right {
+		flex-direction: row;
+		margin-left: auto;
+		gap: 4px;
+	}
+
+	.site-header__icons {
+		order: 1;
+	}
+
+	.site-header__burger {
+		display: flex;
+		order: 2;
+		margin-left: 8px;
+	}
+
+	.site-header__search-bar-full-container {
+		padding: 0 16px;
+	}
+}
+
+/* Animations */
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+	from { transform: translateX(100%); }
+	to { transform: translateX(0); }
+}
+
+/* Cart badge pulse animation */
+@keyframes cartBadgePulse {
+	0% { transform: scale(1); }
+	50% { transform: scale(1.2); }
+	100% { transform: scale(1); }
+}
+
+.cart-badge.updated {
+	animation: cartBadgePulse 0.5s ease;
+}
+
+/* User header integration */
+.site-header__icons .builder-user-header {
+	margin: 0;
+}
+
+.site-header__icons .builder-user-header__login-view,
+.site-header__icons .builder-user-header__logged-view {
+	padding: 8px;
+	color: var(--header-text-muted);
+}
+
+.site-header__icons .builder-user-header__login-view:hover,
+.site-header__icons .builder-user-header__logged-view:hover {
+	color: var(--header-text);
+	background: var(--header-hover-bg);
+	border-radius: 8px;
+}
+
+.site-header__icons .builder-user-header__text,
+.site-header__icons .builder-user-header__greeting {
+	color: var(--header-text-muted);
+}
+
+/* Cart button as button (not link) */
+.header-icon--cart {
+	cursor: pointer;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	const burger = document.querySelector('.site-header__burger');
+	const mobileMenu = document.querySelector('.site-header__mobile-menu');
+	const closeBtn = document.querySelector('.mobile-menu__close');
+	const overlay = document.querySelector('.mobile-menu__overlay');
+
+	if (burger && mobileMenu) {
+		function openMenu() {
+			burger.setAttribute('aria-expanded', 'true');
+			mobileMenu.setAttribute('aria-hidden', 'false');
+			document.body.style.overflow = 'hidden';
+		}
+
+		function closeMenu() {
+			burger.setAttribute('aria-expanded', 'false');
+			mobileMenu.setAttribute('aria-hidden', 'true');
+			document.body.style.overflow = '';
+		}
+
+		burger.addEventListener('click', function() {
+			const isExpanded = burger.getAttribute('aria-expanded') === 'true';
+			if (isExpanded) {
+				closeMenu();
+			} else {
+				openMenu();
+			}
+		});
+
+		if (closeBtn) {
+			closeBtn.addEventListener('click', closeMenu);
+		}
+
+		if (overlay) {
+			overlay.addEventListener('click', closeMenu);
+		}
+
+		// Close on escape key
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape' && mobileMenu.getAttribute('aria-hidden') === 'false') {
+				closeMenu();
+			}
+		});
+	}
+});
+</script>

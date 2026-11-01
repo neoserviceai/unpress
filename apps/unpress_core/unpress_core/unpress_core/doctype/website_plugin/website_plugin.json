@@ -1,0 +1,152 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:plugin_name",
+ "creation": "2026-08-04 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "plugin_name",
+  "title",
+  "column_break_head",
+  "enabled",
+  "is_available",
+  "section_about",
+  "description",
+  "icon",
+  "column_break_about",
+  "app_name",
+  "route_prefix",
+  "section_origin",
+  "source",
+  "is_core",
+  "column_break_origin",
+  "version"
+ ],
+ "fields": [
+  {
+   "fieldname": "plugin_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Plugin Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_head",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Off hides it in the Studio, refuses its endpoints and 404s its routes. Nothing is uninstalled and no data is removed.",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled"
+  },
+  {
+   "default": "1",
+   "description": "Whether the app providing it is present on this bench.",
+   "fieldname": "is_available",
+   "fieldtype": "Check",
+   "label": "Available",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_about",
+   "fieldtype": "Section Break",
+   "label": "About"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "description": "Lucide icon name, e.g. lucide-newspaper",
+   "fieldname": "icon",
+   "fieldtype": "Data",
+   "label": "Icon"
+  },
+  {
+   "fieldname": "column_break_about",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "The Frappe app that provides it. Empty for plugins that are data only.",
+   "fieldname": "app_name",
+   "fieldtype": "Data",
+   "label": "App Name"
+  },
+  {
+   "description": "The public route it owns, without slashes. Used to free the route when the plugin is off.",
+   "fieldname": "route_prefix",
+   "fieldtype": "Data",
+   "label": "Route Prefix"
+  },
+  {
+   "fieldname": "section_origin",
+   "fieldtype": "Section Break",
+   "label": "Origin"
+  },
+  {
+   "default": "Built-in",
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "Built-in\nApp\nHub\nManual"
+  },
+  {
+   "default": "0",
+   "description": "A core plugin cannot be turned off.",
+   "fieldname": "is_core",
+   "fieldtype": "Check",
+   "label": "Core"
+  },
+  {
+   "fieldname": "column_break_origin",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "version",
+   "fieldtype": "Data",
+   "label": "Version",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-08-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Unpress Core",
+ "name": "Website Plugin",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Website Manager"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,574 @@
+/* Pages frappe renders, wearing the site's design system.
+ *
+ * The blog app (and any other app with web views) ships Bootstrap-shaped
+ * markup. It is not ours to rewrite — forking their templates would mean
+ * merging them forever. Instead the site's tokens dress what they emit, so a
+ * blog card and a generated page card come from the same design decisions.
+ *
+ * Every selector here is scoped to markup we do not own; nothing leaks onto
+ * Builder pages. */
+
+/* --- the header presets that overlay -------------------------------------
+ * Floating and Transparent pull the page up underneath the header on purpose:
+ * a generated page opens on a hero built to sit under it. A frappe web page
+ * has no hero, so its first line would land behind the bar. */
+.site-header__spacer {
+	height: var(--header-height, 64px);
+}
+
+.site-header--floating + .site-header__spacer,
+.site-header__spacer--floating {
+	height: calc(var(--header-height, 64px) + 40px);
+}
+
+/* --- blog cards ---------------------------------------------------------- */
+.blog-card .card {
+	border: 1px solid var(--footer-border, rgba(0, 0, 0, 0.08));
+	border-radius: var(--radius, 8px);
+	box-shadow: var(--shadow-sm, none);
+	overflow: hidden;
+	transition: box-shadow var(--transition, 0.2s ease), transform var(--transition, 0.2s ease);
+}
+
+.blog-card .card:hover {
+	box-shadow: var(--shadow, none);
+	transform: translateY(-2px);
+}
+
+.blog-card .card-img-top img {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+}
+
+/* No cover image: the app prints the title on a plain block. Left unstyled it
+ * reads as a duplicate heading; given the site's colours it reads as a cover. */
+.blog-card .default-cover {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 16 / 9;
+	padding: 24px;
+	text-align: center;
+	background: linear-gradient(135deg, var(--primary-color, #6c5ce7), var(--secondary-color, #00b894));
+}
+
+.blog-card .default-cover span {
+	font-family: var(--heading-font, inherit);
+	font-size: 1.05rem;
+	font-weight: 600;
+	line-height: 1.3;
+	color: #fff;
+	/* the gradient can land light; a soft shadow keeps the title readable */
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.blog-card .post-description {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+/* --- blog article -------------------------------------------------------- */
+.blog-content .btn-primary,
+.blog-container .btn-primary,
+.comment-form .btn-primary {
+	background: var(--primary-color, #6c5ce7);
+	border-color: var(--primary-color, #6c5ce7);
+	border-radius: var(--radius, 8px);
+}
+
+.blog-container .breadcrumb-container,
+.blog-container .breadcrumb {
+	font-size: 0.8125rem;
+}
+
+/* --- the article index ---------------------------------------------------- */
+/* The outer `.container` already carries the site's width and inset (rule
+   further down). This inner wrapper used to carry a SECOND one, and on a
+   private token of its own rather than the site's — the same mistake the band
+   had made. Two nested containers put the cards 63px to the right of the title
+   above them. It keeps its role as a block, not as a container. */
+.u-blog .blog-list-content,
+.u-blog .page_content > .row {
+	max-width: none;
+	margin: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.u-blog .hero h1 {
+	font-family: var(--heading-font, inherit);
+}
+
+
+
+
+
+
+
+.u-blog .blog-list.row {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.u-blog .blog-list {
+	display: grid;
+	gap: 28px;
+}
+
+/* the cards carry bootstrap column classes; the grid owns the widths now */
+.u-blog .blog-card {
+	max-width: none;
+	flex: none;
+	width: auto;
+	padding: 0;
+}
+
+.u-blog .btn-more {
+	margin: 36px auto 0;
+	display: block;
+}
+
+.u-blog .btn-more.hidden {
+	display: none;
+}
+
+/* Grid — the default. Cards of equal weight. */
+/* auto-FIT, not auto-fill: with three articles in a row wide enough for
+   four, auto-fill keeps the empty fourth track and leaves a hole on the
+   right. auto-fit collapses it and the cards share the width. */
+.u-blog--grid .blog-list {
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* List — one per row, image beside the text. Reads faster when there are
+   many articles and the titles are what matters. */
+.u-blog--list .blog-list {
+	grid-template-columns: 1fr;
+	gap: 20px;
+}
+
+.u-blog--list .blog-card .card {
+	display: grid;
+	grid-template-columns: minmax(180px, 34%) 1fr;
+	align-items: stretch;
+}
+
+.u-blog--list .blog-card .card-img-top,
+.u-blog--list .blog-card .default-cover {
+	height: 100%;
+}
+
+.u-blog--list .blog-card .card-img-top img,
+.u-blog--list .blog-card .default-cover {
+	aspect-ratio: auto;
+	height: 100%;
+	min-height: 160px;
+}
+
+/* Magazine — the first article large, the rest beside it. For a blog that
+   publishes rarely and wants the latest to lead. */
+.u-blog--magazine .blog-list {
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.u-blog--magazine .blog-list > :first-child {
+	grid-column: 1 / -1;
+}
+
+.u-blog--magazine .blog-list > :first-child .card {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: stretch;
+}
+
+.u-blog--magazine .blog-list > :first-child .card-img-top img,
+.u-blog--magazine .blog-list > :first-child .default-cover {
+	aspect-ratio: auto;
+	height: 100%;
+	min-height: 260px;
+}
+
+.u-blog--magazine .blog-list > :first-child .card-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 32px;
+}
+
+.u-blog--magazine .blog-list > :first-child h5 {
+	font-size: 1.6rem;
+}
+
+@media (max-width: 720px) {
+	.u-blog--list .blog-card .card,
+	.u-blog--magazine .blog-list > :first-child .card {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* --- the article --------------------------------------------------------- */
+/*
+ * A blog article is the one page on a site that is pure reading, and reading
+ * has a measure — past roughly 65 characters the eye loses its place coming
+ * back to the next line. Full-bleed body text is the single most common way a
+ * blog looks unfinished.
+ */
+.u-article__body,
+.u-article__head,
+.u-article__footer,
+.u-article__comments,
+.u-article__cta {
+	max-width: 68ch;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 24px;
+	padding-right: 24px;
+}
+
+.u-article__head {
+	padding-top: 64px;
+}
+
+.u-article__eyebrow {
+	display: inline-block;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: var(--primary-color, #111);
+	margin-bottom: 12px;
+}
+
+.u-article__title {
+	font-family: var(--heading-font, inherit);
+	line-height: 1.15;
+	margin: 0 0 16px;
+}
+
+.u-article__intro {
+	font-size: 1.15rem;
+	line-height: 1.6;
+	color: var(--muted-color, #6b7280);
+	margin: 0 0 16px;
+}
+
+.u-article__meta {
+	font-size: 0.875rem;
+	color: var(--muted-color, #9ca3af);
+	margin: 0;
+}
+
+/* Cover hero: the image carries the title, the way a generated homepage does. */
+.u-article__hero {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	min-height: 58vh;
+	background-size: cover;
+	background-position: center;
+	color: #fff;
+}
+
+.u-article__hero-inner {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	max-width: 68ch;
+	margin: 0 auto;
+	padding: 48px 24px;
+}
+
+/* The theme sets a heading colour on h1 globally, and it wins over inheritance
+   from the hero — so the title has to say so itself, or it lands dark on a
+   dark photograph. */
+.u-article__hero .u-article__title {
+	color: #fff;
+	text-shadow: 0 1px 24px rgba(0, 0, 0, 0.35);
+}
+
+.u-article__hero .u-article__eyebrow,
+.u-article__hero .u-article__intro,
+.u-article__hero .u-article__meta {
+	color: rgba(255, 255, 255, 0.9);
+}
+
+/* Its own scrim rather than the shared block one: a hero that carries a whole
+   headline needs more cover than a caption does, and it must read against a
+   photograph we did not choose. */
+.u-article__hero::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		to top,
+		rgba(0, 0, 0, 0.72) 0%,
+		rgba(0, 0, 0, 0.45) 45%,
+		rgba(0, 0, 0, 0.12) 100%
+	);
+}
+
+.u-article__cover {
+	max-width: 980px;
+	margin: 32px auto 0;
+	padding: 0 24px;
+}
+
+.u-article__cover img {
+	width: 100%;
+	border-radius: var(--radius-lg, 12px);
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+}
+
+.u-article__body {
+	padding-top: 40px;
+	padding-bottom: 8px;
+	font-size: 1.0625rem;
+	line-height: 1.75;
+}
+
+.u-article__body > * + * {
+	margin-top: 1.15em;
+}
+
+.u-article__body h2 {
+	font-family: var(--heading-font, inherit);
+	font-size: 1.5rem;
+	line-height: 1.3;
+	margin-top: 2.2em;
+}
+
+.u-article__body h3 {
+	font-size: 1.2rem;
+	margin-top: 1.8em;
+}
+
+.u-article__body img {
+	max-width: 100%;
+	border-radius: var(--radius, 8px);
+}
+
+.u-article__body blockquote {
+	margin-left: 0;
+	padding-left: 20px;
+	border-left: 3px solid var(--primary-color, #111);
+	color: var(--muted-color, #4b5563);
+}
+
+.u-article__body a {
+	color: var(--primary-color, #111);
+}
+
+.u-article__footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	margin-top: 48px;
+	padding-top: 24px;
+	padding-bottom: 24px;
+	border-top: 1px solid var(--footer-border, rgba(0, 0, 0, 0.1));
+}
+
+.u-article__author {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.u-article__avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.u-article__author-name {
+	display: block;
+	font-weight: 600;
+}
+
+.u-article__author-bio {
+	display: block;
+	font-size: 0.8125rem;
+	color: var(--muted-color, #6b7280);
+}
+
+.u-article__actions {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.u-article__share a {
+	margin-left: 10px;
+	color: var(--muted-color, #6b7280);
+}
+
+.u-article__comments {
+	padding-bottom: 72px;
+}
+
+@media (max-width: 720px) {
+	.u-article__hero {
+		min-height: 42vh;
+	}
+}
+
+/* --- not found, and not built yet ----------------------------------------- */
+/*
+ * Frappe's own 404 blocks the navbar and the footer, so the visitor loses the
+ * site at the exact moment they need a way back into it. Ours keeps the chrome
+ * and gives them somewhere to go.
+ */
+.u-404 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 62vh;
+	padding: 72px 24px;
+	text-align: center;
+}
+
+.u-404__inner {
+	max-width: 46ch;
+}
+
+.u-404__code {
+	font-family: var(--heading-font, inherit);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--primary-color, #111);
+	margin: 0 0 12px;
+}
+
+.u-404__title {
+	font-family: var(--heading-font, inherit);
+	line-height: 1.15;
+	margin: 0 0 14px;
+}
+
+.u-404__text {
+	color: var(--muted-color, #6b7280);
+	line-height: 1.6;
+	margin: 0 0 28px;
+}
+
+.u-404__actions {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+}
+
+.u-404__menu {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 6px 20px;
+	margin-top: 36px;
+	padding-top: 24px;
+	border-top: 1px solid var(--footer-border, rgba(0, 0, 0, 0.1));
+}
+
+.u-404__menu a {
+	font-size: 0.9375rem;
+	color: var(--muted-color, #6b7280);
+	text-decoration: none;
+}
+
+.u-404__menu a:hover {
+	color: var(--primary-color, #111);
+}
+
+/* --- the page header ------------------------------------------------------ */
+/*
+ * The band that opens a page lives in `page_header.py`, not here.
+ *
+ * It has to render on Builder pages too, and those load their own assets —
+ * `web_include_css` never reaches them. The header and the footer solved this
+ * years ago by carrying their CSS with their markup; the band does the same,
+ * so there is one source of truth instead of one that works on half the site.
+ */
+
+/* Frappe puts a portal sidebar ("My Account") beside web pages and indents the
+   content behind it. On a blog that is a column of nothing pushing the articles
+   off centre — the page header above already says where the visitor is. */
+.u-blog .web-sidebar,
+.u-404 .web-sidebar {
+	display: none;
+}
+
+/* The blog app renders inside frappe's own `.container`: max-width 1290px and
+   80px of horizontal padding. Its cards therefore began 160px to the right of
+   the band, the logo and the footer above and below them — on the very page
+   the shared band exists to unify. The site's rhythm wins here too. */
+.u-blog > .container,
+.u-404 > .container,
+.u-blog body > .container,
+.u-404 body > .container {
+	max-width: var(--container-width, 1280px);
+	padding-left: 24px;
+	padding-right: 24px;
+}
+
+/* Frappe nests a SECOND `.container` inside a bootstrap column inside the
+   first. Measured: outer content at 24, column gutter +15, inner container
+   +24 — the cards ended up 39px right of the title above them. The inset is
+   the outer container's job; everything below it just fills the width. */
+.u-blog .container .container,
+.u-404 .container .container {
+	max-width: none;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/* frappe's grid row pulls its own gutter back out; without this the cards keep
+   half of the offset we just removed. */
+.u-blog .container > .row,
+.u-404 .container > .row {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* Hiding the sidebar is not enough: frappe still lays the content in the ten
+   columns beside it, so the articles sat pushed to the right of an empty
+   third. The main column takes the row back. */
+.u-blog .main-column,
+.u-404 .main-column {
+	max-width: 100%;
+	flex: 0 0 100%;
+	/* bootstrap's column gutter, on top of the container inset above */
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/* The blog app prints its own "Blog" heading in a .hero. With the band above
+   it that is the same words twice, so the band wins and the hero steps out. */
+.u-blog .site-page-header ~ .page_content .hero,
+.u-blog .hero {
+	display: none;
+}
+
+/* The hidden hero still sits in a padded row; without this the band and the
+   first card are separated by the height of something nobody can see. */
+.u-blog .page_content > .row {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	margin-bottom: 0;
+}
+
+.u-blog .blog-list-content {
+	padding-top: 40px;
+}
+
+/* Neither does the 404 need its own title under the band. */
+.u-404 .u-404__title {
+	margin-top: 0;
+}

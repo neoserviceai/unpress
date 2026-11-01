@@ -1,0 +1,35 @@
+{% extends "templates/web.html" %}
+
+{%- block title -%}{{ title }}{%- endblock -%}
+
+{% block page_content %}
+<section class="u-404">
+	<div class="u-404__inner">
+		{%- if is_reserved -%}
+		<p class="u-404__code">{{ _("Coming soon") }}</p>
+		<h1 class="u-404__title">{{ reserved_label }}</h1>
+		<p class="u-404__text">
+			{{ _("This section is on its way. The link is already in place so it will work the day it opens.") }}
+		</p>
+		{%- else -%}
+		<p class="u-404__code">404</p>
+		<h1 class="u-404__title">{{ _("This page does not exist") }}</h1>
+		<p class="u-404__text">
+			{{ _("The address may have changed, or the page may have been removed.") }}
+		</p>
+		{%- endif -%}
+
+		<div class="u-404__actions">
+			<a class="u-btn u-btn--primary" href="/">{{ _("Back to the homepage") }}</a>
+		</div>
+
+		{%- if menu_items -%}
+		<nav class="u-404__menu">
+			{%- for item in menu_items -%}
+			<a href="{{ item.url }}">{{ item.label }}</a>
+			{%- endfor -%}
+		</nav>
+		{%- endif -%}
+	</div>
+</section>
+{% endblock %}

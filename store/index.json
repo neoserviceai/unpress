@@ -1,0 +1,23 @@
+{
+  "$schema": "https://unpress.cloud/schemas/store-index-0.1.json",
+  "name": "Unpress Official Store",
+  "version": "0.1.0",
+  "updated": "2026-07-10",
+  "plugins": [
+    {
+      "id": "wp-migrator",
+      "level": "app",
+      "name": "WordPress Migrator",
+      "description": "Import a WordPress site: content, media, menus, SEO — and convert Elementor layouts into editable Builder blocks.",
+      "version": "0.0.1",
+      "license": "AGPL-3.0",
+      "author": { "name": "Neoservice", "url": "https://unpress.cloud" },
+      "compat": { "unpress": ">=0.1" },
+      "permissions": ["content:write", "files:write", "network:outbound"],
+      "source": { "path": "apps/wp_migrator" },
+      "status": "pre-alpha, bundled"
+    }
+  ],
+  "components": [],
+  "templates": []
+}

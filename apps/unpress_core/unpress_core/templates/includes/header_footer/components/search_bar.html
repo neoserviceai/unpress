@@ -1,0 +1,543 @@
+{# Search Bar Component - Inline search bar for header #}
+
+<div class="builder-search-bar" id="builder-search-bar">
+	<div class="builder-search-bar__wrapper">
+		<div class="builder-search-bar__icon">
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<circle cx="11" cy="11" r="8"></circle>
+				<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+			</svg>
+		</div>
+		<input type="search"
+			   id="builder-search-bar-input"
+			   class="builder-search-bar__input"
+			   placeholder="{{ _('Search products...') }}"
+			   autocomplete="off">
+		<button type="button" class="builder-search-bar__clear" id="builder-search-clear" style="display: none;">
+			<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<line x1="18" y1="6" x2="6" y2="18"></line>
+				<line x1="6" y1="6" x2="18" y2="18"></line>
+			</svg>
+		</button>
+	</div>
+	<div id="builder-search-bar-results" class="builder-search-bar__dropdown"></div>
+</div>
+
+<style>
+/* Search Bar - Matches header theme */
+.builder-search-bar {
+	position: relative;
+	width: 260px;
+	max-width: 300px;
+}
+
+.builder-search-bar__wrapper {
+	display: flex;
+	align-items: center;
+	background: var(--header-hover-bg, rgba(255,255,255,0.1));
+	border: 1px solid var(--header-border, rgba(255,255,255,0.1));
+	border-radius: 10px;
+	padding: 0 14px;
+	height: 42px;
+	transition: all 0.2s ease;
+}
+
+.builder-search-bar__wrapper:hover {
+	border-color: var(--header-text-muted, rgba(255,255,255,0.3));
+	background: var(--header-hover-bg, rgba(255,255,255,0.15));
+}
+
+.builder-search-bar__wrapper:focus-within {
+	border-color: var(--header-text, #fff);
+	background: var(--header-hover-bg, rgba(255,255,255,0.15));
+	box-shadow: 0 0 0 3px var(--header-hover-bg, rgba(255,255,255,0.1));
+}
+
+.builder-search-bar__icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--header-text-muted, rgba(255,255,255,0.6));
+	flex-shrink: 0;
+	margin-right: 10px;
+}
+
+.builder-search-bar__wrapper:focus-within .builder-search-bar__icon {
+	color: var(--header-text, #fff);
+}
+
+.builder-search-bar__input {
+	flex: 1;
+	border: none;
+	background: transparent;
+	font-size: 14px;
+	color: var(--header-text, #fff);
+	outline: none;
+	min-width: 0;
+	padding: 0;
+	height: 100%;
+}
+
+.builder-search-bar__input::placeholder {
+	color: var(--header-text-muted, rgba(255,255,255,0.5));
+}
+
+.builder-search-bar__clear {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 22px;
+	height: 22px;
+	border: none;
+	background: var(--header-text-muted, rgba(255,255,255,0.3));
+	border-radius: 50%;
+	color: var(--header-bg, #1a1a1a);
+	cursor: pointer;
+	margin-left: 8px;
+	transition: all 0.15s ease;
+	flex-shrink: 0;
+}
+
+.builder-search-bar__clear:hover {
+	background: var(--header-text, #fff);
+}
+
+/* Dropdown Results */
+.builder-search-bar__dropdown {
+	position: absolute;
+	top: calc(100% + 8px);
+	left: 0;
+	right: 0;
+	background: #fff;
+	border: 1px solid #e5e7eb;
+	border-radius: 12px;
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
+	max-height: 420px;
+	overflow: hidden;
+	z-index: 1050;
+	display: none;
+	flex-direction: column;
+}
+
+.builder-search-bar__dropdown.active {
+	display: flex;
+}
+
+/* Results container */
+.builder-search-results {
+	overflow-y: auto;
+	max-height: 340px;
+	padding: 8px;
+}
+
+/* Result item */
+.builder-search-result {
+	display: flex;
+	align-items: center;
+	padding: 10px 12px;
+	text-decoration: none;
+	color: #212529;
+	border-radius: 8px;
+	transition: background-color 0.15s ease;
+	gap: 12px;
+}
+
+.builder-search-result:hover {
+	background: #f8f9fa;
+}
+
+.builder-search-result__image {
+	width: 52px;
+	height: 52px;
+	border-radius: 8px;
+	object-fit: cover;
+	background: #f1f3f4;
+	flex-shrink: 0;
+}
+
+.builder-search-result__info {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.builder-search-result__brand {
+	font-size: 11px;
+	color: #868e96;
+	text-transform: uppercase;
+	letter-spacing: 0.3px;
+	font-weight: 500;
+}
+
+.builder-search-result__name {
+	font-weight: 600;
+	font-size: 13px;
+	color: #212529;
+	line-height: 1.3;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.builder-search-result__price {
+	font-weight: 700;
+	font-size: 14px;
+	color: #2563eb;
+}
+
+.builder-search-result__price .striked {
+	font-weight: 400;
+	font-size: 12px;
+	color: #adb5bd;
+	text-decoration: line-through;
+	margin-left: 6px;
+}
+
+.builder-search-result__price .discount {
+	font-weight: 500;
+	font-size: 11px;
+	color: #40c057;
+	margin-left: 6px;
+}
+
+/* View all link */
+.builder-search-view-all {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 12px;
+	border-top: 1px solid #f1f3f4;
+	color: #2563eb;
+	font-weight: 600;
+	font-size: 13px;
+	text-decoration: none;
+	transition: background-color 0.15s ease;
+	gap: 6px;
+}
+
+.builder-search-view-all:hover {
+	background: #f8f9fa;
+	color: #1d4ed8;
+}
+
+.builder-search-view-all svg {
+	width: 16px;
+	height: 16px;
+}
+
+/* Loading & Empty states */
+.builder-search-loading,
+.builder-search-empty {
+	padding: 32px 16px;
+	text-align: center;
+	color: #868e96;
+}
+
+.builder-search-loading {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+}
+
+.builder-search-spinner {
+	width: 24px;
+	height: 24px;
+	border: 2px solid #e9ecef;
+	border-top-color: #2563eb;
+	border-radius: 50%;
+	animation: builder-search-spin 0.8s linear infinite;
+}
+
+@keyframes builder-search-spin {
+	to { transform: rotate(360deg); }
+}
+
+.builder-search-empty__icon {
+	width: 48px;
+	height: 48px;
+	color: #dee2e6;
+	margin-bottom: 8px;
+}
+
+.builder-search-empty__text {
+	font-size: 14px;
+	margin-bottom: 4px;
+}
+
+.builder-search-empty__hint {
+	font-size: 12px;
+	color: #adb5bd;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+	.builder-search-bar {
+		display: none;
+	}
+}
+
+@media (max-width: 992px) {
+	.builder-search-bar {
+		width: 200px;
+	}
+}
+
+/* Full width variant for bottom search bar */
+.site-header__search-bar-full .builder-search-bar {
+	width: 100%;
+	max-width: 100%;
+}
+
+.site-header__search-bar-full .builder-search-bar__wrapper {
+	background: var(--header-hover-bg, rgba(255,255,255,0.1));
+	border-color: var(--header-border, rgba(255,255,255,0.2));
+	height: 48px;
+	padding: 0 16px;
+}
+
+@media (max-width: 768px) {
+	.site-header__search-bar-full .builder-search-bar {
+		display: block;
+	}
+}
+</style>
+
+<script>
+(function() {
+	const searchBar = document.getElementById('builder-search-bar');
+	const searchInput = document.getElementById('builder-search-bar-input');
+	const searchResults = document.getElementById('builder-search-bar-results');
+	const searchClear = document.getElementById('builder-search-clear');
+
+	let searchTimeout = null;
+	let currentQuery = '';
+
+	// Show/hide clear button
+	function updateClearButton() {
+		if (searchClear) {
+			searchClear.style.display = searchInput.value.length > 0 ? 'flex' : 'none';
+		}
+	}
+
+	// Show loading state
+	function showLoading() {
+		searchResults.innerHTML = `
+			<div class="builder-search-loading">
+				<div class="builder-search-spinner"></div>
+				<span>{{ _("Searching...") }}</span>
+			</div>
+		`;
+		searchResults.classList.add('active');
+	}
+
+	// Show empty state
+	function showEmpty(query) {
+		searchResults.innerHTML = `
+			<div class="builder-search-empty">
+				<svg class="builder-search-empty__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+					<circle cx="11" cy="11" r="8"></circle>
+					<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+				</svg>
+				<div class="builder-search-empty__text">{{ _("No results found") }}</div>
+				<div class="builder-search-empty__hint">{{ _("Try different keywords") }}</div>
+			</div>
+			<a href="/all-products?search=${encodeURIComponent(query)}" class="builder-search-view-all">
+				{{ _("Search all products") }}
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<line x1="5" y1="12" x2="19" y2="12"></line>
+					<polyline points="12 5 19 12 12 19"></polyline>
+				</svg>
+			</a>
+		`;
+		searchResults.classList.add('active');
+	}
+
+	// Hide results
+	function hideResults() {
+		searchResults.classList.remove('active');
+	}
+
+	// Perform search
+	function performSearch(query) {
+		if (!query || query.length < 3) {
+			hideResults();
+			return;
+		}
+
+		currentQuery = query;
+		showLoading();
+
+		// Use frappe.call like WebShop does
+		if (typeof frappe !== 'undefined' && frappe.call) {
+			frappe.call({
+				method: "webshop.templates.pages.product_search.search",
+				args: { query: query },
+				callback: function(data) {
+					if (query !== currentQuery) return;
+
+					const productResults = data.message ? data.message.product_results : null;
+
+					if (productResults && productResults.length > 0) {
+						fetchPricesAndRender(productResults, query);
+					} else {
+						showEmpty(query);
+					}
+				},
+				error: function() {
+					showEmpty(query);
+				}
+			});
+		} else {
+			// Fallback to fetch
+			fetch('/api/method/webshop.templates.pages.product_search.search', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'Accept': 'application/json'
+				},
+				credentials: 'same-origin',
+				body: JSON.stringify({ query: query })
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (query !== currentQuery) return;
+				const productResults = data.message ? data.message.product_results : null;
+				if (productResults && productResults.length > 0) {
+					renderResults(productResults, query);
+				} else {
+					showEmpty(query);
+				}
+			})
+			.catch(() => showEmpty(query));
+		}
+	}
+
+	// Fetch prices for products
+	function fetchPricesAndRender(products, query) {
+		const itemCodes = products.map(p => p.item_code);
+
+		frappe.call({
+			method: "webshop.webshop.api.get_product_price_info",
+			args: { items: itemCodes },
+			callback: function(data) {
+				if (data.message) {
+					products.forEach(product => {
+						if (data.message[product.item_code]) {
+							const priceInfo = data.message[product.item_code];
+							product.formatted_price = priceInfo.formatted_price || '';
+							product.formatted_mrp = priceInfo.formatted_mrp || '';
+							product.discount = priceInfo.discount || '';
+						}
+					});
+				}
+				renderResults(products, query);
+			},
+			error: function() {
+				renderResults(products, query);
+			}
+		});
+	}
+
+	// Render search results
+	function renderResults(results, query) {
+		let html = '<div class="builder-search-results">';
+
+		results.slice(0, 6).forEach(item => {
+			const image = item.thumbnail || item.website_image || '/assets/webshop/images/cart-empty-state.png';
+			const name = item.web_item_name || item.item_name || '';
+			const brand = item.brand || '';
+			const route = item.route || '';
+
+			// Build price HTML
+			let priceHtml = '';
+			if (item.formatted_price) {
+				priceHtml = item.formatted_price;
+				if (item.formatted_mrp) {
+					priceHtml += `<span class="striked">${item.formatted_mrp}</span>`;
+					if (item.discount) {
+						priceHtml += `<span class="discount">-${item.discount}</span>`;
+					}
+				}
+			}
+
+			html += `
+				<a href="/${route}" class="builder-search-result">
+					<img src="${encodeURI(image)}" alt="${name}" class="builder-search-result__image" onerror="this.src='/assets/webshop/images/cart-empty-state.png'">
+					<div class="builder-search-result__info">
+						${brand ? `<div class="builder-search-result__brand">${brand}</div>` : ''}
+						<div class="builder-search-result__name">${name}</div>
+						${priceHtml ? `<div class="builder-search-result__price">${priceHtml}</div>` : ''}
+					</div>
+				</a>
+			`;
+		});
+
+		html += '</div>';
+
+		// Add "View all" link
+		html += `
+			<a href="/all-products?search=${encodeURIComponent(query)}" class="builder-search-view-all">
+				{{ _("View all results") }}
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<line x1="5" y1="12" x2="19" y2="12"></line>
+					<polyline points="12 5 19 12 12 19"></polyline>
+				</svg>
+			</a>
+		`;
+
+		searchResults.innerHTML = html;
+		searchResults.classList.add('active');
+	}
+
+	// Event listeners
+	if (searchInput) {
+		searchInput.addEventListener('input', function(e) {
+			updateClearButton();
+			clearTimeout(searchTimeout);
+			searchTimeout = setTimeout(() => {
+				performSearch(e.target.value.trim());
+			}, 300);
+		});
+
+		searchInput.addEventListener('focus', function() {
+			if (this.value.trim().length >= 3) {
+				performSearch(this.value.trim());
+			}
+		});
+
+		searchInput.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape') {
+				hideResults();
+				this.blur();
+			} else if (e.key === 'Enter') {
+				e.preventDefault();
+				const query = this.value.trim();
+				if (query.length >= 1) {
+					hideResults();
+					window.location.href = `/all-products?search=${encodeURIComponent(query)}`;
+				}
+			}
+		});
+	}
+
+	if (searchClear) {
+		searchClear.addEventListener('click', function() {
+			searchInput.value = '';
+			updateClearButton();
+			hideResults();
+			searchInput.focus();
+		});
+	}
+
+	// Close on click outside
+	document.addEventListener('click', function(e) {
+		if (searchBar && !searchBar.contains(e.target)) {
+			hideResults();
+		}
+	});
+})();
+</script>

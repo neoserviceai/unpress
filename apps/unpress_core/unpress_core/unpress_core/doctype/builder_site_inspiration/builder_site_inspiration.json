@@ -1,0 +1,182 @@
+{
+ "actions": [],
+ "autoname": "format:INSP-{####}",
+ "creation": "2025-02-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "source_section",
+  "source_type",
+  "url",
+  "column_break_source",
+  "image",
+  "sentiment",
+  "description_section",
+  "description",
+  "capture_section",
+  "screenshot",
+  "thumbnail",
+  "column_break_capture",
+  "status",
+  "captured_at",
+  "error_message",
+  "analysis_section",
+  "analysis",
+  "dominant_colors_display"
+ ],
+ "fields": [
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "Source"
+  },
+  {
+   "default": "URL",
+   "fieldname": "source_type",
+   "fieldtype": "Select",
+   "label": "Source Type",
+   "options": "URL\nImage",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.source_type=='URL'",
+   "fieldname": "url",
+   "fieldtype": "Data",
+   "label": "Website URL",
+   "options": "URL"
+  },
+  {
+   "fieldname": "column_break_source",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.source_type=='Image'",
+   "description": "Upload an image for design inspiration",
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Inspiration Image"
+  },
+  {
+   "default": "like",
+   "description": "Do you like this design? This helps the AI understand your preferences.",
+   "fieldname": "sentiment",
+   "fieldtype": "Select",
+   "label": "Sentiment",
+   "options": "like\ndislike\nneutral",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "description": "What do you like or dislike about this design?",
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "capture_section",
+   "fieldtype": "Section Break",
+   "label": "Capture"
+  },
+  {
+   "depends_on": "eval:doc.source_type=='URL'",
+   "description": "Full page screenshot (auto-captured)",
+   "fieldname": "screenshot",
+   "fieldtype": "Attach Image",
+   "label": "Screenshot",
+   "read_only": 1
+  },
+  {
+   "description": "Thumbnail preview",
+   "fieldname": "thumbnail",
+   "fieldtype": "Attach Image",
+   "label": "Thumbnail",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_capture",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "pending\ncapturing\ncaptured\nfailed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "captured_at",
+   "fieldtype": "Datetime",
+   "label": "Captured At",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.status=='failed'",
+   "fieldname": "error_message",
+   "fieldtype": "Small Text",
+   "label": "Error Message",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "analysis_section",
+   "fieldtype": "Section Break",
+   "label": "Analysis Results"
+  },
+  {
+   "description": "Extracted design data (JSON)",
+   "fieldname": "analysis",
+   "fieldtype": "JSON",
+   "label": "Analysis Data",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dominant_colors_display",
+   "fieldtype": "HTML",
+   "label": "Dominant Colors",
+   "options": "<div id=\"color-palette\"></div>"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-02-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Unpress Core",
+ "name": "Builder Site Inspiration",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Website Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

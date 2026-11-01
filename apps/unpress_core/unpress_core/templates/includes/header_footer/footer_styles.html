@@ -1,0 +1,411 @@
+<style>
+/* ==========================================================================
+   Site Footer Styles
+   ========================================================================== */
+
+:root {
+	--footer-bg: {{ footer_colors.bg if footer_colors else '#ffffff' }};
+	--footer-text: {{ footer_colors.text if footer_colors else '#1a1a1a' }};
+	--footer-text-muted: {{ footer_colors.text if footer_colors else '#1a1a1a' }}99;
+	--footer-border: {{ footer_colors.text if footer_colors else '#1a1a1a' }}15;
+	--footer-hover-bg: {{ footer_colors.text if footer_colors else '#1a1a1a' }}08;
+}
+
+.site-footer {
+	background: var(--footer-bg);
+	border-top: 1px solid var(--footer-border);
+	padding-top: 48px;
+	padding-bottom: 24px;
+	color: var(--footer-text);
+}
+
+.site-footer--minimal {
+	padding-top: 24px;
+}
+
+.site-footer__container {
+	max-width: var(--container-width, 1280px);
+	margin: 0 auto;
+	padding: 0 var(--container-padding, 24px);
+}
+
+/* Main content area */
+.site-footer__main {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 40px;
+	margin-bottom: 40px;
+}
+
+.site-footer--standard .site-footer__main {
+	grid-template-columns: 280px 1fr;
+}
+
+/* Simple footer: center everything when only one column */
+.site-footer__main--simple {
+	grid-template-columns: 1fr !important;
+	text-align: center;
+	max-width: 700px;
+	margin: 0 auto 40px;
+}
+
+.site-footer__main--simple .site-footer__brand {
+	align-items: center;
+}
+
+.site-footer__main--simple .site-footer__columns {
+	justify-content: center;
+}
+
+.site-footer__main--simple .site-footer__column-title {
+	text-align: center;
+}
+
+.site-footer__main--simple .site-footer__links {
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 8px 24px;
+}
+
+.site-footer__main--simple .site-footer__newsletter {
+	align-items: center;
+	text-align: center;
+}
+
+.site-footer__main--simple .newsletter-form {
+	justify-content: center;
+}
+
+.site-footer--extended .site-footer__main {
+	grid-template-columns: 280px 1fr 280px;
+}
+
+/* Brand section */
+.site-footer__brand {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.site-footer__brand .site-logo {
+	margin-bottom: 8px;
+}
+
+.site-footer__description {
+	font-size: 0.9375rem;
+	line-height: 1.6;
+	color: var(--footer-text-muted);
+	margin: 0;
+}
+
+/* Footer columns */
+.site-footer__columns {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 32px;
+}
+
+.site-footer__column-title {
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--footer-text);
+	margin: 0 0 16px 0;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.site-footer__links {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.site-footer__link {
+	font-size: 0.9375rem;
+	color: var(--footer-text-muted);
+	text-decoration: none;
+	transition: color var(--transition, 0.2s ease);
+}
+
+.site-footer__link:hover {
+	color: var(--footer-text);
+}
+
+/* Social links */
+.site-footer__social {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.social-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	color: var(--footer-text-muted);
+	border-radius: var(--radius, 8px);
+	transition: all var(--transition, 0.2s ease);
+	text-decoration: none;
+}
+
+.social-link:hover {
+	background: var(--footer-hover-bg);
+	color: var(--footer-text);
+}
+
+/* Newsletter */
+.site-footer__newsletter {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.site-footer__newsletter-title {
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: var(--footer-text);
+	margin: 0;
+}
+
+.newsletter-form {
+	display: flex;
+	gap: 8px;
+}
+
+.newsletter-form__input {
+	flex: 1;
+	padding: 10px 14px;
+	font-size: 0.9375rem;
+	border: 1px solid var(--footer-border);
+	border-radius: var(--radius, 8px);
+	background: var(--footer-hover-bg);
+	color: var(--footer-text);
+	outline: none;
+	transition: border-color var(--transition, 0.2s ease);
+}
+
+.newsletter-form__input:focus {
+	border-color: var(--footer-text-muted);
+}
+
+.newsletter-form__input::placeholder {
+	color: var(--footer-text-muted);
+}
+
+.newsletter-form__button {
+	padding: 10px 20px;
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: white;
+	background: var(--primary-color, #2563eb);
+	border: none;
+	border-radius: var(--radius, 8px);
+	cursor: pointer;
+	transition: background-color var(--transition, 0.2s ease);
+	white-space: nowrap;
+}
+
+.newsletter-form__button:hover {
+	background: var(--primary-hover, #1d4ed8);
+}
+
+.newsletter-form__button:disabled {
+	opacity: 0.7;
+	cursor: not-allowed;
+}
+
+.newsletter-form__message {
+	margin-top: 12px;
+	padding: 10px 14px;
+	border-radius: var(--radius, 8px);
+	font-size: 0.875rem;
+}
+
+.newsletter-form__message--success {
+	background: rgba(16, 185, 129, 0.1);
+	color: #059669;
+	border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.newsletter-form__message--error {
+	background: rgba(239, 68, 68, 0.1);
+	color: #dc2626;
+	border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Newsletter in Standard template - full width below columns */
+.site-footer__newsletter--standard {
+	grid-column: 1 / -1;
+	margin-top: 24px;
+	padding-top: 24px;
+	border-top: 1px solid var(--footer-border);
+}
+
+.site-footer__newsletter--standard .newsletter-form {
+	max-width: 500px;
+}
+
+/* Minimal footer layout */
+.site-footer__minimal {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	margin-bottom: 24px;
+	/* logo | links | social on one line, wrapping rather than crushing the
+	   links when there are more of them than a minimal footer expects */
+	flex-wrap: wrap;
+}
+
+.site-footer__minimal .site-footer__inline-links {
+	margin: 0;
+	flex: 1 1 auto;
+	justify-content: center;
+}
+
+/* Bottom bar */
+.site-footer__bottom {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 24px;
+	border-top: 1px solid var(--footer-border);
+	gap: 24px;
+}
+
+.site-footer__copyright-row {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+
+.site-footer__copyright {
+	font-size: 0.875rem;
+	color: var(--footer-text-muted);
+	margin: 0;
+}
+
+.site-footer__powered-by {
+	font-size: 0.75rem;
+	color: var(--footer-text-muted);
+}
+
+.site-footer__powered-by a {
+	color: var(--footer-text-muted);
+	text-decoration: none;
+	transition: color var(--transition, 0.2s ease);
+}
+
+.site-footer__powered-by a:hover {
+	color: var(--footer-text);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+	.site-footer--standard .site-footer__main,
+	.site-footer--extended .site-footer__main {
+		grid-template-columns: 1fr;
+	}
+
+	.site-footer__columns {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 640px) {
+	.site-footer {
+		padding-top: 32px;
+	}
+
+	.site-footer__container {
+		padding: 0 16px;
+	}
+
+	.site-footer__columns {
+		grid-template-columns: 1fr;
+	}
+
+	.site-footer__minimal {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.site-footer__bottom {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.site-footer__copyright-row {
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.newsletter-form {
+		flex-direction: column;
+	}
+
+	.newsletter-form__button {
+		width: 100%;
+	}
+}
+
+/* ==========================================================================
+   Centered footer — logo, links on one row, social underneath.
+   For sites with few links, where the column layouts look empty.
+   ========================================================================== */
+.site-footer__centered {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	text-align: center;
+	padding-bottom: 32px;
+}
+
+.site-footer__centered .site-footer__description {
+	max-width: 520px;
+	margin: 0;
+}
+
+.site-footer__inline-links {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 8px 28px;
+}
+
+/* The bottom bar is a flex row whose children size to content, so centring
+   has to happen on the container, not inside the row. */
+.site-footer--centered .site-footer__bottom {
+	justify-content: center;
+}
+
+.site-footer--centered .site-footer__copyright-row {
+	justify-content: center;
+	text-align: center;
+}
+
+@media (max-width: 576px) {
+	.site-footer__inline-links {
+		gap: 8px 18px;
+	}
+}
+
+/* The client's own block. Given room and the site's rhythm, then left alone —
+   whatever is inside is theirs. */
+.site-footer__custom {
+	padding: 24px 0;
+	border-top: 1px solid var(--footer-border);
+}
+
+.site-footer__custom:first-child {
+	border-top: none;
+}
+</style>

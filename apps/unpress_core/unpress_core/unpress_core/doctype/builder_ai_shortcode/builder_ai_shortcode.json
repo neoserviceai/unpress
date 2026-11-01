@@ -1,0 +1,85 @@
+{
+ "actions": [],
+ "creation": "2025-01-28 14:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "shortcode",
+  "name1",
+  "column_break_1",
+  "category",
+  "use_when",
+  "section_break_2",
+  "description",
+  "section_break_jinja",
+  "jinja_code"
+ ],
+ "fields": [
+  {
+   "fieldname": "shortcode",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Shortcode",
+   "reqd": 1
+  },
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Category",
+   "options": "Navigation\nE-commerce\nUser\nSearch\nSocial\nForm\nMedia\nOther"
+  },
+  {
+   "description": "When should the AI use this shortcode? (e.g., 'For e-commerce sites with shopping cart', 'For sites requiring user authentication')",
+   "fieldname": "use_when",
+   "fieldtype": "Small Text",
+   "label": "Use When"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Detailed description for the AI to understand what this shortcode does",
+   "fieldname": "description",
+   "fieldtype": "Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "section_break_jinja",
+   "fieldtype": "Section Break",
+   "label": "Jinja Template"
+  },
+  {
+   "description": "Jinja/HTML code to include in the generated page (e.g., {% include 'webshop/templates/includes/cart_component.html' %})",
+   "fieldname": "jinja_code",
+   "fieldtype": "Code",
+   "label": "Jinja Code",
+   "options": "HTML"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-01-29 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Unpress Core",
+ "name": "Builder AI Shortcode",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,337 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:session_id",
+ "creation": "2025-01-29 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "session_id",
+  "user",
+  "status",
+  "current_step",
+  "completion_percentage",
+  "section_messages",
+  "messages",
+  "section_description",
+  "site_description",
+  "site_name",
+  "column_break_desc",
+  "site_type",
+  "inspiration_urls",
+  "company_data",
+  "section_style",
+  "theme",
+  "primary_color",
+  "secondary_color",
+  "column_break_style",
+  "heading_font",
+  "body_font",
+  "logo_image",
+  "logo_text",
+  "section_pages",
+  "pages_config",
+  "column_break_pages",
+  "cta_text",
+  "cta_url",
+  "social_links",
+  "section_generation",
+  "job_id",
+  "generation_status",
+  "generation_progress",
+  "generation_mode",
+  "column_break_gen",
+  "generated_pages",
+  "image_job_id",
+  "homepage_feedback",
+  "homepage_iterations",
+  "saved_brief",
+  "section_meta",
+  "missing_fields",
+  "validation_errors",
+  "website_profile"
+ ],
+ "fields": [
+  {
+   "fieldname": "session_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Session ID",
+   "read_only": 1,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Active\nGenerating\nHomepage Ready\nCompleted\nFailed\nAbandoned"
+  },
+  {
+   "default": "description",
+   "fieldname": "current_step",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Current Step",
+   "options": "description\nstyle\ninspiration\npages\npage_selection\ngeneration\nfeedback"
+  },
+  {
+   "default": "0",
+   "fieldname": "completion_percentage",
+   "fieldtype": "Percent",
+   "label": "Completion"
+  },
+  {
+   "fieldname": "section_messages",
+   "fieldtype": "Section Break",
+   "label": "Conversation"
+  },
+  {
+   "fieldname": "messages",
+   "fieldtype": "Table",
+   "label": "Messages",
+   "options": "Builder Chat Message"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_description",
+   "fieldtype": "Section Break",
+   "label": "Step 1: Description"
+  },
+  {
+   "fieldname": "site_description",
+   "fieldtype": "Small Text",
+   "label": "Site Description"
+  },
+  {
+   "fieldname": "site_name",
+   "fieldtype": "Data",
+   "label": "Site Name"
+  },
+  {
+   "fieldname": "column_break_desc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "site_type",
+   "fieldtype": "Select",
+   "label": "Site Type",
+   "options": "\nvitrine\none_page\nvitrine_user\necommerce\necommerce_search\nblog\nsaas\nportfolio"
+  },
+  {
+   "fieldname": "inspiration_urls",
+   "fieldtype": "JSON",
+   "label": "Inspiration URLs"
+  },
+  {
+   "fieldname": "company_data",
+   "fieldtype": "JSON",
+   "hidden": 1,
+   "label": "Company Data"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_style",
+   "fieldtype": "Section Break",
+   "label": "Step 2: Style"
+  },
+  {
+   "fieldname": "theme",
+   "fieldtype": "Select",
+   "label": "Theme",
+   "options": "\nmodern\nneobrutalist\nglassmorphism\nminimal\ncorporate\ncreative"
+  },
+  {
+   "fieldname": "primary_color",
+   "fieldtype": "Data",
+   "label": "Primary Color"
+  },
+  {
+   "fieldname": "secondary_color",
+   "fieldtype": "Data",
+   "label": "Secondary Color"
+  },
+  {
+   "fieldname": "column_break_style",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "heading_font",
+   "fieldtype": "Data",
+   "label": "Heading Font"
+  },
+  {
+   "fieldname": "body_font",
+   "fieldtype": "Data",
+   "label": "Body Font"
+  },
+  {
+   "fieldname": "logo_image",
+   "fieldtype": "Attach Image",
+   "label": "Logo Image"
+  },
+  {
+   "fieldname": "logo_text",
+   "fieldtype": "Data",
+   "label": "Logo Text"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_pages",
+   "fieldtype": "Section Break",
+   "label": "Step 3: Pages"
+  },
+  {
+   "fieldname": "pages_config",
+   "fieldtype": "JSON",
+   "label": "Pages Config"
+  },
+  {
+   "fieldname": "column_break_pages",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cta_text",
+   "fieldtype": "Data",
+   "label": "CTA Text"
+  },
+  {
+   "fieldname": "cta_url",
+   "fieldtype": "Data",
+   "label": "CTA URL"
+  },
+  {
+   "fieldname": "social_links",
+   "fieldtype": "JSON",
+   "label": "Social Links"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_generation",
+   "fieldtype": "Section Break",
+   "label": "Step 4: Generation"
+  },
+  {
+   "fieldname": "job_id",
+   "fieldtype": "Data",
+   "label": "Job ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "generation_status",
+   "fieldtype": "Data",
+   "label": "Generation Status",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "generation_progress",
+   "fieldtype": "Percent",
+   "label": "Generation Progress",
+   "read_only": 1
+  },
+  {
+   "fieldname": "generation_mode",
+   "fieldtype": "Select",
+   "label": "Generation Mode",
+   "options": "\nfull\nprogressive"
+  },
+  {
+   "fieldname": "column_break_gen",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "generated_pages",
+   "fieldtype": "JSON",
+   "label": "Generated Pages",
+   "read_only": 1
+  },
+  {
+   "fieldname": "image_job_id",
+   "fieldtype": "Data",
+   "label": "Image Job ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "homepage_feedback",
+   "fieldtype": "Small Text",
+   "label": "Homepage Feedback"
+  },
+  {
+   "default": "0",
+   "fieldname": "homepage_iterations",
+   "fieldtype": "Int",
+   "label": "Homepage Iterations"
+  },
+  {
+   "fieldname": "saved_brief",
+   "fieldtype": "JSON",
+   "hidden": 1,
+   "label": "Saved Brief"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_meta",
+   "fieldtype": "Section Break",
+   "label": "Metadata"
+  },
+  {
+   "fieldname": "missing_fields",
+   "fieldtype": "JSON",
+   "label": "Missing Fields"
+  },
+  {
+   "fieldname": "validation_errors",
+   "fieldtype": "JSON",
+   "label": "Validation Errors"
+  },
+  {
+   "fieldname": "website_profile",
+   "fieldtype": "Link",
+   "label": "Website Profile",
+   "options": "Website Profile"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2025-01-29 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Unpress Core",
+ "name": "Builder Chat Session",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "read": 1,
+   "role": "Website Manager",
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

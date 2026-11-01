@@ -1,0 +1,13 @@
+[pre_model_sync]
+
+[post_model_sync]
+unpress_core.patches.drop_builder_chat_desk_page
+unpress_core.patches.repair_generated_page_roots
+unpress_core.patches.set_default_header_style
+unpress_core.patches.set_default_design_tokens
+unpress_core.patches.set_default_header_scroll
+unpress_core.patches.set_default_footer_menu_source
+unpress_core.patches.drop_unpress_plugin_doctype
+unpress_core.patches.strip_unavailable_includes
+unpress_core.patches.set_default_page_header
+unpress_core.patches.split_page_header_style

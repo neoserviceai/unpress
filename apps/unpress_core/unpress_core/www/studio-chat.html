@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!-- jinja -->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Créer avec l'IA — Unpress Studio</title>
+<style>
+*{margin:0;box-sizing:border-box}
+body{font-family:Inter,system-ui,-apple-system,sans-serif;background:#f8f8f8;color:#18181b;height:100vh;display:flex;flex-direction:column}
+.top{background:#fff;border-bottom:1px solid #e4e4e7;padding:12px 22px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.top .mark{width:30px;height:30px;border-radius:8px;background:#18181b;color:#fff;display:grid;place-items:center;font-weight:800}
+.top b{font-size:15px}
+.top a{margin-left:auto;color:#52525b;text-decoration:none;font-size:13.5px}
+.top a:hover{color:#18181b}
+.layout{flex:1;display:flex;min-height:0;max-width:1100px;width:100%;margin:0 auto;gap:18px;padding:18px}
+.chat{flex:1;display:flex;flex-direction:column;background:#fff;border:1px solid #e4e4e7;border-radius:14px;min-width:0}
+.msgs{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px}
+.m{max-width:82%;padding:10px 14px;border-radius:14px;font-size:14.5px;line-height:1.55;white-space:pre-wrap;word-wrap:break-word}
+.m.user{align-self:flex-end;background:#18181b;color:#fff;border-bottom-right-radius:4px}
+.m.bot{align-self:flex-start;background:#f4f4f5;border-bottom-left-radius:4px}
+.m.err{align-self:center;background:#fef2f2;color:#b91c1c;font-size:13px}
+.inp{display:flex;gap:10px;padding:14px;border-top:1px solid #f0f0f2}
+.inp textarea{flex:1;border:1px solid #d4d4d8;border-radius:10px;padding:10px 12px;font-size:14.5px;font-family:inherit;resize:none;height:44px;outline:none}
+.inp textarea:focus{border-color:#7c3aed;box-shadow:0 0 0 3px rgba(124,58,237,.12)}
+.inp button{background:#18181b;color:#fff;border:0;border-radius:10px;padding:0 20px;font-weight:600;font-size:14px;cursor:pointer}
+.inp button:hover{background:#3f3f46}.inp button:disabled{opacity:.4}
+.side{width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:14px}
+.card{background:#fff;border:1px solid #e4e4e7;border-radius:14px;padding:16px}
+.card h4{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#71717a;margin-bottom:10px}
+.step{font-size:14.5px;font-weight:600;text-transform:capitalize}
+.bar{height:7px;background:#f4f4f5;border-radius:99px;margin:10px 0 4px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#7c3aed,#38bdf8);border-radius:99px;width:0;transition:width .4s}
+.pct{font-size:12.5px;color:#71717a}
+.gen{width:100%;background:#7c3aed;color:#fff;border:0;border-radius:10px;padding:11px;font-weight:700;font-size:14px;cursor:pointer;display:none}
+.gen:hover{background:#6d28d9}.gen:disabled{opacity:.5;cursor:default}
+.genstate{display:none;font-size:13.5px}
+.genstate .spin{width:15px;height:15px;border:2.5px solid #e4e4e7;border-top-color:#7c3aed;border-radius:50%;animation:r .8s linear infinite;display:inline-block;vertical-align:-2px;margin-right:7px}
+@keyframes r{to{transform:rotate(360deg)}}
+.done a{display:block;text-align:center;background:#7c3aed;color:#fff;border-radius:10px;padding:10px;font-weight:700;text-decoration:none;margin-top:8px}
+.done a.sec{background:#f4f4f5;color:#18181b}
+.reset{background:none;border:none;color:#a1a1aa;font-size:12.5px;cursor:pointer;text-decoration:underline}
+.reset:hover{color:#52525b}
+@media (max-width:860px){.side{display:none}}
+</style>
+</head>
+<body>
+<div class="top">
+	<span class="mark">U</span><b>Unpress Studio — Créer avec l'IA</b>
+	<a href="/builder">← Retour au Studio</a>
+</div>
+<div class="layout">
+	<div class="chat">
+		<div class="msgs" id="msgs"></div>
+		<div class="inp">
+			<textarea id="txt" placeholder="Décrivez votre site… (ex. « Un site vitrine pour ma boulangerie à Lausanne »)"></textarea>
+			<button id="send">Envoyer</button>
+		</div>
+	</div>
+	<div class="side">
+		<div class="card">
+			<h4>Progression du brief</h4>
+			<div class="step" id="step">—</div>
+			<div class="bar"><i id="fill"></i></div>
+			<div class="pct" id="pct">0 %</div>
+		</div>
+		<button class="gen" id="genBtn">✨ Générer mon site</button>
+		<div class="card genstate" id="genState">
+			<span class="spin"></span><span id="genMsg">Génération en cours…</span>
+		</div>
+		<div class="card genstate done" id="genDone">
+			<b>✅ Site généré !</b>
+			<a href="/" target="_blank">Voir mon site</a>
+			<a class="sec" href="/builder">Ouvrir le Builder</a>
+		</div>
+		<div style="text-align:center"><button class="reset" id="reset">Recommencer à zéro</button></div>
+	</div>
+</div>
+
+<script>
+const CSRF = "{{ csrf_token }}";
+let SID = null;
+let canGen = false;
+
+async function api(method, args) {
+	const r = await fetch("/api/method/" + method, {
+		method: "POST",
+		headers: {"Content-Type": "application/json", "X-Frappe-CSRF-Token": CSRF},
+		body: JSON.stringify(args || {}),
+	});
+	const d = await r.json().catch(() => ({}));
+	if (!r.ok) {
+		let msg = d.exception || "Erreur inattendue";
+		try { msg = JSON.parse(JSON.parse(d._server_messages)[0]).message; } catch (e) {}
+		throw new Error(msg.replace(/<[^>]+>/g, ""));
+	}
+	return d.message;
+}
+
+const $ = (id) => document.getElementById(id);
+
+function md(t) {
+	const esc = String(t || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+	return esc.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/`([^`]+)`/g, "<code>$1</code>");
+}
+
+function addMsg(role, content) {
+	const el = document.createElement("div");
+	el.className = "m " + (role === "user" ? "user" : role === "err" ? "err" : "bot");
+	el.innerHTML = md(content);
+	$("msgs").appendChild(el);
+	$("msgs").scrollTop = $("msgs").scrollHeight;
+}
+
+function renderMessages(list) {
+	$("msgs").innerHTML = "";
+	(list || []).forEach((m) => addMsg(m.role === "user" ? "user" : "bot", m.content));
+}
+
+function updateState(r) {
+	if (!r) return;
+	if (r.current_step) $("step").textContent = String(r.current_step).replace(/_/g, " ");
+	if (r.completion_percentage != null) {
+		$("fill").style.width = r.completion_percentage + "%";
+		$("pct").textContent = Math.round(r.completion_percentage) + " %";
+	}
+	canGen = !!(r.status === "confirmation_required" || r.ready_to_generate || r.can_generate || (r.completion_percentage || 0) >= 100 || String(r.current_step || "").toLowerCase() === "generation");
+	$("genBtn").style.display = canGen ? "block" : "none";
+}
+
+async function boot() {
+	try {
+		const r = await api("unpress_core.generation.chat_start_session");
+		SID = r.session_id;
+		renderMessages(r.messages);
+		updateState(r);
+	} catch (e) {
+		addMsg("err", e.message);
+	}
+}
+
+async function send() {
+	const v = $("txt").value.trim();
+	if (!v || !SID) return;
+	$("txt").value = "";
+	$("send").disabled = true;
+	addMsg("user", v);
+	try {
+		const r = await api("unpress_core.generation.chat_send_message", {session_id: SID, message: v});
+		if (r && r.messages) renderMessages(r.messages);
+		else if (r && (r.response || r.message)) addMsg("bot", r.response || r.message);
+		updateState(r);
+		if (r && r.success === false) addMsg("err", r.message || "Erreur");
+	} catch (e) {
+		addMsg("err", e.message);
+	} finally {
+		$("send").disabled = false;
+		$("txt").focus();
+	}
+}
+
+$("send").onclick = send;
+$("txt").addEventListener("keydown", (e) => {
+	if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }
+});
+
+$("genBtn").onclick = async () => {
+	$("genBtn").disabled = true;
+	document.querySelectorAll(".m.err").forEach((e) => e.remove());
+	try {
+		const r = await api("unpress_core.generation.chat_trigger_generation", {session_id: SID});
+		if (r && r.success === false) { addMsg("err", r.message || "Impossible de lancer la génération"); $("genBtn").disabled = false; return; }
+		if (r && r.status === "confirmation_required") {
+			addMsg("bot", r.message || "Confirmation requise.");
+			(r.buttons || []).forEach((b) => {
+				const btn = document.createElement("button");
+				btn.textContent = b.label;
+				btn.style.cssText = "margin:4px 6px 0 0;padding:8px 14px;border-radius:9px;border:1px solid #d4d4d8;background:#fff;cursor:pointer;font-size:13.5px;font-weight:600";
+				btn.onclick = async () => {
+					btn.disabled = true;
+					const rr = await api("unpress_core.generation.chat_send_message", {session_id: SID, message: b.value});
+					if (rr && rr.messages) renderMessages(rr.messages);
+					updateState(rr);
+					$("genState").style.display = "block";
+					pollGen();
+				};
+				$("msgs").appendChild(btn);
+			});
+			$("msgs").scrollTop = $("msgs").scrollHeight;
+			$("genBtn").disabled = false;
+			return;
+		}
+		$("genBtn").style.display = "none";
+		$("genState").style.display = "block";
+		pollGen();
+	} catch (e) {
+		addMsg("err", e.message);
+		$("genBtn").disabled = false;
+	}
+};
+
+async function pollGen() {
+	try {
+		const s = await api("unpress_core.generation.chat_get_generation_status", {session_id: SID});
+		const st = (s && (s.status || s.state)) || "";
+		if (s && (s.message || s.progress_message)) $("genMsg").textContent = s.message || s.progress_message;
+		if (st === "completed" || st === "success" || s.done) {
+			$("genState").style.display = "none";
+			$("genDone").style.display = "block";
+			return;
+		}
+		if (st === "failed" || st === "error") {
+			$("genState").style.display = "none";
+			addMsg("err", (s && s.error) || "La génération a échoué.");
+			$("genBtn").style.display = "block";
+			$("genBtn").disabled = false;
+			return;
+		}
+	} catch (e) { /* transient */ }
+	setTimeout(pollGen, 3000);
+}
+
+$("reset").onclick = async () => {
+	if (!SID) return;
+	try { await api("unpress_core.generation.chat_clear_session", {session_id: SID}); } catch (e) {}
+	location.reload();
+};
+
+boot();
+</script>
+</body>
+</html>

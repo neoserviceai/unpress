@@ -1,0 +1,874 @@
+{# Cart Drawer Component - Side drawer with cart contents #}
+{# Cart data is loaded dynamically via JavaScript to avoid template permission issues #}
+
+{# Cart Overlay #}
+<div id="builder-cart-overlay" class="builder-cart-overlay">
+	<div id="builder-cart-drawer" class="builder-cart-drawer">
+		<div class="builder-cart-drawer__header">
+			<span class="builder-cart-drawer__title">{{ _("Your Cart") }}</span>
+			<button id="builder-cart-close" class="builder-cart-drawer__close" aria-label="{{ _('Close cart') }}">
+				{% include "unpress_core/templates/includes/header_footer/icons/close.html" %}
+			</button>
+		</div>
+
+		<div id="builder-cart-loading" class="builder-cart-drawer__loading" style="display: none;">
+			<div class="builder-cart-spinner"></div>
+			<p>{{ _("Loading Cart...") }}</p>
+		</div>
+
+		<div id="builder-cart-empty" class="builder-cart-drawer__empty">
+			<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+				<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+				<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+			</svg>
+			<p>{{ _("Your cart is empty") }}</p>
+			<a href="/all-products" class="builder-cart-drawer__shop-btn">{{ _("Start Shopping") }}</a>
+		</div>
+
+		<div id="builder-cart-items" class="builder-cart-drawer__items"></div>
+
+		{# Frequently bought together (server-computed from real sales, based on cart items) #}
+		<div id="builder-cart-fbt" class="builder-cart-drawer__recent" style="display: none;">
+			<div class="builder-cart-drawer__recent-title">{{ _("Frequently bought together") }}</div>
+			<div id="builder-cart-fbt-items" class="builder-cart-drawer__recent-items"></div>
+		</div>
+
+
+		<div id="builder-cart-footer" class="builder-cart-drawer__footer" style="display: none;">
+			<div class="builder-cart-drawer__subtotal">
+				<span>{{ _("Subtotal") }}</span>
+				<span id="builder-cart-subtotal">0.00</span>
+			</div>
+			<div id="builder-cart-taxes" class="builder-cart-drawer__taxes"></div>
+			<div class="builder-cart-drawer__total">
+				<span>{{ _("Total") }}</span>
+				<span id="builder-cart-total">0.00</span>
+			</div>
+			<div class="builder-cart-drawer__buttons">
+				<a href="/cart" class="builder-cart-drawer__view-btn">{{ _("View Cart") }}</a>
+				<a href="/checkout" class="builder-cart-drawer__checkout-btn">{{ _("Checkout") }}</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+/* Cart Overlay */
+.builder-cart-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 1100;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.builder-cart-overlay.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Cart Drawer */
+.builder-cart-drawer {
+	position: fixed;
+	top: 0;
+	right: -400px;
+	width: min(400px, 90vw);
+	height: 100%;
+	background: var(--header-bg, #ffffff);
+	box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+	display: flex;
+	flex-direction: column;
+	z-index: 1101;
+	transition: right 0.3s ease;
+}
+
+.builder-cart-overlay.active .builder-cart-drawer {
+	right: 0;
+}
+
+/* Header */
+.builder-cart-drawer__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 20px;
+	border-bottom: 1px solid var(--border-color, #e5e7eb);
+}
+
+.builder-cart-drawer__title {
+	font-size: 1.125rem;
+	font-weight: 600;
+	color: var(--text-color, #111827);
+}
+
+.builder-cart-drawer__close {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border: none;
+	background: transparent;
+	color: var(--text-color, #374151);
+	cursor: pointer;
+	border-radius: 8px;
+	transition: background-color 0.2s ease;
+}
+
+.builder-cart-drawer__close:hover {
+	background: var(--hover-bg, #f3f4f6);
+}
+
+/* Loading */
+.builder-cart-drawer__loading {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	color: var(--muted-color, #6b7280);
+}
+
+.builder-cart-spinner {
+	width: 32px;
+	height: 32px;
+	border: 3px solid var(--border-color, #e5e7eb);
+	border-top-color: var(--primary-color, #1a1a1a);
+	border-radius: 50%;
+	animation: builder-spin 1s linear infinite;
+}
+
+@keyframes builder-spin {
+	to { transform: rotate(360deg); }
+}
+
+/* Empty State */
+.builder-cart-drawer__empty {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 40px 20px;
+	text-align: center;
+	color: var(--muted-color, #6b7280);
+}
+
+.builder-cart-drawer__empty svg {
+	margin-bottom: 16px;
+	opacity: 0.5;
+}
+
+.builder-cart-drawer__empty p {
+	margin-bottom: 20px;
+	font-size: 1rem;
+}
+
+.builder-cart-drawer__shop-btn {
+	display: inline-block;
+	padding: 10px 24px;
+	background: var(--primary-color, #1a1a1a);
+	color: white;
+	text-decoration: none;
+	border-radius: 8px;
+	font-weight: 500;
+	transition: background-color 0.2s ease;
+}
+
+.builder-cart-drawer__shop-btn:hover {
+	background: var(--primary-hover, #333333);
+	color: white;
+}
+
+/* Cart Items */
+.builder-cart-drawer__items {
+	flex: 1;
+	overflow-y: auto;
+	padding: 12px 16px;
+}
+
+.builder-cart-item {
+	display: flex;
+	padding: 10px;
+	margin-bottom: 8px;
+	background: var(--surface-color, #f9fafb);
+	border-radius: 8px;
+	position: relative;
+}
+
+.builder-cart-item__image {
+	width: 48px;
+	height: 48px;
+	border-radius: 6px;
+	object-fit: cover;
+	background: var(--input-bg, #e5e7eb);
+	flex-shrink: 0;
+}
+
+.builder-cart-item__abbr {
+	width: 48px;
+	height: 48px;
+	border-radius: 6px;
+	background: var(--input-bg, #e5e7eb);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--muted-color, #9ca3af);
+	font-weight: 600;
+	flex-shrink: 0;
+}
+
+.builder-cart-item__details {
+	flex: 1;
+	margin-left: 12px;
+	min-width: 0;
+}
+
+.builder-cart-item__brand {
+	font-size: 0.72rem;
+	color: var(--muted-color, #6b7280);
+	margin-bottom: 2px;
+}
+
+.builder-cart-item__name {
+	font-weight: 600;
+	font-size: 0.85rem;
+	color: var(--text-color, #111827);
+	margin-bottom: 2px;
+	line-height: 1.3;
+}
+
+.builder-cart-item__name a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.builder-cart-item__name a:hover {
+	color: var(--primary-color, #1a1a1a);
+}
+
+.builder-cart-item__price {
+	font-weight: 600;
+	font-size: 0.85rem;
+	color: var(--text-color, #374151);
+	margin-bottom: 0;
+}
+
+.builder-cart-item__bottom {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	margin-top: 6px;
+}
+
+.builder-cart-item__quantity {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.builder-cart-item__qty-btn {
+	width: 24px;
+	height: 24px;
+	border: 1px solid var(--border-color, #e5e7eb);
+	background: white;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	color: var(--text-color, #374151);
+}
+
+.builder-cart-item__qty-btn:hover {
+	background: var(--hover-bg, #f3f4f6);
+	border-color: var(--primary-color, #1a1a1a);
+}
+
+.builder-cart-item__qty-btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.builder-cart-item__qty-value {
+	min-width: 24px;
+	text-align: center;
+	font-weight: 500;
+}
+
+.builder-cart-item__remove {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	width: 24px;
+	height: 24px;
+	border: none;
+	background: transparent;
+	color: var(--muted-color, #9ca3af);
+	cursor: pointer;
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s ease;
+}
+
+.builder-cart-item__remove:hover {
+	color: #ef4444;
+	background: rgba(239, 68, 68, 0.1);
+}
+
+/* Recently viewed */
+.builder-cart-drawer__recent {
+	padding: 12px 16px;
+	border-top: 1px solid var(--border-color, #e5e7eb);
+}
+
+.builder-cart-drawer__recent-title {
+	font-size: 0.8rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--muted-color, #6b7280);
+	margin-bottom: 10px;
+}
+
+.builder-cart-drawer__recent-items {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 8px;
+}
+
+.builder-cart-recent-card {
+	display: block;
+	text-decoration: none;
+	color: var(--text-color, #374151);
+	text-align: center;
+}
+
+.builder-cart-recent-card img,
+.builder-cart-recent-card .builder-cart-recent-abbr {
+	width: 100%;
+	aspect-ratio: 1;
+	object-fit: cover;
+	border-radius: 6px;
+	background: var(--input-bg, #f3f4f6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--muted-color, #9ca3af);
+	font-weight: 600;
+	font-size: 0.8rem;
+}
+
+.builder-cart-recent-card .builder-cart-recent-name {
+	font-size: 0.7rem;
+	line-height: 1.25;
+	margin-top: 4px;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.builder-cart-recent-card .builder-cart-recent-price {
+	font-size: 0.72rem;
+	font-weight: 600;
+	margin-top: 2px;
+}
+
+/* Webshop pages underline links on hover — keep the drawer consistent with Builder pages */
+.builder-cart-overlay a:hover,
+.builder-cart-overlay a:focus,
+.builder-cart-overlay button:hover {
+	text-decoration: none !important;
+}
+
+/* Footer */
+.builder-cart-drawer__footer {
+	padding: 16px 20px;
+	border-top: 1px solid var(--border-color, #e5e7eb);
+	background: var(--header-bg, #ffffff);
+}
+
+.builder-cart-drawer__subtotal,
+.builder-cart-drawer__total {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 8px;
+}
+
+.builder-cart-drawer__subtotal {
+	font-size: 0.9375rem;
+	color: var(--text-color, #374151);
+}
+
+.builder-cart-drawer__total {
+	font-size: 1.125rem;
+	font-weight: 600;
+	color: var(--text-color, #111827);
+	margin-bottom: 16px;
+}
+
+.builder-cart-drawer__taxes {
+	font-size: 0.8125rem;
+	color: var(--muted-color, #6b7280);
+	margin-bottom: 8px;
+}
+
+.builder-cart-drawer__tax-item {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 4px;
+}
+
+.builder-cart-drawer__buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.builder-cart-drawer__view-btn,
+.builder-cart-drawer__checkout-btn {
+	display: block;
+	padding: 12px;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 8px;
+	font-weight: 600;
+	transition: all 0.2s ease;
+}
+
+.builder-cart-drawer__view-btn {
+	background: var(--surface-color, #f3f4f6);
+	color: var(--text-color, #374151);
+	border: 1px solid var(--border-color, #e5e7eb);
+}
+
+.builder-cart-drawer__view-btn:hover {
+	background: var(--hover-bg, #e5e7eb);
+	color: var(--text-color, #374151);
+}
+
+.builder-cart-drawer__checkout-btn {
+	background: var(--primary-color, #1a1a1a);
+	color: white;
+}
+
+.builder-cart-drawer__checkout-btn:hover {
+	background: var(--primary-hover, #333333);
+	color: white;
+}
+
+/* Animations */
+.builder-cart-item.removing {
+	animation: builder-slide-out 0.3s ease forwards;
+}
+
+@keyframes builder-slide-out {
+	to {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+}
+
+.builder-cart-item.updating {
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+	.builder-cart-drawer {
+		width: 100%;
+	}
+}
+</style>
+
+<script>
+(function() {
+	// Wait for DOM to be ready before querying header elements
+	// This is necessary because cart_drawer.html is included BEFORE the header renders
+	function initCart() {
+		const cartOverlay = document.getElementById('builder-cart-overlay');
+		const cartDrawer = document.getElementById('builder-cart-drawer');
+		const cartClose = document.getElementById('builder-cart-close');
+		const cartTrigger = document.querySelector('.header-icon--cart');
+		const cartBadge = document.querySelector('.cart-badge');
+		const cartItems = document.getElementById('builder-cart-items');
+		const cartEmpty = document.getElementById('builder-cart-empty');
+		const cartFooter = document.getElementById('builder-cart-footer');
+		const cartLoading = document.getElementById('builder-cart-loading');
+		const cartTotalEl = document.getElementById('builder-cart-total');
+		const cartSubtotalEl = document.getElementById('builder-cart-subtotal');
+		const cartTaxesEl = document.getElementById('builder-cart-taxes');
+
+	let isCartOpen = false;
+	let cartState = {
+		items: [],
+		total: 0,
+		subtotal: 0,
+		itemsCount: 0,
+		currency: 'CHF',
+		taxes: []
+	};
+
+	// Initialize cart state (will be populated by refreshCart)
+	function initCartState() {
+		updateCartBadge();
+	}
+
+	// Open cart drawer
+	function openCart() {
+		if (cartOverlay && !isCartOpen) {
+			cartOverlay.classList.add('active');
+			isCartOpen = true;
+			document.body.style.overflow = 'hidden';
+			refreshCart();
+		}
+	}
+
+	// Close cart drawer
+	function closeCart() {
+		if (cartOverlay && isCartOpen) {
+			cartOverlay.classList.remove('active');
+			isCartOpen = false;
+			document.body.style.overflow = '';
+		}
+	}
+
+	// Update cart badge
+	function updateCartBadge(animate = false) {
+		if (cartBadge) {
+			if (cartState.itemsCount > 0) {
+				cartBadge.textContent = cartState.itemsCount;
+				cartBadge.style.display = 'flex';
+				if (animate) {
+					cartBadge.classList.add('updated');
+					setTimeout(() => cartBadge.classList.remove('updated'), 500);
+				}
+			} else {
+				cartBadge.style.display = 'none';
+			}
+		}
+	}
+
+	// Format price
+	function formatPrice(price) {
+		const num = parseFloat(price);
+		if (isNaN(num)) return '0.00';
+		return num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, "'") + ' ' + (cartState.currency || 'CHF');
+	}
+
+	// Refresh cart from API
+	function refreshCart() {
+		if (cartLoading) cartLoading.style.display = 'flex';
+
+		fetch('/api/method/webshop.webshop.shopping_cart.cart.get_cart_quotation?with_items=1', {
+			method: 'GET',
+			headers: {
+				'Accept': 'application/json',
+				'X-Requested-With': 'XMLHttpRequest'
+			},
+			credentials: 'same-origin'
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.message && data.message.doc) {
+				const doc = data.message.doc;
+				cartState.items = doc.items || [];
+				cartState.total = doc.grand_total || 0;
+				cartState.subtotal = doc.net_total || doc.total || 0;
+				cartState.itemsCount = doc.total_qty || 0;
+
+				// Extract taxes with customer-friendly labels: drop account codes
+				// ("22007 - ...") and internal ids ("Economy_2kg"), keep just the
+				// "TVA x%" segment for VAT rows and merge them by rate (product VAT
+				// + shipping VAT become a single line), like the cart/checkout summary.
+				cartState.taxes = [];
+				if (doc.taxes && doc.taxes.length > 0) {
+					const mergedTaxes = {};
+					doc.taxes.forEach(tax => {
+						const amount = tax.tax_amount || 0;
+						// Skip zero-amount tax rows (unused VAT rates on the tax template)
+						if (Math.abs(amount) < 0.005) return;
+						const raw = tax.description || 'Tax';
+						const parts = raw.split(' - ').filter(p => p.trim() && !/^\d+$/.test(p.trim()) && !p.includes('_'));
+						let label = parts.length ? parts.join(' - ') : raw;
+						let key = label;
+						const pct = parts.find(p => p.includes('%'));
+						if (pct) {
+							label = pct.trim();
+							const m = label.match(/(\d+(?:\.\d+)?)\s*%/);
+							if (m) key = 'vat-' + m[1];
+						}
+						if (mergedTaxes[key]) mergedTaxes[key].amount += amount;
+						else mergedTaxes[key] = { description: label, amount: amount };
+					});
+					cartState.taxes = Object.values(mergedTaxes);
+				}
+			} else {
+				cartState.items = [];
+				cartState.total = 0;
+				cartState.itemsCount = 0;
+			}
+			renderCart();
+			updateCartBadge();
+		})
+		.catch(error => {
+			console.error('Error refreshing cart:', error);
+		})
+		.finally(() => {
+			if (cartLoading) cartLoading.style.display = 'none';
+		});
+	}
+
+	// Render cart items
+	function renderCart() {
+		if (!cartItems) return;
+
+		if (cartState.items.length === 0) {
+			cartItems.innerHTML = '';
+			cartEmpty.style.display = 'flex';
+			cartFooter.style.display = 'none';
+			return;
+		}
+
+		cartEmpty.style.display = 'none';
+		cartFooter.style.display = 'block';
+
+		let html = '';
+		cartState.items.forEach(item => {
+			// Quotation Item rows expose `image` (copied from the Item); website_image
+			// is only present on enriched payloads. Try all of them before initials.
+			const image = item.website_image || item.image || item.thumbnail || '';
+			const name = item.item_name || '';
+			const brand = item.brand || '';
+			const price = item.rate || 0;
+			const qty = item.qty || 1;
+			const itemCode = item.item_code || '';
+			const route = item.route || '';
+			const abbr = name.split(' ').map(w => w[0]).join('').toUpperCase().substring(0, 2);
+
+			html += `
+				<div class="builder-cart-item" data-item-code="${itemCode}">
+					${image ? `<img src="${image}" alt="${name}" class="builder-cart-item__image" onerror="this.outerHTML='<div class=builder-cart-item__abbr>${abbr}</div>'">` : `<div class="builder-cart-item__abbr">${abbr}</div>`}
+					<div class="builder-cart-item__details">
+						${brand ? `<div class="builder-cart-item__brand">${brand}</div>` : ''}
+						<div class="builder-cart-item__name">
+							${route ? `<a href="/${route}">${name}</a>` : name}
+						</div>
+						<div class="builder-cart-item__bottom">
+						<div class="builder-cart-item__price">${formatPrice(price)}</div>
+						<div class="builder-cart-item__quantity">
+							<button class="builder-cart-item__qty-btn" data-action="decrease" data-item-code="${itemCode}">
+								<svg width="12" height="12" viewBox="0 0 24 24"><path fill="currentColor" d="M5 11h14v2H5z"/></svg>
+							</button>
+							<span class="builder-cart-item__qty-value">${qty}</span>
+							<button class="builder-cart-item__qty-btn" data-action="increase" data-item-code="${itemCode}">
+								<svg width="12" height="12" viewBox="0 0 24 24"><path fill="currentColor" d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"/></svg>
+							</button>
+						</div>
+						</div>
+					</div>
+					<button class="builder-cart-item__remove" data-item-code="${itemCode}">
+						<svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41z"/></svg>
+					</button>
+				</div>
+			`;
+		});
+
+		cartItems.innerHTML = html;
+
+		// Update totals
+		if (cartSubtotalEl) cartSubtotalEl.textContent = formatPrice(cartState.subtotal);
+		if (cartTotalEl) cartTotalEl.textContent = formatPrice(cartState.total);
+
+		// Update taxes
+		if (cartTaxesEl) {
+			if (cartState.taxes.length > 0) {
+				let taxHtml = '';
+				cartState.taxes.forEach(tax => {
+					taxHtml += `<div class="builder-cart-drawer__tax-item"><span>${tax.description}</span><span>${formatPrice(tax.amount)}</span></div>`;
+				});
+				cartTaxesEl.innerHTML = taxHtml;
+			} else {
+				cartTaxesEl.innerHTML = '';
+			}
+		}
+
+		// Add event listeners
+		addCartEventListeners();
+	}
+
+	// Add event listeners for cart actions
+	function addCartEventListeners() {
+		// Quantity buttons
+		cartItems.querySelectorAll('.builder-cart-item__qty-btn').forEach(btn => {
+			btn.addEventListener('click', handleQuantityChange);
+		});
+
+		// Remove buttons
+		cartItems.querySelectorAll('.builder-cart-item__remove').forEach(btn => {
+			btn.addEventListener('click', handleRemoveItem);
+		});
+	}
+
+	// Handle quantity change
+	function handleQuantityChange(e) {
+		const btn = e.currentTarget;
+		const itemCode = btn.dataset.itemCode;
+		const action = btn.dataset.action;
+		const itemEl = btn.closest('.builder-cart-item');
+		const qtyEl = itemEl.querySelector('.builder-cart-item__qty-value');
+		let currentQty = parseInt(qtyEl.textContent) || 1;
+		let newQty = action === 'increase' ? currentQty + 1 : Math.max(1, currentQty - 1);
+
+		if (newQty === currentQty) return;
+
+		itemEl.classList.add('updating');
+		qtyEl.textContent = newQty;
+
+		updateCartItem(itemCode, newQty, itemEl);
+	}
+
+	// Handle remove item
+	function handleRemoveItem(e) {
+		const btn = e.currentTarget;
+		const itemCode = btn.dataset.itemCode;
+		const itemEl = btn.closest('.builder-cart-item');
+
+		itemEl.classList.add('removing');
+		setTimeout(() => {
+			updateCartItem(itemCode, 0, itemEl, true);
+		}, 300);
+	}
+
+	// Update cart item via API
+	function updateCartItem(itemCode, qty, itemEl, isRemove = false) {
+		const csrfToken = frappe?.csrf_token || '';
+
+		fetch('/api/method/webshop.webshop.utils.cart_helpers.update_cart', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept': 'application/json',
+				'X-Frappe-CSRF-Token': csrfToken
+			},
+			credentials: 'same-origin',
+			body: JSON.stringify({
+				item_code: itemCode,
+				qty: qty,
+				additional_notes: '',
+				with_items: 1
+			})
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.message) {
+				refreshCart();
+				updateCartBadge(true);
+			}
+		})
+		.catch(error => {
+			console.error('Error updating cart:', error);
+			if (itemEl) itemEl.classList.remove('updating', 'removing');
+			refreshCart();
+		});
+	}
+
+	// Event listeners
+	if (cartTrigger) {
+		cartTrigger.addEventListener('click', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			openCart();
+		});
+	}
+
+	if (cartClose) {
+		cartClose.addEventListener('click', closeCart);
+	}
+
+	if (cartOverlay) {
+		cartOverlay.addEventListener('click', function(e) {
+			if (e.target === cartOverlay) {
+				closeCart();
+			}
+		});
+	}
+
+		// Close on escape
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape' && isCartOpen) {
+				closeCart();
+			}
+		});
+
+		// Initialize
+		initCartState();
+
+		// Refresh cart on page load to bypass cache
+		refreshCart();
+
+		// Make functions available globally for add-to-cart buttons
+		window.builderCartRefresh = refreshCart;
+		window.builderCartOpen = openCart;
+	}
+
+	// Initialize when DOM is ready
+	// This ensures header icons exist before we try to attach event listeners
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initCart);
+	} else {
+		// DOM already loaded, but use setTimeout to ensure header is rendered
+		setTimeout(initCart, 0);
+	}
+
+	// ---- Frequently bought together (server API, based on cart content) ----
+	function renderCartRecos() {
+		const wrap = document.getElementById('builder-cart-fbt');
+		const list = document.getElementById('builder-cart-fbt-items');
+		if (!wrap || !list) return;
+		const codes = [...document.querySelectorAll('#builder-cart-items .builder-cart-item')]
+			.map(el => el.dataset.itemCode).filter(Boolean);
+		if (!codes.length) {
+			wrap.style.display = 'none';
+			window.__cartFbtCodes = [];
+			return;
+		}
+		fetch('/api/method/webshop.webshop.api.get_cart_recommendations?item_codes=' + encodeURIComponent(JSON.stringify(codes)))
+			.then(r => r.json())
+			.then(d => {
+				const items = ((d && d.message) || []).slice(0, 4);
+				window.__cartFbtCodes = items.map(i => i.item_code);
+				if (!items.length) { wrap.style.display = 'none'; return; }
+				list.innerHTML = items.map(i => {
+					const name = (i.name || '').replace(/</g, '&lt;');
+					const abbr = name.split(' ').map(w => w[0]).join('').toUpperCase().substring(0, 2);
+					const img = i.image
+						? `<img src="${i.image}" alt="${name}" loading="lazy" onerror="this.outerHTML='<div class=builder-cart-recent-abbr>${abbr}</div>'">`
+						: `<div class="builder-cart-recent-abbr">${abbr}</div>`;
+					const price = i.price ? `<div class="builder-cart-recent-price">${i.price}</div>` : '';
+					return `<a class="builder-cart-recent-card" href="/${i.route}">${img}<div class="builder-cart-recent-name">${name}</div>${price}</a>`;
+				}).join('');
+				wrap.style.display = '';
+			})
+			.catch(() => { wrap.style.display = 'none'; });
+	}
+	window.builderCartRenderRecos = renderCartRecos;
+
+	// render cross-sell when the drawer opens (and once on load)
+	document.addEventListener('click', function(e) {
+		if (e.target.closest && e.target.closest('.header-icon--cart')) {
+			setTimeout(renderCartRecos, 700);
+		}
+	});
+	setTimeout(renderCartRecos, 900);
+})();
+</script>

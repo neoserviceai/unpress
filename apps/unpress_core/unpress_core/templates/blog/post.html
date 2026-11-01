@@ -1,0 +1,122 @@
+{% extends "templates/web.html" %}
+{#
+	The article page.
+
+	The blog app's own template never renders the cover, puts the body at
+	whatever width the viewport happens to be, and opens the comments unless
+	someone thought to close them. A blog article is the one page on a site
+	that is pure reading, and reading has a measure — roughly 65 characters —
+	past which the eye loses its place returning to the next line.
+
+	So this is ours rather than a stylesheet fighting theirs: the cover has to
+	come from a field no markup of theirs prints.
+#}
+
+{% block meta_block %}
+	{% include "templates/includes/meta_block.html" %}
+{% endblock %}
+
+{% block page_content %}
+{%- set cover = doc.meta_image or metatags.get("image") -%}
+{%- set layout = blog_post_layout or "Cover hero" -%}
+{%- set show_cover = cover and layout != "No cover" -%}
+
+<article class="u-article u-article--{{ layout | lower | replace(' ', '-') }}"
+         itemscope itemtype="http://schema.org/BlogPosting">
+
+	{%- if show_cover and layout == "Cover hero" -%}
+	{# The cover carries the title. u-over-image is the same scrim the generated
+	   heroes use, so an article opens like the rest of the site. #}
+	<header class="u-article__hero u-over-image u-over-image--bottom"
+	        style="background-image:url('{{ cover }}')">
+		<div class="u-article__hero-inner">
+			<a class="u-article__eyebrow" href="/{{ category.route }}">{{ category.title }}</a>
+			<h1 itemprop="headline" class="u-article__title">{{ title }}</h1>
+			{%- if blog_intro -%}
+			<p class="u-article__intro">{{ blog_intro }}</p>
+			{%- endif -%}
+			<p class="u-article__meta">
+				<time datetime="{{ published_on }}">{{ frappe.format_date(published_on) }}</time>
+				{%- if read_time %} · {{ read_time }} {{ _("min read") }}{% endif -%}
+			</p>
+		</div>
+	</header>
+	{%- else -%}
+	<header class="u-article__head">
+		<a class="u-article__eyebrow" href="/{{ category.route }}">{{ category.title }}</a>
+		<h1 itemprop="headline" class="u-article__title">{{ title }}</h1>
+		{%- if blog_intro -%}
+		<p class="u-article__intro">{{ blog_intro }}</p>
+		{%- endif -%}
+		<p class="u-article__meta">
+			<time datetime="{{ published_on }}">{{ frappe.format_date(published_on) }}</time>
+			{%- if read_time %} · {{ read_time }} {{ _("min read") }}{% endif -%}
+		</p>
+	</header>
+	{%- if show_cover -%}
+	<figure class="u-article__cover">
+		<img src="{{ cover }}" alt="{{ title }}" loading="lazy">
+	</figure>
+	{%- endif -%}
+	{%- endif -%}
+
+	<div class="u-article__body from-markdown" itemprop="articleBody">
+		{{ content }}
+	</div>
+
+	<footer class="u-article__footer">
+		{%- if blog_show_author and blogger_info -%}
+		<div class="u-article__author">
+			{%- if blogger_info.avatar -%}
+			<img class="u-article__avatar" src="{{ blogger_info.avatar }}" alt="{{ blogger_info.full_name }}" loading="lazy">
+			{%- endif -%}
+			<div>
+				<span class="u-article__author-name">{{ blogger_info.full_name }}</span>
+				{%- if blogger_info.bio -%}
+				<span class="u-article__author-bio">{{ blogger_info.bio }}</span>
+				{%- endif -%}
+			</div>
+		</div>
+		{%- endif -%}
+
+		<div class="u-article__actions">
+			{%- if not disable_likes -%}
+			{% include 'templates/includes/likes/likes.html' %}
+			{%- endif -%}
+			{%- if social_links -%}
+			<div class="u-article__share">
+				{%- for link in social_links -%}
+				<a href="{{ link.link }}" class="fa fa-{{ link.icon }}" target="_blank" rel="noopener"></a>
+				{%- endfor -%}
+			</div>
+			{%- endif -%}
+		</div>
+	</footer>
+
+	{#- Comments are opt-in: a box nobody watches fills with spam, and the site
+	    owner decides, not the default. -#}
+	{%- if blog_allow_comments and not disable_comments -%}
+	<section class="u-article__comments">
+		{% include 'templates/includes/comments/comments.html' %}
+	</section>
+	{%- endif -%}
+</article>
+
+{%- if enable_cta -%}
+<div class="u-article__cta">
+	{{ web_block("Section With Small CTA", values=cta, add_container=0,
+	             add_top_padding=0, add_bottom_padding=0) }}
+</div>
+{%- endif -%}
+
+<script>
+	frappe.ready(() => {
+		frappe.set_search_path("/blog");
+		if (window.location.hash && $(window.location.hash).length) {
+			$('html, body').animate({
+				scrollTop: $(window.location.hash).offset().top - 100
+			}, 900, 'swing');
+		}
+	})
+</script>
+{% endblock %}

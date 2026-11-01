@@ -1,0 +1,126 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:WPM-{####}",
+ "creation": "2026-07-10 16:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "source_url",
+  "status",
+  "column_break_a",
+  "wxr_file",
+  "options_section",
+  "import_templates",
+  "publish_pages",
+  "import_media",
+  "results_section",
+  "probe_results",
+  "report",
+  "progress"
+ ],
+ "fields": [
+  {
+   "fieldname": "source_url",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Source WordPress URL",
+   "reqd": 1
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Draft\nProbed\nImporting\nImported\nFailed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_a",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "wxr_file",
+   "fieldtype": "Attach",
+   "label": "WordPress Export File (WXR .xml)"
+  },
+  {
+   "fieldname": "options_section",
+   "fieldtype": "Section Break",
+   "label": "Import Options"
+  },
+  {
+   "default": "0",
+   "description": "Theme kits often ship dozens of unused templates — leave unchecked to import real pages only.",
+   "fieldname": "import_templates",
+   "fieldtype": "Check",
+   "label": "Also import Elementor library templates"
+  },
+  {
+   "default": "0",
+   "fieldname": "publish_pages",
+   "fieldtype": "Check",
+   "label": "Publish imported pages immediately"
+  },
+  {
+   "default": "1",
+   "description": "Download images referenced by the imported pages, deduplicate by content, and rewrite URLs to local files.",
+   "fieldname": "import_media",
+   "fieldtype": "Check",
+   "label": "Import referenced media"
+  },
+  {
+   "fieldname": "results_section",
+   "fieldtype": "Section Break",
+   "label": "Results"
+  },
+  {
+   "fieldname": "probe_results",
+   "fieldtype": "Code",
+   "label": "Probe Results",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "report",
+   "fieldtype": "Code",
+   "label": "Migration Report",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "progress",
+   "fieldtype": "Code",
+   "label": "Progress",
+   "read_only": 1,
+   "hidden": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-07-10 16:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "WP Migrator",
+ "name": "WP Migration",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

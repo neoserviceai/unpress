@@ -1,0 +1,4058 @@
+# French translations for Unpress Core.
+# Copyright (C) 2026 Neoservice
+# This file is distributed under the same license as the Unpress Core project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Unpress Core VERSION\n"
+"Report-Msgid-Bugs-To: hello@neoservice.ai\n"
+"POT-Creation-Date: 2026-08-04 15:03+0000\n"
+"PO-Revision-Date: 2026-07-30 08:11+0000\n"
+"Last-Translator: hello@neoservice.ai\n"
+"Language: fr\n"
+"Language-Team: hello@neoservice.ai\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: unpress_core/chat_service.py:703
+msgid "(Logo uploaded)"
+msgstr "(Logo téléchargé)"
+
+#: unpress_core/chat_service.py:770
+msgid "(Reference image uploaded)"
+msgstr "(Image de référence téléchargée)"
+
+#: unpress_core/chat_service.py:1683
+msgid "(Skip inspiration)"
+msgstr "(Passer l'inspiration)"
+
+#: unpress_core/chat_service.py:1703
+msgid "(Skip logo)"
+msgstr "(Passer le logo)"
+
+#: unpress_core/chat_service.py:842
+msgid "({0} file(s) attached)"
+msgstr "({0} fichier(s) joint(s))"
+
+#: unpress_core/chat_service.py:579
+msgid "**Do you have any websites you admire or reference images for the design?** This is optional but helps refine the visual style."
+msgstr "**Avez-vous des sites web que vous admirez ou des images de référence pour le design ?** C'est optionnel mais aide à affiner le style visuel."
+
+#: unpress_core/chat_service.py:1624
+msgid "**Pages already available via your shop:**"
+msgstr "**Pages déjà disponibles via votre boutique :**"
+
+#: unpress_core/chat_service.py:1616
+msgid "**Pages to generate:**"
+msgstr "**Pages à générer :**"
+
+#: unpress_core/chat_service.py:304
+msgid "**What type of website do you want to create?** Briefly describe your business or project, and I'll take care of the rest."
+msgstr "**Quel type de site web souhaitez-vous créer ?** Décrivez brièvement votre activité ou projet, et je m'occupe du reste."
+
+#: unpress_core/chat_service.py:399
+msgid "**{0}** is written and waiting as a draft in Articles."
+msgstr "**{0}** est écrit et vous attend en brouillon dans Articles."
+
+#: unpress_core/chat_service.py:1626
+msgid "- My Account (`/me`) — customer area"
+msgstr "- Mon Compte (`/me`) — espace client"
+
+#: unpress_core/chat_service.py:1625
+msgid "- Shop (`/all-products`) — product catalog"
+msgstr "- Boutique (`/all-products`) — catalogue produits"
+
+#. Content of the 'Dominant Colors' (HTML) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "<div id=\"color-palette\"></div>"
+msgstr ""
+
+#. Content of the 'header_preview' (HTML) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "<div id=\"header-preview\" style=\"padding: 15px; background: var(--subtle-fg); border-radius: 8px; width: 100%;\"></div>"
+msgstr "<div id=\"header-preview\" style=\"padding: 15px; background: var(--subtle-fg); border-radius: 8px; width: 100%;\"></div>"
+
+#. Content of the 'logo_default_info' (HTML) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "<div style=\"display: flex; align-items: center; gap: 12px; padding: 10px; background: var(--subtle-fg); border-radius: 8px; margin-top: 8px;\"><img src=\"/files/logo-default.png\" style=\"height: 40px; max-width: 150px; object-fit: contain;\" onerror=\"this.style.display='none'\"><span style=\"color: var(--text-muted); font-size: 12px;\">Default logo will be used. Attach a different image above to override.</span></div>"
+msgstr "<div style=\"display: flex; align-items: center; gap: 12px; padding: 10px; background: var(--subtle-fg); border-radius: 8px; margin-top: 8px;\"><img src=\"/files/logo-default.png\" style=\"height: 40px; max-width: 150px; object-fit: contain;\" onerror=\"this.style.display='none'\"><span style=\"color: var(--text-muted); font-size: 12px;\">Le logo par défaut sera utilisé. Joignez une autre image ci-dessus pour le remplacer.</span></div>"
+
+#. Description of the 'Core' (Check) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "A core plugin cannot be turned off."
+msgstr ""
+
+#: unpress_core/ai/inspiration/site_extractor.py:164
+msgid "A site URL is required"
+msgstr "Une adresse de site est requise"
+
+#. Option for the 'Status' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Abandoned"
+msgstr "Abandonnée"
+
+#. Label of the section_about (Section Break) field in DocType 'Website Plugin'
+#: unpress_core/hf_utils/menu_integration.py:200
+#: unpress_core/hf_utils/menu_integration.py:208
+#: unpress_core/hf_utils/menu_integration.py:214
+#: unpress_core/hf_utils/menu_integration.py:220
+#: unpress_core/hf_utils/menu_integration.py:227
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "About"
+msgstr "À propos"
+
+#. Option for the 'Status' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Active"
+msgstr "Actif"
+
+#: unpress_core/chat_service.py:1325
+msgid "Add a CTA"
+msgstr "Ajouter un CTA"
+
+#: unpress_core/chat_service.py:1327
+msgid "Add social links"
+msgstr "Ajouter les réseaux sociaux"
+
+#: unpress_core/generation.py:3534
+msgid "All images filled from the client's own photos."
+msgstr "Toutes les images proviennent des photos du client."
+
+#: unpress_core/chat_service.py:1634
+msgid "All information collected! Click **Generate Site** when you're ready."
+msgstr "Toutes les informations sont collectées ! Cliquez sur **Générer le site** quand vous êtes prêt."
+
+#: unpress_core/chat_service.py:1267
+msgid "All required information has been collected! You can now click **Generate Site** to create your website."
+msgstr "Toutes les informations requises ont été collectées ! Vous pouvez maintenant cliquer sur **Générer le site** pour créer votre site web."
+
+#. Label of the blog_allow_comments (Check) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Allow comments"
+msgstr ""
+
+#: unpress_core/plugin_install.py:137
+msgid "Already on this bench"
+msgstr "Déjà présent sur ce bench"
+
+#. Option for the 'On scroll' (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Always visible"
+msgstr ""
+
+#. Description of the 'On scroll' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Always visible: the bar never moves. Hide going down: it slips away as you read and comes back the moment you scroll up. Shrink: it stays, but slimmer."
+msgstr ""
+
+#. Label of the analysis (JSON) field in DocType 'Builder Site Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Analysis Data"
+msgstr ""
+
+#. Label of the analysis_section (Section Break) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Analysis Results"
+msgstr ""
+
+#. Label of the app_name (Data) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "App Name"
+msgstr ""
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Archivo Black"
+msgstr "Archivo Black"
+
+#. Label of the blog_layout (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Article list"
+msgstr ""
+
+#. Label of the blog_post_layout (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Article page"
+msgstr ""
+
+#: unpress_core/plugins.py:70
+msgid "Articles, categories and an RSS feed, on /blog."
+msgstr "Articles, catégories et un flux RSS, sur /blog."
+
+#: unpress_core/chat_service.py:124
+msgid "Artistic, colorful"
+msgstr "Artistique, coloré"
+
+#. Label of the asset_type (Select) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Asset Type"
+msgstr ""
+
+#. Label of the attachment (Attach) field in DocType 'Builder Chat Message'
+#: unpress_core/unpress_core/doctype/builder_chat_message/builder_chat_message.json
+msgid "Attachment"
+msgstr "Pièce jointe"
+
+#. Label of the is_available (Check) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Available"
+msgstr ""
+
+#: unpress_core/brief_view.py:112
+msgid "Avoided"
+msgstr "Écartées"
+
+#: unpress_core/www/404.html:23
+msgid "Back to the homepage"
+msgstr "Retour à l'accueil"
+
+#. Label of the header_bg_color (Color) field in DocType 'Website Header Footer
+#. Config'
+#. Label of the footer_bg_color (Color) field in DocType 'Website Header Footer
+#. Label of the background_color (Color) field in DocType 'Website Header
+#. Footer Config'
+#. Variant'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Background Color"
+msgstr "Couleur d’Arrière-plan"
+
+#. Description of the 'Background Color' (Color) field in DocType 'Website
+#. Header Footer Config'
+#. Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Background color of the footer (defaults to header background)"
+msgstr "Couleur de fond du pied de page (par défaut : celle de l'en-tête)"
+
+#. Description of the 'Background Color' (Color) field in DocType 'Website
+#. Header Footer Config'
+#. Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Background color of the header"
+msgstr "Couleur de fond de l'en-tête"
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Bebas Neue"
+msgstr "Bebas Neue"
+
+#. Label of the blog_section (Section Break) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/blog_chrome.py:85 unpress_core/hf_utils/menu_integration.py:213
+#: unpress_core/plugins.py:69
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Blog"
+msgstr "Blog"
+
+#: unpress_core/chat_service.py:136
+msgid "Blog / content site"
+msgstr "Blog / site de contenu"
+
+#: unpress_core/brief_view.py:114
+msgid "Body"
+msgstr "Corps"
+
+#. Label of the body_font (Data) field in DocType 'Builder Chat Session'
+#. Label of the body_font (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Body Font"
+msgstr "Police du texte"
+
+#. Label of the body_line_height (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Body Line Height"
+msgstr "Interligne du texte"
+
+#. Label of the body_size (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Body Size"
+msgstr "Taille du texte"
+
+#. Label of the body_size_mobile (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Body Size (Mobile)"
+msgstr "Taille du texte (mobile)"
+
+#. Label of the body_weight (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Body Weight"
+msgstr "Graisse du texte"
+
+#: unpress_core/brief_view.py:117
+msgid "Body size"
+msgstr "Taille du corps"
+
+#: unpress_core/brief_view.py:109
+msgid "Body text"
+msgstr "Texte courant"
+
+#: unpress_core/chat_service.py:120
+msgid "Bold, high contrast"
+msgstr "Audacieux, fort contraste"
+
+#. Label of the header_border (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Bottom Border"
+msgstr "Bordure inférieure"
+
+#: unpress_core/templates/includes/header_footer/page_header.html:17
+msgid "Breadcrumb"
+msgstr "Fil d'Ariane"
+
+#. Label of the show_breadcrumbs (Check) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Breadcrumbs"
+msgstr ""
+
+#. Option for the 'Motion' (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Brisk"
+msgstr "Vive"
+
+#. Name of a DocType
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+msgid "Builder AI Shortcode"
+msgstr "Shortcode IA Builder"
+
+#. Name of a DocType
+#: unpress_core/unpress_core/doctype/builder_chat_message/builder_chat_message.json
+msgid "Builder Chat Message"
+msgstr "Message de chat Builder"
+
+#. Name of a DocType
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Builder Chat Session"
+msgstr "Session de chat Builder"
+
+#. Description of the 'Session ID' (Data) field in DocType 'Builder Content
+#. Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Builder Chat Session this asset was uploaded for."
+msgstr ""
+
+#. Name of a DocType
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Builder Content Asset"
+msgstr ""
+
+#. Name of a DocType
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Builder Site Inspiration"
+msgstr ""
+
+#. Option for the 'Source' (Select) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Built-in"
+msgstr ""
+
+#. Label of the button_hover (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/brief_view.py:121
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Button hover"
+msgstr ""
+
+#. Label of the buttons (JSON) field in DocType 'Builder Chat Message'
+#: unpress_core/unpress_core/doctype/builder_chat_message/builder_chat_message.json
+msgid "Buttons"
+msgstr "Boutons"
+
+#. Label of the cta_shape (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "CTA Shape"
+msgstr "Forme du bouton CTA"
+
+#. Label of the cta_size (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "CTA Size"
+msgstr "Taille du bouton CTA"
+
+#. Label of the cta_style (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "CTA Style"
+msgstr "Style du bouton d'action"
+
+#. Label of the cta_text (Data) field in DocType 'Builder Chat Session'
+#. Label of the cta_text (Data) field in DocType 'Website Header Footer Config'
+#. Label of the cta_text (Data) field in DocType 'Website Header Footer
+#. Variant'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "CTA Text"
+msgstr "Texte du bouton d'action"
+
+#. Label of the cta_url (Data) field in DocType 'Builder Chat Session'
+#. Label of the cta_url (Data) field in DocType 'Website Header Footer Config'
+#. Label of the cta_url (Data) field in DocType 'Website Header Footer Variant'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "CTA URL"
+msgstr "URL du CTA"
+
+#: unpress_core/brief_view.py:129
+msgid "CTA shape"
+msgstr "Forme du bouton"
+
+#: unpress_core/brief_view.py:128
+msgid "CTA style"
+msgstr ""
+
+#. Label of the cta_section (Section Break) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Call to Action Button"
+msgstr "Bouton d'appel à l'action"
+
+#. Option for the 'Motion' (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Calm"
+msgstr "Calme"
+
+#. Label of the capture_section (Section Break) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Capture"
+msgstr ""
+
+#. Label of the captured_at (Datetime) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Captured At"
+msgstr ""
+
+#. Label of the show_cart (Check) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/templates/includes/header_footer/macros.html:47
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.js:125
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+#: unpress_core/www/404.py:33
+msgid "Cart"
+msgstr "Panier"
+
+#: unpress_core/hf_utils/menu_integration.py:207
+msgid "Categories"
+msgstr "Catégories"
+
+#. Label of the category (Select) field in DocType 'Builder AI Shortcode'
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+msgid "Category"
+msgstr "Catégorie"
+
+#: unpress_core/blog_api.py:256
+msgid "Category in use"
+msgstr "Catégorie utilisée"
+
+#. Option for the 'Footer Template' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Style' (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Centered"
+msgstr "Centré"
+
+#: unpress_core/templates/includes/header_footer/components/cart_drawer.html:50
+#: unpress_core/templates/includes/header_footer/header.html:14
+msgid "Checkout"
+msgstr "Paiement"
+
+#. Description of the 'Layout' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Choose the header layout structure"
+msgstr "Choisissez la structure de l'en-tête"
+
+#. Option for the 'Header style' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Classic"
+msgstr "Classique"
+
+#. Description of the 'Header style' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Classic: full-width bar. Floating: detached, rounded, above the content. Transparent: blends into the hero, solid once scrolled. Minimal: no background, no border."
+msgstr ""
+
+#: unpress_core/chat_service.py:119
+msgid "Clean, professional"
+msgstr "Épuré, professionnel"
+
+#: unpress_core/generation.py:3539
+msgid "Client photos placed. {0} slot(s) left as placeholders (image generation is off here)."
+msgstr "Photos du client placées. {0} emplacement(s) restent en attente (la génération d'images est désactivée ici)."
+
+#: unpress_core/templates/includes/header_footer/components/cart_drawer.html:9
+#: unpress_core/templates/includes/header_footer/header.html:13
+msgid "Close cart"
+msgstr "Fermer le panier"
+
+#: unpress_core/templates/includes/header_footer/components/search_overlay.html:11
+#: unpress_core/templates/includes/header_footer/header.html:6
+msgid "Close search"
+msgstr "Fermer la recherche"
+
+#: unpress_core/codex_api.py:112 unpress_core/codex_api.py:167
+#: unpress_core/codex_api.py:192
+msgid "Codex CLI not found on this server"
+msgstr "Codex CLI introuvable sur ce serveur"
+
+#: unpress_core/codex_api.py:42
+msgid "Codex is not enabled on this site. A ChatGPT plan is personal and its credentials are shared by every site on this server, so it must be switched on deliberately (codex_enabled in site_config.json)."
+msgstr ""
+
+#. Label of the theme_colors_section (Section Break) field in DocType 'Website
+#. Header Footer Config'
+#. Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Colors"
+msgstr "Couleurs"
+
+#: unpress_core/brief_view.py:103
+msgid "Colour"
+msgstr "Couleur"
+
+#. Label of the column_name (Data) field in DocType 'Website Footer Link'
+#: unpress_core/unpress_core/doctype/website_footer_link/website_footer_link.json
+msgid "Column"
+msgstr "Colonne"
+
+#: unpress_core/www/404.html:9 unpress_core/www/404.py:59
+msgid "Coming soon"
+msgstr "Bientôt disponible"
+
+#. Label of the company (Link) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Company"
+msgstr ""
+
+#. Label of the company_data (JSON) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Company Data"
+msgstr "Données de l'entreprise"
+
+#. Option for the 'Status' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Completed"
+msgstr "Terminé"
+
+#. Label of the completion_percentage (Percent) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Completion"
+msgstr "Achèvement"
+
+#: unpress_core/brief_view.py:99
+msgid "Concept"
+msgstr "Concept"
+
+#: unpress_core/email_api.py:67
+msgid "Configure and save the SMTP account first"
+msgstr "Configurez et enregistrez d'abord le compte SMTP"
+
+#. Description of the 'Icons & Search' (Section Break) field in DocType
+#. 'Website Header Footer Config'
+#. 'Website Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Configure header icons and search options"
+msgstr "Configurez les icônes de l'en-tête et les options de recherche"
+
+#: unpress_core/generation.py:607
+msgid "Connected — brief model: {0}, page model: {1}"
+msgstr "Connecté — modèle brief : {0}, modèle pages : {1}"
+
+#: unpress_core/generation.py:570
+msgid "Connected — model: {0}, size: {1}"
+msgstr "Connecté — modèle : {0}, taille : {1}"
+
+#: unpress_core/codex_api.py:224
+msgid "Connected — {0}, model: {1}"
+msgstr "Connecté — {0}, modèle : {1}"
+
+#: unpress_core/generation.py:562 unpress_core/generation.py:602
+msgid "Connection failed: {0}"
+msgstr "Échec de la connexion : {0}"
+
+#: unpress_core/chat_service.py:1356
+msgid "Consulting / Services"
+msgstr "Conseil / Services"
+
+#: unpress_core/hf_utils/menu_integration.py:202
+#: unpress_core/hf_utils/menu_integration.py:209
+#: unpress_core/hf_utils/menu_integration.py:215
+#: unpress_core/hf_utils/menu_integration.py:221
+#: unpress_core/hf_utils/menu_integration.py:228
+msgid "Contact"
+msgstr "Contact"
+
+#. Label of the content (Long Text) field in DocType 'Builder Chat Message'
+#: unpress_core/unpress_core/doctype/builder_chat_message/builder_chat_message.json
+msgid "Content"
+msgstr "Contenu"
+
+#: unpress_core/brief_view.py:136
+msgid "Content width"
+msgstr "Largeur du contenu"
+
+#: unpress_core/chat_service.py:1558
+msgid "Continue"
+msgstr "Continuer"
+
+#. Label of the section_messages (Section Break) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Conversation"
+msgstr "Conversation"
+
+#. Label of the copyright_text (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Copyright Text"
+msgstr "Texte de copyright"
+
+#. Label of the is_core (Check) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Core"
+msgstr ""
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Cormorant Garamond"
+msgstr "Cormorant Garamond"
+
+#. Label of the radius_style (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/brief_view.py:119
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Corners"
+msgstr ""
+
+#: unpress_core/chat_service.py:129
+msgid "Corporate"
+msgstr "Corporate"
+
+#: unpress_core/generation.py:2431
+msgid "Could not import any pages from this template group."
+msgstr "Impossible d'importer des pages depuis ce groupe de templates."
+
+#: unpress_core/generation.py:2399
+msgid "Could not load the selected template. Please try again."
+msgstr "Impossible de charger le template sélectionné. Veuillez réessayer."
+
+#: unpress_core/chat_service.py:1274
+msgid "Could you describe your website project? What is your business or activity about?"
+msgstr "Pouvez-vous décrire votre projet de site web ? Quelle est votre activité ou votre entreprise ?"
+
+#: unpress_core/chat_service.py:1281
+msgid "Could you provide: **{0}**?"
+msgstr "Pourriez-vous fournir : **{0}** ?"
+
+#. Option for the 'Article page' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Cover above"
+msgstr ""
+
+#. Option for the 'Article page' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Cover hero"
+msgstr ""
+
+#: unpress_core/chat_service.py:130
+msgid "Creative"
+msgstr "Créatif"
+
+#. Label of the current_step (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Current Step"
+msgstr "Étape actuelle"
+
+#. Label of the footer_html_section (Section Break) field in DocType 'Website
+#. Header Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Custom block"
+msgstr ""
+
+#. Option for the 'Footer menu' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Custom links"
+msgstr "Liens personnalisés"
+
+#: unpress_core/chat_service.py:1577
+msgid "Custom page"
+msgstr "Page personnalisée"
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Body Font' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "DM Sans"
+msgstr "DM Sans"
+
+#. Option for the 'Button hover' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Darken"
+msgstr "Assombrir"
+
+#. Description of the 'Footer Logo Image' (Attach Image) field in DocType
+#. 'Website Header Footer Config'
+#. 'Website Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Default: /files/logo-default.png - Attach a different image to override"
+msgstr "Par défaut : /files/logo-default.png — joignez une autre image pour le remplacer"
+
+#. Label of the description (Text) field in DocType 'Builder AI Shortcode'
+#. Label of the description (Small Text) field in DocType 'Builder Site
+#. Inspiration'
+#. Label of the description (Small Text) field in DocType 'Website Plugin'
+#: unpress_core/chat_service.py:2018
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Description"
+msgstr "Description"
+
+#. Label of the design_tokens_section (Section Break) field in DocType 'Website
+#. Header Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Design system"
+msgstr ""
+
+#. Description of the 'Description' (Text) field in DocType 'Builder AI
+#. Shortcode'
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+msgid "Detailed description for the AI to understand what this shortcode does"
+msgstr "Description détaillée permettant à l'IA de comprendre ce que fait ce shortcode"
+
+#. Description of the 'Sentiment' (Select) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Do you like this design? This helps the AI understand your preferences."
+msgstr ""
+
+#. Option for the 'Asset Type' (Select) field in DocType 'Builder Content
+#. Asset'
+#. Label of the document_section (Section Break) field in DocType 'Builder
+#. Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Document"
+msgstr ""
+
+#. Label of the dominant_colors (JSON) field in DocType 'Builder Content Asset'
+#. Label of the dominant_colors_display (HTML) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Dominant Colors"
+msgstr ""
+
+#. Option for the 'Category' (Select) field in DocType 'Builder AI Shortcode'
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+msgid "E-commerce"
+msgstr "E-commerce"
+
+#. Label of the shadow_style (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Elevation"
+msgstr ""
+
+#: unpress_core/chat_service.py:2009
+msgid "Email"
+msgstr "Email"
+
+#. Label of the newsletter_email_group (Link) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Email Group"
+msgstr "Groupe Email"
+
+#: unpress_core/generation.py:3126
+msgid "Email Group not found"
+msgstr "Groupe d'e-mails introuvable"
+
+#. Description of the 'Email Group' (Link) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Email Group where subscribers will be added"
+msgstr "Groupe d'e-mails auquel les abonnés seront ajoutés"
+
+#: unpress_core/generation.py:3110
+msgid "Email is required"
+msgstr "L'adresse e-mail est requise"
+
+#. Label of the enabled (Check) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Enabled"
+msgstr ""
+
+#: unpress_core/templates/includes/header_footer/footer.html:50
+#: unpress_core/templates/includes/header_footer/footer.html:96
+msgid "Enter your email"
+msgstr "Saisissez votre adresse e-mail"
+
+#. Label of the error_message (Small Text) field in DocType 'Builder Content
+#. Asset'
+#. Label of the error_message (Small Text) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Error Message"
+msgstr ""
+
+#. Option for the 'Footer Template' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Extended"
+msgstr "Étendu"
+
+#. Label of the is_external (Check) field in DocType 'Website Footer Link'
+#. Label of the is_external (Check) field in DocType 'Website Menu Item'
+#: unpress_core/unpress_core/doctype/website_footer_link/website_footer_link.json
+#: unpress_core/unpress_core/doctype/website_menu_item/website_menu_item.json
+msgid "External Link"
+msgstr "Lien externe"
+
+#. Label of the extracted_data (JSON) field in DocType 'Builder Chat Message'
+#: unpress_core/unpress_core/doctype/builder_chat_message/builder_chat_message.json
+msgid "Extracted Data"
+msgstr "Données extraites"
+
+#. Label of the extracted_text (Long Text) field in DocType 'Builder Content
+#. Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Extracted Text"
+msgstr ""
+
+#. Description of the 'Analysis Data' (JSON) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Extracted design data (JSON)"
+msgstr ""
+
+#. Label of the facebook_url (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Facebook URL"
+msgstr "URL Facebook"
+
+#. Option for the 'Status' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Failed"
+msgstr "Échoué"
+
+#: unpress_core/generation.py:3494
+msgid "Failed to get generation status"
+msgstr "Impossible de récupérer le statut de génération"
+
+#: unpress_core/chat_service.py:1035
+msgid "Failed to get session"
+msgstr "Impossible de récupérer la session"
+
+#: unpress_core/chat_service.py:723
+msgid "Failed to process logo"
+msgstr "Impossible de traiter le logo"
+
+#: unpress_core/chat_service.py:625
+msgid "Failed to process message: {0}"
+msgstr "Impossible de traiter le message : {0}"
+
+#: unpress_core/chat_service.py:801
+msgid "Failed to process reference image"
+msgstr "Impossible de traiter l'image de référence"
+
+#: unpress_core/chat_service.py:888
+msgid "Failed to process the files: {0}"
+msgstr "Échec du traitement des fichiers : {0}"
+
+#: unpress_core/chat_service.py:283
+msgid "Failed to start chat session"
+msgstr "Impossible de démarrer la session de chat"
+
+#: unpress_core/chat_service.py:1012
+msgid "Failed to start generation"
+msgstr "Impossible de démarrer la génération"
+
+#: unpress_core/generation.py:3172
+msgid "Failed to subscribe. Please try again later."
+msgstr "Échec de l'inscription. Veuillez réessayer plus tard."
+
+#: unpress_core/templates/includes/header_footer/footer.html:239
+msgid "Failed to subscribe. Please try again."
+msgstr "Échec de l'inscription. Veuillez réessayer."
+
+#: unpress_core/chat_service.py:1016
+msgid "Failed to trigger generation: {0}"
+msgstr "Impossible de lancer la génération : {0}"
+
+#: unpress_core/hf_utils/menu_integration.py:225
+msgid "Features"
+msgstr "Fonctionnalités"
+
+#: unpress_core/plugin_install.py:143
+msgid "Fetching and building the app"
+msgstr "Récupération et compilation de l'application"
+
+#. Label of the file (Attach) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "File"
+msgstr ""
+
+#: unpress_core/generation.py:3418 unpress_core/generation.py:3430
+#: unpress_core/generation.py:3442
+msgid "File URL is required"
+msgstr "L'URL du fichier est requise"
+
+#. Option for the 'Header style' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Floating"
+msgstr "Flottant"
+
+#. Description of the 'Body Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Font family for body text"
+msgstr "Police du corps de texte"
+
+#. Description of the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Font family for headings (h1-h6)"
+msgstr "Police des titres (h1-h6)"
+
+#. Label of the footer_tab (Tab Break) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/brief_view.py:130
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Footer"
+msgstr "Pied de Page"
+
+#. Label of the footer_content_section (Section Break) field in DocType
+#. 'Website Header Footer Config'
+#. 'Website Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Footer Content"
+msgstr "Contenue du pied de page"
+
+#. Label of the footer_description (Small Text) field in DocType 'Website
+#. Header Footer Config'
+#. Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Footer Description"
+msgstr "Description du pied de page"
+
+#. Label of the footer_links_section (Section Break) field in DocType 'Website
+#. Header Footer Config'
+#. Label of the footer_links (Table) field in DocType 'Website Header Footer
+#. Config'
+#. Header Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Footer Links"
+msgstr "Liens du pied de page"
+
+#. Label of the footer_logo_section (Section Break) field in DocType 'Website
+#. Header Footer Config'
+#. Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Footer Logo"
+msgstr "Logo du pied de page"
+
+#. Label of the footer_logo_image (Attach Image) field in DocType 'Website
+#. Header Footer Config'
+#. Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Footer Logo Image"
+msgstr "Image du logo du pied de page"
+
+#. Label of the footer_logo_text (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Footer Logo Text"
+msgstr "Texte du logo du pied de page"
+
+#. Label of the footer_logo_type (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Footer Logo Type"
+msgstr "Type de logo du pied de page"
+
+#. Label of the footer_section (Section Break) field in DocType 'Website Header
+#. Footer Config'
+#. Label of the footer_template (Select) field in DocType 'Website Header
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Footer Template"
+msgstr "Modèle de pied de page"
+
+#: unpress_core/brief_view.py:131
+msgid "Footer background"
+msgstr "Fond du pied de page"
+
+#. Label of the footer_menu_source (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Footer menu"
+msgstr ""
+
+#: unpress_core/chat_service.py:142
+msgid "Forest"
+msgstr "Forêt"
+
+#. Option for the 'Category' (Select) field in DocType 'Builder AI Shortcode'
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+msgid "Form"
+msgstr "Formulaire"
+
+#: unpress_core/templates/includes/header_footer/components/cart_drawer.html:33
+#: unpress_core/templates/includes/header_footer/header.html:14
+msgid "Frequently bought together"
+msgstr "Souvent achetés ensemble"
+
+#: unpress_core/chat_service.py:121
+msgid "Frosted glass effects"
+msgstr "Effets de verre dépoli"
+
+#. Description of the 'Screenshot' (Attach Image) field in DocType 'Builder
+#. Site Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Full page screenshot (auto-captured)"
+msgstr ""
+
+#. Description of the 'Understanding (raw)' (JSON) field in DocType 'Builder
+#. Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Full structured understanding result (raw)."
+msgstr ""
+
+#: unpress_core/blog_api.py:173
+msgid "General"
+msgstr "Général"
+
+#: unpress_core/chat_service.py:439 unpress_core/chat_service.py:1321
+#: unpress_core/chat_service.py:1742 unpress_core/chat_service.py:1803
+msgid "Generate entire site"
+msgstr "Générer tout le site"
+
+#. Label of the generated_pages (JSON) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Generated Pages"
+msgstr "Pages générées"
+
+#. Option for the 'Status' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Generating"
+msgstr "Génération en cours"
+
+#: unpress_core/chat_service.py:1816
+msgid "Generating the remaining pages with the refined design..."
+msgstr "Génération des pages restantes avec le design affiné..."
+
+#. Label of the generation_mode (Select) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Generation Mode"
+msgstr "Mode de génération"
+
+#. Label of the generation_progress (Percent) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Generation Progress"
+msgstr "Progression de la génération"
+
+#. Label of the generation_status (Data) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Generation Status"
+msgstr "Statut de la génération"
+
+#: unpress_core/chat_service.py:127
+msgid "Glassmorphism"
+msgstr "Glassmorphisme"
+
+#: unpress_core/brief_view.py:123
+msgid "Gradients"
+msgstr "Dégradés"
+
+#. Option for the 'Article list' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Grid"
+msgstr "Grille"
+
+#. Description of the 'Column' (Data) field in DocType 'Website Footer Link'
+#: unpress_core/unpress_core/doctype/website_footer_link/website_footer_link.json
+msgid "Group name for footer column (e.g., 'Products', 'Company', 'Support')"
+msgstr "Nom du groupe pour la colonne du pied de page (ex. : « Produits », « Entreprise », « Support »)"
+
+#. Option for the 'Button hover' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Grow"
+msgstr "Agrandir"
+
+#: unpress_core/brief_view.py:115
+msgid "H1"
+msgstr "H1"
+
+#. Label of the h1_line_height (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "H1 Line Height"
+msgstr "Interligne H1"
+
+#. Label of the h1_size (Data) field in DocType 'Website Header Footer Config'
+#. Label of the h1_size (Data) field in DocType 'Website Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "H1 Size"
+msgstr "Taille H1"
+
+#. Label of the h1_size_mobile (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "H1 Size (Mobile)"
+msgstr "Taille H1 (mobile)"
+
+#. Label of the h1_weight (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "H1 Weight"
+msgstr "Graisse H1"
+
+#: unpress_core/brief_view.py:116
+msgid "H2"
+msgstr "H2"
+
+#. Label of the h2_line_height (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "H2 Line Height"
+msgstr "Interligne H2"
+
+#. Label of the h2_size (Data) field in DocType 'Website Header Footer Config'
+#. Label of the h2_size (Data) field in DocType 'Website Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "H2 Size"
+msgstr "Taille H2"
+
+#. Label of the h2_size_mobile (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "H2 Size (Mobile)"
+msgstr "Taille H2 (mobile)"
+
+#. Label of the h2_weight (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "H2 Weight"
+msgstr "Graisse H2"
+
+#. Label of the h3_line_height (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "H3 Line Height"
+msgstr "Interligne H3"
+
+#. Label of the h3_size (Data) field in DocType 'Website Header Footer Config'
+#. Label of the h3_size (Data) field in DocType 'Website Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "H3 Size"
+msgstr "Taille H3"
+
+#. Label of the h3_size_mobile (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "H3 Size (Mobile)"
+msgstr "Taille H3 (mobile)"
+
+#. Label of the h3_weight (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "H3 Weight"
+msgstr "Graisse H3"
+
+#. Label of the h4_size (Data) field in DocType 'Website Header Footer Config'
+#. Label of the h4_size (Data) field in DocType 'Website Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "H4 Size"
+msgstr "Taille H4"
+
+#. Label of the h4_size_mobile (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "H4 Size (Mobile)"
+msgstr "Taille H4 (mobile)"
+
+#. Label of the h4_weight (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "H4 Weight"
+msgstr "Graisse H4"
+
+#. Label of the footer_html (Code) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "HTML"
+msgstr ""
+
+#: unpress_core/generation.py:566 unpress_core/generation.py:613
+msgid "HTTP {0} from {1}"
+msgstr "HTTP {0} depuis {1}"
+
+#. Label of the header_tab (Tab Break) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/brief_view.py:125
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Header"
+msgstr "En-Tête"
+
+#. Label of the header_height (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Header Height"
+msgstr "Hauteur de l'en-tête"
+
+#. Label of the header_section (Section Break) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Header Layout"
+msgstr "Disposition de l'en-tête"
+
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.js:64
+msgid "Header Preview"
+msgstr "Aperçu de l'en-tête"
+
+#: unpress_core/brief_view.py:124
+msgid "Header and footer"
+msgstr "En-tête et pied de page"
+
+#: unpress_core/brief_view.py:126
+msgid "Header background"
+msgstr "Fond de l'en-tête"
+
+#. Description of the 'Sticky Header' (Check) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Header stays fixed at top when scrolling"
+msgstr "L'en-tête reste fixé en haut lors du défilement"
+
+#. Label of the header_style (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Header style"
+msgstr ""
+
+#: unpress_core/brief_view.py:127
+msgid "Header text"
+msgstr "Texte de l'en-tête"
+
+#. Label of the heading_font (Data) field in DocType 'Builder Chat Session'
+#. Label of the heading_font (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Heading Font"
+msgstr "Police des titres"
+
+#: unpress_core/brief_view.py:108
+msgid "Headings"
+msgstr ""
+
+#: unpress_core/templates/includes/header_footer/components/user_header.html:219
+msgid "Hello"
+msgstr "Bonjour"
+
+#: unpress_core/chat_service.py:296
+msgid "Hello {name}!"
+msgstr "Bonjour {name} !"
+
+#: unpress_core/chat_service.py:296
+msgid "Hello!"
+msgstr "Bonjour !"
+
+#: unpress_core/brief_view.py:133
+msgid "Hero background"
+msgstr "Fond du héros"
+
+#: unpress_core/brief_view.py:134
+msgid "Hero height"
+msgstr "Hauteur du héros"
+
+#. Option for the 'On scroll' (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Hide going down"
+msgstr ""
+
+#: unpress_core/generation.py:1706
+#: unpress_core/hf_utils/menu_integration.py:199
+#: unpress_core/hf_utils/menu_integration.py:205
+#: unpress_core/hf_utils/menu_integration.py:212
+#: unpress_core/hf_utils/menu_integration.py:218
+#: unpress_core/hf_utils/menu_integration.py:224 unpress_core/page_header.py:75
+msgid "Home"
+msgstr "Accueil"
+
+#. Label of the homepage_feedback (Small Text) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Homepage Feedback"
+msgstr "Retour sur la page d'accueil"
+
+#. Label of the homepage_iterations (Int) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Homepage Iterations"
+msgstr "Itérations de la page d'accueil"
+
+#. Option for the 'Status' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Homepage Ready"
+msgstr "Page d'accueil prête"
+
+#: unpress_core/chat_service.py:450 unpress_core/chat_service.py:1322
+#: unpress_core/chat_service.py:1743 unpress_core/chat_service.py:1809
+msgid "Homepage first"
+msgstr "La page d'accueil d'abord"
+
+#. Description of the 'Article list' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "How /blog lays its articles out."
+msgstr ""
+
+#. Description of the 'Elevation' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "How much cards and raised surfaces lift off the page."
+msgstr ""
+
+#: unpress_core/chat_service.py:1739
+msgid "How would you like to generate?"
+msgstr "Comment souhaitez-vous générer ?"
+
+#. Option for the 'Source' (Select) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Hub"
+msgstr ""
+
+#: unpress_core/chat_service.py:1764
+msgid "I could not publish it: {0}"
+msgstr "Je n'ai pas pu le publier : {0}"
+
+#: unpress_core/chat_service.py:386
+msgid "I could not write that one: {0}"
+msgstr "Je n'ai pas pu écrire celui-là : {0}"
+
+#: unpress_core/chat_service.py:2023
+msgid "I found the following information for your business:"
+msgstr "J'ai trouvé les informations suivantes pour votre entreprise :"
+
+#: unpress_core/chat_service.py:583 unpress_core/chat_service.py:1308
+msgid "I have inspiration sites"
+msgstr "J'ai des sites d'inspiration"
+
+#: unpress_core/chat_service.py:690
+msgid "I read these colours off it: {0}."
+msgstr "J'y ai lu ces couleurs : {0}."
+
+#: unpress_core/chat_service.py:309
+msgid "I want a multi-page showcase website"
+msgstr "Je veux un site vitrine avec plusieurs pages"
+
+#: unpress_core/chat_service.py:312
+msgid "I want a showcase site with user login"
+msgstr "Je veux un site vitrine avec connexion utilisateur"
+
+#: unpress_core/chat_service.py:310
+msgid "I want a single page website"
+msgstr "Je veux un site sur une seule page"
+
+#: unpress_core/chat_service.py:311
+msgid "I want an online store to sell products"
+msgstr "Je veux une boutique en ligne pour vendre des produits"
+
+#: unpress_core/chat_service.py:1358
+msgid "I want to showcase my creative work"
+msgstr "Je veux présenter mon travail créatif"
+
+#: unpress_core/chat_service.py:1325
+msgid "I'd like to add a call-to-action button"
+msgstr "J'aimerais ajouter un bouton d'appel à l'action"
+
+#: unpress_core/chat_service.py:1327
+msgid "I'd like to add social media links"
+msgstr "J'aimerais ajouter des liens vers les réseaux sociaux"
+
+#: unpress_core/chat_service.py:583 unpress_core/chat_service.py:1308
+msgid "I'd like to share websites I like for inspiration"
+msgstr "J'aimerais partager des sites que j'aime pour l'inspiration"
+
+#: unpress_core/chat_service.py:1329
+msgid "I'd like to share websites or images for inspiration"
+msgstr "J'aimerais partager des sites ou images pour l'inspiration"
+
+#: unpress_core/chat_service.py:303
+msgid "I'll guide you step by step to generate a complete website. Let's start!"
+msgstr "Je vais vous guider étape par étape pour générer un site complet. Commençons !"
+
+#: unpress_core/chat_service.py:1370
+msgid "I'll type it"
+msgstr "Je vais le taper"
+
+#: unpress_core/chat_service.py:300
+msgid "I'm **{name}**, your website creation assistant."
+msgstr "Je suis **{name}**, votre assistant de création de sites web."
+
+#. Label of the icon (Data) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Icon"
+msgstr ""
+
+#. Option for the 'Search' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Icon (overlay)"
+msgstr "Icône (superposition)"
+
+#. Label of the icons_section (Section Break) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Icons & Search"
+msgstr "Icônes et recherche"
+
+#. Option for the 'Asset Type' (Select) field in DocType 'Builder Content
+#. Asset'
+#. Label of the image_section (Section Break) field in DocType 'Builder Content
+#. Option for the 'Source Type' (Select) field in DocType 'Builder Site
+#. Inspiration'
+#. Option for the 'Logo Type' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Option for the 'Footer Logo Type' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Variant'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Image"
+msgstr "Image"
+
+#. Label of the image_job_id (Data) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Image Job ID"
+msgstr "ID de la tâche d'image"
+
+#: unpress_core/generation.py:550
+msgid "Image generation is turned off"
+msgstr "La génération d'images est désactivée"
+
+#. Description of the 'Suggested Slots' (Data) field in DocType 'Builder
+#. Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Image slots this photo suits: hero, gallery, service, team, background…"
+msgstr ""
+
+#: unpress_core/plugins.py:72
+msgid "Import an existing WordPress or Elementor site."
+msgstr "Importer un site WordPress ou Elementor existant."
+
+#: unpress_core/chat_service.py:582
+msgid "Import client content (photos, docs)"
+msgstr "Importer le contenu du client (photos, documents)"
+
+#: unpress_core/brief_view.py:102
+msgid "Inspiration"
+msgstr "Inspiration"
+
+#. Label of the image (Attach Image) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Inspiration Image"
+msgstr ""
+
+#. Label of the inspiration_urls (JSON) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Inspiration URLs"
+msgstr "URLs d'inspiration"
+
+#. Label of the instagram_url (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Instagram URL"
+msgstr "URL Instagram"
+
+#: unpress_core/plugin_install.py:157
+msgid "Installed"
+msgstr "Installé"
+
+#: unpress_core/plugin_install.py:148
+msgid "Installing on the site"
+msgstr "Installation sur le site"
+
+#: unpress_core/plugin_install.py:105
+msgid "Installing plugins from a URL is turned off on this site."
+msgstr "L'installation de plugins depuis une URL est désactivée sur ce site."
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Body Font' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Inter"
+msgstr "Inter"
+
+#: unpress_core/generation.py:564 unpress_core/generation.py:612
+msgid "Invalid API key (HTTP {0})"
+msgstr "Clé API invalide (HTTP {0})"
+
+#: unpress_core/generation.py:3114
+msgid "Invalid email address"
+msgstr "Adresse e-mail invalide"
+
+#: unpress_core/generation.py:704
+msgid "Invalid replace_existing value: {0}"
+msgstr "Valeur replace_existing invalide : {0}"
+
+#: unpress_core/chat_service.py:672
+msgid "It is now your site logo."
+msgstr "C'est désormais le logo de votre site."
+
+#. Label of the jinja_code (Code) field in DocType 'Builder AI Shortcode'
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+msgid "Jinja Code"
+msgstr "Code Jinja"
+
+#. Label of the section_break_jinja (Section Break) field in DocType 'Builder
+#. AI Shortcode'
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+msgid "Jinja Template"
+msgstr "Template Jinja"
+
+#. Description of the 'Jinja Code' (Code) field in DocType 'Builder AI
+#. Shortcode'
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+#, python-format
+msgid "Jinja/HTML code to include in the generated page (e.g., {% include 'webshop/templates/includes/cart_component.html' %})"
+msgstr "Code Jinja/HTML à inclure dans la page générée (ex. : {% include 'webshop/templates/includes/cart_component.html' %})"
+
+#. Label of the job_id (Data) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Job ID"
+msgstr "ID de tâche"
+
+#: unpress_core/generation.py:3567
+msgid "Job ID is required"
+msgstr "L'ID de tâche est requis"
+
+#: unpress_core/chat_service.py:1984
+msgid "Keep all"
+msgstr "Tout garder"
+
+#. Label of the label (Data) field in DocType 'Website Footer Link'
+#. Label of the label (Data) field in DocType 'Website Menu Item'
+#: unpress_core/unpress_core/doctype/website_footer_link/website_footer_link.json
+#: unpress_core/unpress_core/doctype/website_menu_item/website_menu_item.json
+msgid "Label"
+msgstr "Étiquette"
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Body Font' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Lato"
+msgstr "Lato"
+
+#. Label of the header_layout (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Layout"
+msgstr "Disposition"
+
+#: unpress_core/chat_service.py:1370
+msgid "Let me type my site name"
+msgstr "Laissez-moi taper le nom de mon site"
+
+#: unpress_core/chat_service.py:1644
+msgid "Let's continue with the next step."
+msgstr "Continuons avec l'étape suivante."
+
+#. Option for the 'Button hover' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Lift"
+msgstr "Soulever"
+
+#. Label of the linkedin_url (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "LinkedIn URL"
+msgstr "URL LinkedIn"
+
+#: unpress_core/brief_view.py:110 unpress_core/hf_utils/header_footer.py:136
+msgid "Links"
+msgstr "Liens"
+
+#. Option for the 'Article list' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "List"
+msgstr "Liste"
+
+#: unpress_core/templates/includes/header_footer/components/cart_drawer.html:17
+#: unpress_core/templates/includes/header_footer/header.html:14
+msgid "Loading Cart..."
+msgstr "Chargement du panier..."
+
+#: unpress_core/templates/includes/header_footer/components/user_header.html:9
+msgid "Log in"
+msgstr "Se connecter"
+
+#. Label of the logo_section (Section Break) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/chat_service.py:2011
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Logo"
+msgstr "Logo"
+
+#. Label of the logo_image (Attach Image) field in DocType 'Builder Chat
+#. Session'
+#. Label of the logo_image (Attach Image) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Logo Image"
+msgstr "Image du logo"
+
+#. Label of the logo_text (Data) field in DocType 'Builder Chat Session'
+#. Label of the logo_text (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Logo Text"
+msgstr "Texte du logo"
+
+#. Label of the logo_type (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Logo Type"
+msgstr "Type de logo"
+
+#: unpress_core/chat_service.py:663
+msgid "Logo received! I'll use it for your site generation."
+msgstr "Logo reçu ! Je l'utiliserai pour la génération de votre site."
+
+#. Option for the 'Layout' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Logo | Menu Center | Icons"
+msgstr "Logo | Menu Center | Icons"
+
+#. Option for the 'Layout' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Logo | Menu Right | Icons"
+msgstr "Logo | Menu Right | Icons"
+
+#: unpress_core/templates/includes/header_footer/components/user_header.html:24
+msgid "Logout"
+msgstr "Déconnexion"
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Lora"
+msgstr "Lora"
+
+#. Description of the 'Icon' (Data) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Lucide icon name, e.g. lucide-newspaper"
+msgstr ""
+
+#. Option for the 'Article list' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Magazine"
+msgstr "Magazine"
+
+#. Description of the 'Text Color' (Color) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Main text color. Maps to --text-color CSS variable."
+msgstr "Couleur principale du texte. Correspond à la variable CSS --text-color."
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Body Font' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Manrope"
+msgstr "Manrope"
+
+#. Option for the 'Source' (Select) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Manual"
+msgstr ""
+
+#: unpress_core/generation.py:1956
+msgid "Maximum homepage iterations reached (2). Proceeding with current version."
+msgstr "Nombre maximum d'itérations de la page d'accueil atteint (2). Poursuite avec la version actuelle."
+
+#. Option for the 'Category' (Select) field in DocType 'Builder AI Shortcode'
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+msgid "Media"
+msgstr "Média"
+
+#. Option for the 'CTA Size' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Medium"
+msgstr "Moyenne"
+
+#. Label of the menu_tab (Tab Break) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/hf_utils/header_footer.py:133
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Menu"
+msgstr "Menu"
+
+#. Label of the menu_section (Section Break) field in DocType 'Website Header
+#. Footer Config'
+#. Label of the menu_items (Table) field in DocType 'Website Header Footer
+#. Config'
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Menu Items"
+msgstr "Éléments de menu"
+
+#. Option for the 'Layout' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Menu Left | Logo Center | Icons"
+msgstr "Menu Left | Logo Center | Icons"
+
+#: unpress_core/public/js/website_settings.js:6
+msgid "Menu and theme are managed in {0}."
+msgstr "Le menu et le thème sont gérés dans {0}."
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Body Font' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Merriweather"
+msgstr "Merriweather"
+
+#: unpress_core/generation.py:3406
+msgid "Message is required"
+msgstr "Le message est requis"
+
+#. Label of the messages (Table) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Messages"
+msgstr "Messages"
+
+#. Label of the meta_section (Section Break) field in DocType 'Builder Content
+#. Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Meta"
+msgstr ""
+
+#. Label of the section_metadata (Section Break) field in DocType 'Builder Chat
+#. Message'
+#. Label of the section_meta (Section Break) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_message/builder_chat_message.json
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Metadata"
+msgstr "Métadonnées"
+
+#: unpress_core/chat_service.py:146
+msgid "Midnight"
+msgstr "Minuit"
+
+#. Option for the 'Header style' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Footer Template' (Select) field in DocType 'Website Header
+#. Footer Variant'
+#: unpress_core/chat_service.py:128
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Minimal"
+msgstr "Minimal"
+
+#. Label of the missing_fields (JSON) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Missing Fields"
+msgstr "Champs manquants"
+
+#: unpress_core/chat_service.py:904
+msgid "Missing required fields: {0}"
+msgstr "Champs requis manquants : {0}"
+
+#: unpress_core/chat_service.py:125
+msgid "Modern"
+msgstr "Moderne"
+
+#: unpress_core/chat_service.py:1985
+msgid "Modify"
+msgstr "Modifier"
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Body Font' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#. Label of the motion_style (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/brief_view.py:122
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Motion"
+msgstr "Animation"
+
+#: unpress_core/www/404.py:36
+msgid "My Account"
+msgstr "Mon compte"
+
+#: unpress_core/templates/includes/header_footer/components/user_header.html:20
+msgid "My account"
+msgstr "Mon compte"
+
+#: unpress_core/templates/includes/header_footer/components/user_header.html:21
+msgid "My orders"
+msgstr "Mes commandes"
+
+#: unpress_core/templates/includes/header_footer/components/user_header.html:22
+msgid "My wishlist"
+msgstr "Ma liste de souhaits"
+
+#. Label of the name1 (Data) field in DocType 'Builder AI Shortcode'
+#: unpress_core/chat_service.py:2005
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+msgid "Name"
+msgstr "Nom"
+
+#. Option for the 'Category' (Select) field in DocType 'Builder AI Shortcode'
+#: unpress_core/generation.py:1693
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+msgid "Navigation"
+msgstr "Navigation"
+
+#: unpress_core/chat_service.py:126
+msgid "Neobrutalist"
+msgstr "Néobrutaliste"
+
+#. Label of the newsletter_section (Section Break) field in DocType 'Website
+#. Header Footer Config'
+#. Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#. Label of the newsletter_placeholder (Data) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Newsletter Placeholder"
+msgstr "Texte indicatif de la newsletter"
+
+#. Label of the newsletter_title (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Newsletter Title"
+msgstr "Titre de la newsletter"
+
+#: unpress_core/brief_view.py:144
+msgid "No"
+msgstr "Non"
+
+#: unpress_core/generation.py:3122
+msgid "No Email Group configured for newsletter"
+msgstr "Aucun groupe d'e-mails configuré pour la newsletter"
+
+#: unpress_core/chat_service.py:1576
+msgid "No additional pages"
+msgstr "Pas de pages supplémentaires"
+
+#. Option for the 'Article page' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "No cover"
+msgstr ""
+
+#: unpress_core/ai/ingestion/content_understanding.py:231
+msgid "No extractable text"
+msgstr "Aucun texte exploitable"
+
+#: unpress_core/branding.py:98 unpress_core/media.py:303
+msgid "No file provided."
+msgstr "Aucun fichier fourni."
+
+#: unpress_core/chat_service.py:816
+msgid "No file was received."
+msgstr "Aucun fichier n'a été reçu."
+
+#: unpress_core/ai/ingestion/content_understanding.py:376
+msgid "No files provided"
+msgstr "Aucun fichier fourni"
+
+#: unpress_core/generation.py:3513
+msgid "No generated pages found"
+msgstr "Aucune page générée trouvée"
+
+#: unpress_core/generation.py:3465
+msgid "No generation job found"
+msgstr "Aucune tâche de génération trouvée"
+
+#: unpress_core/generation.py:552
+msgid "No image API base URL configured"
+msgstr "Aucune URL d'API d'images configurée"
+
+#: unpress_core/generation.py:2416
+msgid "No pages found in this template group."
+msgstr "Aucune page trouvée dans ce groupe de templates."
+
+#: unpress_core/chat_service.py:1700
+msgid "No problem, we'll skip the logo for now."
+msgstr "Pas de problème, on passera le logo pour l'instant."
+
+#: unpress_core/templates/includes/header_footer/components/search_bar.html:345
+#: unpress_core/templates/includes/header_footer/components/search_overlay.html:246
+#: unpress_core/templates/includes/header_footer/header.html:7
+msgid "No results found"
+msgstr "Aucun résultat trouvé"
+
+#: unpress_core/generation.py:1873
+msgid "No saved brief found in session"
+msgstr "Aucun brief sauvegardé dans la session"
+
+#: unpress_core/blog_api.py:382 unpress_core/plugin_install.py:199
+msgid "No such job"
+msgstr "Tâche introuvable"
+
+#: unpress_core/chat_service.py:460 unpress_core/chat_service.py:461
+#: unpress_core/chat_service.py:983 unpress_core/chat_service.py:993
+#: unpress_core/chat_service.py:1860
+msgid "No, keep my pages"
+msgstr "Non, garder mes pages"
+
+#: unpress_core/chat_service.py:585 unpress_core/chat_service.py:1310
+msgid "No, let's continue"
+msgstr "Non, on continue"
+
+#. Option for the 'Elevation' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Option for the 'Button hover' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Motion' (Select) field in DocType 'Website Header Footer
+#. Option for the 'Bottom Border' (Select) field in DocType 'Website Header
+#. Option for the 'Search' (Select) field in DocType 'Website Header Footer
+#. Option for the 'Footer menu' (Select) field in DocType 'Website Header
+#. Option for the 'Style' (Select) field in DocType 'Website Header Footer
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "None"
+msgstr "Aucun"
+
+#. Description of the 'Footer menu' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "None: no menu in the footer. Same as header: reuse the header's menu. Custom links: the columns below."
+msgstr ""
+
+#. Label of the description_section (Section Break) field in DocType 'Builder
+#. Site Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Notes"
+msgstr ""
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Body Font' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Nunito"
+msgstr "Nunito"
+
+#: unpress_core/chat_service.py:141
+msgid "Ocean"
+msgstr "Océan"
+
+#. Description of the 'Allow comments' (Check) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Off by default. A comment box nobody watches fills with spam."
+msgstr ""
+
+#. Description of the 'Enabled' (Check) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Off hides it in the Studio, refuses its endpoints and 404s its routes. Nothing is uninstalled and no data is removed."
+msgstr ""
+
+#. Label of the header_scroll (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "On scroll"
+msgstr ""
+
+#. Description of the 'Summary' (Small Text) field in DocType 'Builder Content
+#. Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "One-line description of what this asset is."
+msgstr ""
+
+#: unpress_core/chat_service.py:134 unpress_core/chat_service.py:311
+#: unpress_core/chat_service.py:1357
+msgid "Online store"
+msgstr "Boutique en ligne"
+
+#: unpress_core/chat_service.py:137
+msgid "Online store + search"
+msgstr "Boutique en ligne + recherche"
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Body Font' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Open Sans"
+msgstr "Open Sans"
+
+#. Label of the open_in_new_tab (Check) field in DocType 'Website Footer Link'
+#. Label of the open_in_new_tab (Check) field in DocType 'Website Menu Item'
+#: unpress_core/unpress_core/doctype/website_footer_link/website_footer_link.json
+#: unpress_core/unpress_core/doctype/website_menu_item/website_menu_item.json
+msgid "Open in New Tab"
+msgstr "Ouvrir dans un nouvel onglet"
+
+#: unpress_core/www/404.py:34
+msgid "Orders"
+msgstr "Commandes"
+
+#. Label of the orientation (Select) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Orientation"
+msgstr ""
+
+#. Label of the section_origin (Section Break) field in DocType 'Website
+#. Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Origin"
+msgstr ""
+
+#. Label of the original_filename (Data) field in DocType 'Builder Content
+#. Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Original Filename"
+msgstr ""
+
+#. Option for the 'Category' (Select) field in DocType 'Builder AI Shortcode'
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+msgid "Other"
+msgstr "Autre"
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Outfit"
+msgstr "Outfit"
+
+#. Option for the 'CTA Style' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Outline"
+msgstr "Contour"
+
+#. Description of the 'Company' (Link) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Owning company — lets the asset library be reused across regenerations."
+msgstr ""
+
+#: unpress_core/chat_service.py:486 unpress_core/chat_service.py:1719
+msgid "Page **{title}** added!"
+msgstr "Page **{title}** ajoutée !"
+
+#. Description of the 'Background Color' (Color) field in DocType 'Website
+#. Header Footer Config'
+#. Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Page background color. Maps to --background-color CSS variable."
+msgstr "Couleur de fond de la page. Correspond à la variable CSS --background-color."
+
+#. Label of the page_header_section (Section Break) field in DocType 'Website
+#. Header Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Page header"
+msgstr ""
+
+#: unpress_core/www/404.py:59
+msgid "Page not found"
+msgstr "Page introuvable"
+
+#. Description of the 'Suggested Section' (Data) field in DocType 'Builder
+#. Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Page/section this asset belongs to (home, about, services, contact, gallery…)."
+msgstr ""
+
+#. Label of the pages_config (JSON) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Pages Config"
+msgstr "Configuration des pages"
+
+#: unpress_core/codex_api.py:182
+msgid "Pairing failed: {0}"
+msgstr "Échec de l'appairage : {0}"
+
+#: unpress_core/codex_api.py:169
+msgid "Paste an access token first"
+msgstr "Collez d'abord un token d'accès"
+
+#: unpress_core/chat_service.py:1738
+msgid "Perfect!"
+msgstr "Parfait !"
+
+#: unpress_core/chat_service.py:2007
+msgid "Phone"
+msgstr "Téléphone"
+
+#. Option for the 'CTA Shape' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Pill"
+msgstr "Pilule"
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Playfair Display"
+msgstr "Playfair Display"
+
+#: unpress_core/chat_service.py:1666
+msgid "Please upload a reference image for design inspiration."
+msgstr "Veuillez télécharger une image de référence pour l'inspiration du design."
+
+#: unpress_core/chat_service.py:1653
+msgid "Please upload your logo using the upload button or drag & drop."
+msgstr "Veuillez télécharger votre logo en utilisant le bouton ou par glisser-déposer."
+
+#. Label of the plugin_name (Data) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Plugin Name"
+msgstr ""
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Plus Jakarta Sans"
+msgstr "Plus Jakarta Sans"
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Body Font' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Poppins"
+msgstr "Poppins"
+
+#: unpress_core/chat_service.py:1358
+msgid "Portfolio / Creative"
+msgstr "Portfolio / Créatif"
+
+#: unpress_core/chat_service.py:139
+msgid "Portfolio / showcase"
+msgstr "Portfolio / vitrine"
+
+#. Label of the header_preview_section (Section Break) field in DocType
+#. 'Website Header Footer Config'
+#. 'Website Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Preview"
+msgstr "Aperçu"
+
+#: unpress_core/hf_utils/menu_integration.py:226
+msgid "Pricing"
+msgstr "Tarification"
+
+#. Option for the 'CTA Style' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/brief_view.py:104
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Primary"
+msgstr "Primaire"
+
+#. Label of the primary_color (Data) field in DocType 'Builder Chat Session'
+#. Label of the primary_color (Color) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.py:170
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Primary Color"
+msgstr "Couleur primaire"
+
+#. Description of the 'Primary Color' (Color) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Primary brand color used for buttons, links, and accents. Maps to --primary and --primary-color CSS variables."
+msgstr "Couleur principale de la marque utilisée pour les boutons, liens et accents. Correspond aux variables CSS --primary et --primary-color."
+
+#: unpress_core/brief_view.py:105
+msgid "Primary is for"
+msgstr "Le primaire sert à"
+
+#: unpress_core/chat_service.py:123
+msgid "Professional, serious"
+msgstr "Professionnel, sérieux"
+
+#: unpress_core/chat_service.py:403
+msgid "Publish it"
+msgstr "Le publier"
+
+#: unpress_core/chat_service.py:1762
+msgid "Published — it is live at /{0}."
+msgstr "Publié — il est en ligne sur /{0}."
+
+#. Label of the quality (Select) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Quality"
+msgstr ""
+
+#: unpress_core/blog_api.py:343 unpress_core/plugin_install.py:116
+#: unpress_core/plugin_install.py:225
+msgid "Queued"
+msgstr "En file d'attente"
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Body Font' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Raleway"
+msgstr "Raleway"
+
+#: unpress_core/chat_service.py:400
+msgid "Read it before it goes live — I write from your brief, but you know the business."
+msgstr "Relisez-le avant sa mise en ligne — j'écris à partir de votre brief, mais c'est vous qui connaissez le métier."
+
+#: unpress_core/chat_service.py:757
+msgid "Reference image received! I'll use it as design inspiration for your site."
+msgstr "Image de référence reçue ! Je l'utiliserai comme inspiration pour le design de votre site."
+
+#: unpress_core/chat_service.py:509
+msgid "Regenerating the homepage with your feedback..."
+msgstr "Régénération de la page d'accueil avec vos retours..."
+
+#: unpress_core/plugin_install.py:151
+msgid "Registering"
+msgstr "Enregistrement"
+
+#: unpress_core/plugin_install.py:251
+msgid "Removed"
+msgstr "Supprimé"
+
+#: unpress_core/plugin_install.py:245
+msgid "Removing from the site"
+msgstr "Retrait du site"
+
+#: unpress_core/plugin_install.py:214
+msgid "Removing plugins is turned off on this site."
+msgstr "La suppression de plugins est désactivée sur ce site."
+
+#. Description of the 'Custom block' (Section Break) field in DocType 'Website
+#. Header Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Rendered in the footer, above the copyright line. For an embed a client already has — a newsletter form, a booking widget, a badge."
+msgstr ""
+
+#: unpress_core/brief_view.py:132
+msgid "Rhythm"
+msgstr "Rythme"
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Body Font' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Roboto"
+msgstr "Roboto"
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Roboto Slab"
+msgstr "Roboto Slab"
+
+#. Label of the role (Select) field in DocType 'Builder Chat Message'
+#: unpress_core/unpress_core/doctype/builder_chat_message/builder_chat_message.json
+msgid "Role"
+msgstr "Rôle"
+
+#: unpress_core/chat_service.py:145
+msgid "Rose"
+msgstr "Rose"
+
+#. Option for the 'Corners' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Option for the 'CTA Shape' (Select) field in DocType 'Website Header Footer
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Rounded"
+msgstr "Arrondie"
+
+#. Label of the route_prefix (Data) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Route Prefix"
+msgstr ""
+
+#: unpress_core/chat_service.py:144
+msgid "Royal"
+msgstr "Royal"
+
+#: unpress_core/sso.py:18
+msgid "SSO not configured for this site (unpress_sso_secret missing)"
+msgstr "SSO non configuré pour ce site (unpress_sso_secret manquant)"
+
+#. Option for the 'Footer Logo Type' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Same as Header"
+msgstr "Identique à l'en-tête"
+
+#. Option for the 'Footer menu' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Same as header"
+msgstr "Comme l'en-tête"
+
+#. Label of the saved_brief (JSON) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Saved Brief"
+msgstr "Brief sauvegardé"
+
+#. Label of the screenshot (Attach Image) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Screenshot"
+msgstr ""
+
+#. Option for the 'Category' (Select) field in DocType 'Builder AI Shortcode'
+#. Label of the search_type (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/templates/includes/header_footer/macros.html:28
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.js:88
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.js:100
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Search"
+msgstr "Rechercher"
+
+#. Option for the 'Search' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Search Bar (full width bottom)"
+msgstr "Barre de recherche (pleine largeur en bas)"
+
+#. Option for the 'Search' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Search Bar (inline)"
+msgstr "Barre de recherche (en ligne)"
+
+#: unpress_core/templates/includes/header_footer/components/search_bar.html:349
+msgid "Search all products"
+msgstr "Rechercher tous les produits"
+
+#. Description of the 'Search' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Search display mode"
+msgstr "Mode d'affichage de la recherche"
+
+#: unpress_core/templates/includes/header_footer/components/search_overlay.html:251
+#: unpress_core/templates/includes/header_footer/header.html:7
+msgid "Search error"
+msgstr "Erreur de recherche"
+
+#: unpress_core/templates/includes/header_footer/components/search_overlay.html:9
+#: unpress_core/templates/includes/header_footer/header.html:6
+msgid "Search for Products"
+msgstr "Rechercher des produits"
+
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.js:205
+msgid "Search for products"
+msgstr "Rechercher des produits"
+
+#: unpress_core/templates/includes/header_footer/components/search_bar.html:14
+msgid "Search products..."
+msgstr "Rechercher des produits..."
+
+#: unpress_core/templates/includes/header_footer/components/search_bar.html:331
+#: unpress_core/templates/includes/header_footer/components/search_overlay.html:229
+#: unpress_core/templates/includes/header_footer/header.html:7
+msgid "Searching..."
+msgstr "Recherche..."
+
+#. Option for the 'CTA Style' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/brief_view.py:106
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Secondary"
+msgstr "Secondaire"
+
+#. Label of the secondary_color (Data) field in DocType 'Builder Chat Session'
+#. Label of the secondary_color (Color) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Secondary Color"
+msgstr "Couleur secondaire"
+
+#. Description of the 'Secondary Color' (Color) field in DocType 'Website
+#. Header Footer Config'
+#. Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Secondary accent color for highlights and secondary actions. Maps to --secondary-color CSS variable."
+msgstr "Couleur d'accent secondaire pour les mises en avant et actions secondaires. Correspond à la variable CSS --secondary-color."
+
+#: unpress_core/brief_view.py:107
+msgid "Secondary is for"
+msgstr "Le secondaire sert à"
+
+#: unpress_core/brief_view.py:111
+msgid "Section backgrounds"
+msgstr "Fonds de sections"
+
+#: unpress_core/brief_view.py:135
+msgid "Section padding"
+msgstr "Marges de section"
+
+#. Label of the sentiment (Select) field in DocType 'Builder Site Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Sentiment"
+msgstr ""
+
+#: unpress_core/hf_utils/menu_integration.py:201
+msgid "Services"
+msgstr "Services"
+
+#. Label of the session_id (Data) field in DocType 'Builder Chat Session'
+#. Label of the session_id (Data) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Session ID"
+msgstr "ID de session"
+
+#: unpress_core/ai/ingestion/image_matcher.py:206
+#: unpress_core/generation.py:3388 unpress_core/generation.py:3404
+#: unpress_core/generation.py:3416 unpress_core/generation.py:3428
+#: unpress_core/generation.py:3440 unpress_core/generation.py:3452
+#: unpress_core/generation.py:3461 unpress_core/generation.py:3501
+#: unpress_core/generation.py:3895
+msgid "Session ID is required"
+msgstr "L'identifiant de session est requis"
+
+#: unpress_core/chat_service.py:1032 unpress_core/generation.py:1867
+#: unpress_core/generation.py:1949 unpress_core/generation.py:3491
+msgid "Session not found"
+msgstr "Session introuvable"
+
+#. Description of the 'Design system' (Section Break) field in DocType 'Website
+#. Header Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Set once, respected everywhere — header, footer and every generated page."
+msgstr ""
+
+#: unpress_core/brief_view.py:120
+msgid "Shadows"
+msgstr "Ombres"
+
+#: unpress_core/chat_service.py:1329
+msgid "Share inspiration"
+msgstr "Partager l'inspiration"
+
+#. Option for the 'Corners' (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Sharp"
+msgstr "Nette"
+
+#: unpress_core/hf_utils/menu_integration.py:206 unpress_core/www/404.py:32
+msgid "Shop"
+msgstr "Boutique"
+
+#. Description of the 'Footer Description' (Small Text) field in DocType
+#. 'Website Header Footer Config'
+#. 'Website Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Short description or tagline shown in footer"
+msgstr "Courte description ou slogan affiché dans le pied de page"
+
+#. Label of the shortcode (Small Text) field in DocType 'Builder AI Shortcode'
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#. Label of the show_cta (Check) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Show CTA Button"
+msgstr "Afficher le bouton d'action"
+
+#. Label of the show_footer_logo (Check) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Show Logo in Footer"
+msgstr "Afficher le logo dans le pied de page"
+
+#. Label of the show_newsletter (Check) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Show Newsletter Signup"
+msgstr "Afficher l'inscription à la newsletter"
+
+#. Label of the show_social_links (Check) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Show Social Links"
+msgstr "Afficher les liens sociaux"
+
+#. Description of the 'Cart' (Check) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Show cart with drawer"
+msgstr "Afficher le panier avec tiroir latéral"
+
+#. Label of the blog_show_author (Check) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Show the author"
+msgstr ""
+
+#. Label of the show_footer_html (Check) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Show the custom block"
+msgstr ""
+
+#. Description of the 'User' (Check) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Show user/account with dropdown menu"
+msgstr "Afficher l'utilisateur/compte avec menu déroulant"
+
+#. Description of the 'Wishlist' (Check) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Show wishlist heart icon"
+msgstr "Afficher l'icône cœur de liste de souhaits"
+
+#: unpress_core/chat_service.py:135
+msgid "Showcase + user login"
+msgstr "Vitrine + espace client"
+
+#: unpress_core/chat_service.py:309
+msgid "Showcase site"
+msgstr "Site vitrine"
+
+#: unpress_core/chat_service.py:132
+msgid "Showcase website (multi-page)"
+msgstr "Site vitrine (multi-pages)"
+
+#. Option for the 'On scroll' (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Shrink"
+msgstr ""
+
+#: unpress_core/brief_view.py:100
+msgid "Signature element"
+msgstr "Élément signature"
+
+#. Option for the 'Style' (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Simple"
+msgstr "Simple"
+
+#: unpress_core/chat_service.py:310
+msgid "Single page site"
+msgstr "Site une page"
+
+#: unpress_core/chat_service.py:133
+msgid "Single page website"
+msgstr "Site une seule page"
+
+#. Label of the site_description (Small Text) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.py:159
+msgid "Site Description"
+msgstr "Description du site"
+
+#. Label of the site_name (Data) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.py:160
+msgid "Site Name"
+msgstr "Nom du site"
+
+#. Label of the site_type (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.py:161
+msgid "Site Type"
+msgstr "Type de site"
+
+#: unpress_core/chat_service.py:312
+msgid "Site with login"
+msgstr "Site avec connexion"
+
+#. Option for the 'Header Height' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Slim"
+msgstr "Fine"
+
+#. Description of the 'Header Height' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Slim (56px) for refined designs, Standard (64px), Tall (76px)"
+msgstr "Fine (56 px) pour les designs raffinés, Standard (64 px), Haute (76 px)"
+
+#. Option for the 'CTA Size' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Small"
+msgstr "Petite"
+
+#. Description of the 'CTA Size' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Small for discreet, refined buttons"
+msgstr "Petite pour des boutons discrets et raffinés"
+
+#. Option for the 'Category' (Select) field in DocType 'Builder AI Shortcode'
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+msgid "Social"
+msgstr "Réseaux sociaux"
+
+#. Label of the social_links (JSON) field in DocType 'Builder Chat Session'
+#. Label of the social_section (Section Break) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Social Links"
+msgstr "Liens sociaux"
+
+#. Option for the 'Corners' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Option for the 'Elevation' (Select) field in DocType 'Website Header Footer
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Soft"
+msgstr "Douce"
+
+#: unpress_core/chat_service.py:138
+msgid "Software product"
+msgstr "Produit logiciel"
+
+#: unpress_core/generation.py:716
+msgid "Some existing pages were designed or edited by hand. Confirm before replacing the whole site, or generate additively."
+msgstr "Certaines pages existantes ont été conçues ou modifiées à la main. Confirmez avant de remplacer tout le site, ou générez en mode additif."
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Sora"
+msgstr "Sora"
+
+#. Label of the source_section (Section Break) field in DocType 'Builder
+#. Content Asset'
+#. Label of the source_section (Section Break) field in DocType 'Builder Site
+#. Inspiration'
+#. Label of the source (Select) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Source"
+msgstr ""
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Body Font' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Source Sans 3"
+msgstr "Source Sans 3"
+
+#. Label of the source_type (Select) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Source Type"
+msgstr ""
+
+#. Option for the 'Heading Font' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Body Font' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Space Grotesk"
+msgstr "Space Grotesk"
+
+#. Option for the 'CTA Shape' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Square"
+msgstr "Carrée"
+
+#. Option for the 'Header Height' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Option for the 'Footer Template' (Select) field in DocType 'Website Header
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Standard"
+msgstr "Standard"
+
+#: unpress_core/templates/includes/header_footer/components/cart_drawer.html:26
+#: unpress_core/templates/includes/header_footer/header.html:14
+msgid "Start Shopping"
+msgstr "Commencer vos achats"
+
+#. Label of the status (Select) field in DocType 'Builder Chat Session'
+#. Label of the status (Select) field in DocType 'Builder Content Asset'
+#. Label of the status (Select) field in DocType 'Builder Site Inspiration'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Status"
+msgstr "Statut"
+
+#. Label of the section_description (Section Break) field in DocType 'Builder
+#. Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Step 1: Description"
+msgstr "Étape 1 : Description"
+
+#. Label of the section_style (Section Break) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Step 2: Style"
+msgstr "Étape 2 : Style"
+
+#. Label of the section_pages (Section Break) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Step 3: Pages"
+msgstr "Étape 3 : Pages"
+
+#. Label of the section_generation (Section Break) field in DocType 'Builder
+#. Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Step 4: Generation"
+msgstr "Étape 4 : Génération"
+
+#. Label of the sticky_header (Check) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Sticky Header"
+msgstr "En-tête fixe"
+
+#: unpress_core/media.py:309
+msgid "Still used on: {0}"
+msgstr "Encore utilisée sur : {0}"
+
+#. Option for the 'Elevation' (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Strong"
+msgstr "Marquée"
+
+#. Label of the page_header_style (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Style"
+msgstr ""
+
+#: unpress_core/templates/includes/header_footer/footer.html:51
+#: unpress_core/templates/includes/header_footer/footer.html:97
+#: unpress_core/templates/includes/header_footer/footer.html:252
+msgid "Subscribe"
+msgstr "S'abonner"
+
+#: unpress_core/templates/includes/header_footer/footer.html:47
+#: unpress_core/templates/includes/header_footer/footer.html:93
+msgid "Subscribe to our newsletter"
+msgstr "Abonnez-vous à notre newsletter"
+
+#: unpress_core/templates/includes/header_footer/footer.html:211
+msgid "Subscribing..."
+msgstr "Inscription en cours..."
+
+#: unpress_core/templates/includes/header_footer/footer.html:235
+msgid "Subscription failed"
+msgstr "Échec de l'inscription"
+
+#. Option for the 'Corners' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Option for the 'Bottom Border' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Subtle"
+msgstr "Discrète"
+
+#. Description of the 'Bottom Border' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Subtle adds a fine separation line under the header"
+msgstr "« Discrète » ajoute une fine ligne de séparation sous l'en-tête"
+
+#: unpress_core/templates/includes/header_footer/components/cart_drawer.html:40
+#: unpress_core/templates/includes/header_footer/header.html:14
+msgid "Subtotal"
+msgstr "Sous-total"
+
+#. Label of the suggested_section (Data) field in DocType 'Builder Content
+#. Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Suggested Section"
+msgstr ""
+
+#. Label of the suggested_slots (Data) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Suggested Slots"
+msgstr ""
+
+#. Label of the summary (Small Text) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Summary"
+msgstr ""
+
+#: unpress_core/chat_service.py:143
+msgid "Sunset"
+msgstr "Coucher de soleil"
+
+#. Name of a role
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "System Manager"
+msgstr "Gestionnaire système"
+
+#. Label of the tags (Small Text) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Tags"
+msgstr ""
+
+#. Option for the 'Header Height' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Tall"
+msgstr "Haute"
+
+#: unpress_core/blog_api.py:274 unpress_core/blog_api.py:340
+msgid "Tell me what the article should be about."
+msgstr "Dites-moi de quoi doit parler l'article."
+
+#: unpress_core/generation.py:2412
+msgid "Template group not found."
+msgstr "Groupe de templates introuvable."
+
+#. Option for the 'Logo Type' (Select) field in DocType 'Website Header Footer
+#. Config'
+#. Option for the 'Footer Logo Type' (Select) field in DocType 'Website Header
+#. Footer Config'
+#. Variant'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Text"
+msgstr "Texte"
+
+#. Label of the header_text_color (Color) field in DocType 'Website Header
+#. Footer Config'
+#. Label of the footer_text_color (Color) field in DocType 'Website Header
+#. Label of the text_color (Color) field in DocType 'Website Header Footer
+#. Config'
+#. Footer Variant'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Text Color"
+msgstr "Couleur du Texte"
+
+#. Description of the 'Text Color' (Color) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Text and icon color in header"
+msgstr "Couleur du texte et des icônes de l'en-tête"
+
+#. Description of the 'Text Color' (Color) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Text color in footer (defaults to header text color)"
+msgstr "Couleur du texte du pied de page (par défaut : celle de l'en-tête)"
+
+#. Description of the 'Extracted Text' (Long Text) field in DocType 'Builder
+#. Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Text extracted from the document, available as real copy for generation."
+msgstr ""
+
+#: unpress_core/generation.py:3160
+msgid "Thank you for subscribing to our newsletter!"
+msgstr "Merci de votre inscription à notre newsletter !"
+
+#: unpress_core/plugin_install.py:113
+msgid "That branch name is not valid."
+msgstr "Ce nom de branche n'est pas valide."
+
+#: unpress_core/plugin_install.py:64
+msgid "That does not look like an https git URL."
+msgstr "Cela ne ressemble pas à une URL git https."
+
+#: unpress_core/branding.py:69
+msgid "That file is empty."
+msgstr "Ce fichier est vide."
+
+#: unpress_core/branding.py:57 unpress_core/media.py:315
+msgid "That file is not attached to this site."
+msgstr "Ce fichier n'est pas rattaché à ce site."
+
+#. Description of the 'App Name' (Data) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "The Frappe app that provides it. Empty for plugins that are data only."
+msgstr ""
+
+#: unpress_core/www/404.html:18
+msgid "The address may have changed, or the page may have been removed."
+msgstr "L'adresse a peut-être changé, ou la page a été supprimée."
+
+#. Description of the 'Style' (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "The band above the content on pages the editor does not build — the blog, the 404, a section that is coming."
+msgstr ""
+
+#: unpress_core/brief_view.py:118
+msgid "The design system"
+msgstr "Le système de design"
+
+#: unpress_core/chat_service.py:1815
+msgid "The homepage looks good!"
+msgstr "La page d'accueil est bien !"
+
+#. Description of the 'Route Prefix' (Data) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "The public route it owns, without slashes. Used to free the route when the plugin is off."
+msgstr ""
+
+#. Description of the 'Corners' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "The site's corner radius: Sharp (0), Subtle (4px), Rounded (12px), Soft (20px)."
+msgstr ""
+
+#: unpress_core/brief_view.py:98
+msgid "The stance"
+msgstr "Le parti pris"
+
+#. Label of the theme (Select) field in DocType 'Builder Chat Session'
+#. Label of the theme_tab (Tab Break) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.py:169
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Theme"
+msgstr "Thème"
+
+#: unpress_core/studio_users.py:60 unpress_core/studio_users.py:73
+#: unpress_core/studio_users.py:91
+msgid "This account cannot be modified"
+msgstr "Ce compte ne peut pas être modifié"
+
+#: unpress_core/media.py:311
+msgid "This image is the site's logo."
+msgstr "Cette image est le logo du site."
+
+#: unpress_core/www/404.html:16
+msgid "This page does not exist"
+msgstr "Cette page n'existe pas"
+
+#: unpress_core/chat_service.py:1723
+msgid "This page is already in your list."
+msgstr "Cette page est déjà dans votre liste."
+
+#: unpress_core/www/404.html:12
+msgid "This section is on its way. The link is already in place so it will work the day it opens."
+msgstr "Cette section arrive bientôt. Le lien est déjà en place : il fonctionnera dès l'ouverture."
+
+#. Label of the thumbnail (Attach Image) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Thumbnail"
+msgstr ""
+
+#. Description of the 'Thumbnail' (Attach Image) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Thumbnail preview"
+msgstr ""
+
+#. Label of the timestamp (Datetime) field in DocType 'Builder Chat Message'
+#: unpress_core/unpress_core/doctype/builder_chat_message/builder_chat_message.json
+msgid "Timestamp"
+msgstr "Horodatage"
+
+#. Option for the 'Style' (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Tinted"
+msgstr "Teinté"
+
+#. Label of the title (Data) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Title"
+msgstr ""
+
+#: unpress_core/brief_view.py:101
+msgid "Tone"
+msgstr "Ton"
+
+#: unpress_core/templates/includes/header_footer/components/cart_drawer.html:45
+#: unpress_core/templates/includes/header_footer/header.html:14
+msgid "Total"
+msgstr "Total"
+
+#. Description of the 'Motion' (Select) field in DocType 'Website Header Footer
+#. Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Transition speed for hovers and state changes. None disables them."
+msgstr ""
+
+#. Option for the 'Header style' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Transparent"
+msgstr "Transparent"
+
+#: unpress_core/templates/includes/header_footer/components/search_bar.html:346
+msgid "Try different keywords"
+msgstr "Essayez d'autres mots-clés"
+
+#. Label of the twitter_url (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Twitter/X URL"
+msgstr "URL Twitter/X"
+
+#: unpress_core/brief_view.py:113
+msgid "Type"
+msgstr "Typographie"
+
+#. Label of the theme_typography_section (Section Break) field in DocType
+#. 'Website Header Footer Config'
+#. 'Website Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Typography"
+msgstr "Typographie"
+
+#. Label of the body_settings_section (Section Break) field in DocType 'Website
+#. Header Footer Config'
+#. Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Typography Scale - Body"
+msgstr "Échelle typographique — Texte"
+
+#. Label of the typography_scale_section (Section Break) field in DocType
+#. 'Website Header Footer Config'
+#. 'Website Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Typography Scale - H1"
+msgstr "Échelle typographique — H1"
+
+#. Label of the h2_settings_section (Section Break) field in DocType 'Website
+#. Header Footer Config'
+#. Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Typography Scale - H2"
+msgstr "Échelle typographique — H2"
+
+#. Label of the h3_settings_section (Section Break) field in DocType 'Website
+#. Header Footer Config'
+#. Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Typography Scale - H3"
+msgstr "Échelle typographique — H3"
+
+#. Label of the h4_settings_section (Section Break) field in DocType 'Website
+#. Header Footer Config'
+#. Header Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Typography Scale - H4"
+msgstr "Échelle typographique — H4"
+
+#. Option for the 'Source Type' (Select) field in DocType 'Builder Site
+#. Inspiration'
+#. Label of the url (Data) field in DocType 'Website Footer Link'
+#. Label of the url (Data) field in DocType 'Website Menu Item'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+#: unpress_core/unpress_core/doctype/website_footer_link/website_footer_link.json
+#: unpress_core/unpress_core/doctype/website_menu_item/website_menu_item.json
+msgid "URL"
+msgstr "URL"
+
+#: unpress_core/chat_service.py:122
+msgid "Ultra-clean, simple"
+msgstr "Ultra-épuré, simple"
+
+#. Label of the understanding_section (Section Break) field in DocType 'Builder
+#. Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Understanding"
+msgstr ""
+
+#. Label of the understanding (JSON) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Understanding (raw)"
+msgstr ""
+
+#: unpress_core/chat_service.py:462 unpress_core/chat_service.py:1861
+msgid "Understood — I kept all your existing pages. You can adjust your project and generate again whenever you want."
+msgstr "Entendu — j'ai conservé toutes vos pages existantes. Vous pouvez ajuster votre projet et relancer la génération quand vous voulez."
+
+#: unpress_core/email_api.py:71
+msgid "Unpress Studio test email"
+msgstr "E-mail de test Unpress Studio"
+
+#. Description of the 'Inspiration Image' (Attach Image) field in DocType
+#. 'Builder Site Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Upload an image for design inspiration"
+msgstr ""
+
+#: unpress_core/chat_service.py:584 unpress_core/chat_service.py:1309
+msgid "Upload reference images"
+msgstr "Télécharger des images de référence"
+
+#. Label of the use_when (Small Text) field in DocType 'Builder AI Shortcode'
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+msgid "Use When"
+msgstr "Utiliser quand"
+
+#: unpress_core/chat_service.py:1352
+msgid "Use existing description"
+msgstr "Utiliser la description existante"
+
+#. Description of the 'Copyright Text' (Data) field in DocType 'Website Header
+#. Footer Config'
+#. Footer Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Use {year} for current year, {site_name} for site name. 'Powered by Unpress' is always shown."
+msgstr ""
+
+#. Option for the 'Category' (Select) field in DocType 'Builder AI Shortcode'
+#. Label of the user (Link) field in DocType 'Builder Chat Session'
+#. Label of the show_user (Check) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.js:106
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "User"
+msgstr "Utilisateur"
+
+#: unpress_core/studio_users.py:41
+msgid "User {0} already exists"
+msgstr "L'utilisateur {0} existe déjà"
+
+#. Label of the validation_errors (JSON) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "Validation Errors"
+msgstr "Erreurs de validation"
+
+#. Label of the version (Data) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Version"
+msgstr ""
+
+#: unpress_core/templates/includes/header_footer/components/cart_drawer.html:49
+#: unpress_core/templates/includes/header_footer/header.html:14
+msgid "View Cart"
+msgstr "Voir le panier"
+
+#: unpress_core/templates/includes/header_footer/components/search_bar.html:484
+msgid "View all results"
+msgstr "Voir tous les résultats"
+
+#. Label of the vision_description (Small Text) field in DocType 'Builder
+#. Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "Vision Description"
+msgstr ""
+
+#: unpress_core/chat_service.py:487 unpress_core/chat_service.py:1720
+msgid "Want to add more pages?"
+msgstr "Voulez-vous ajouter d'autres pages ?"
+
+#: unpress_core/chat_service.py:1356
+msgid "We are a consulting and services company"
+msgstr "Nous sommes une société de conseil et de services"
+
+#: unpress_core/chat_service.py:1357
+msgid "We sell products online"
+msgstr "Nous vendons des produits en ligne"
+
+#. Name of a DocType
+#: unpress_core/unpress_core/doctype/website_footer_link/website_footer_link.json
+msgid "Website Footer Link"
+msgstr "Lien de pied de page du site"
+
+#. Name of a DocType
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Website Header Footer Config"
+msgstr "Configuration en-tête/pied de page du site"
+
+#. Name of a DocType
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Website Header Footer Variant"
+msgstr "Variante d'en-tête/pied de page"
+
+#. Name of a role
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Website Manager"
+msgstr "Gestionnaire de site web"
+
+#. Name of a DocType
+#: unpress_core/unpress_core/doctype/website_menu_item/website_menu_item.json
+msgid "Website Menu Item"
+msgstr "Élément de menu du site"
+
+#. Name of a DocType
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Website Plugin"
+msgstr ""
+
+#. Label of the website_profile (Link) field in DocType 'Builder Chat Session'
+#. Label of the website_profile (Link) field in DocType 'Website Header Footer
+#. Variant'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "Website Profile"
+msgstr "Profil de site"
+
+#. Label of the url (Data) field in DocType 'Builder Site Inspiration'
+#: unpress_core/chat_service.py:2013
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "Website URL"
+msgstr "URL de site web"
+
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.py:104
+msgid "Website cache cleared. Refresh your pages to see changes."
+msgstr "Cache du site vidé. Actualisez vos pages pour voir les changements."
+
+#. Description of the 'Description' (Small Text) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "What do you like or dislike about this design?"
+msgstr ""
+
+#. Description of the 'Button hover' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "What every button does on hover — one behaviour for the whole site."
+msgstr ""
+
+#: unpress_core/chat_service.py:1275
+msgid "What is the name of your business or project?"
+msgstr "Quel est le nom de votre entreprise ou projet ?"
+
+#: unpress_core/chat_service.py:1639
+msgid "What is the name of your business?"
+msgstr "Quel est le nom de votre entreprise ?"
+
+#: unpress_core/chat_service.py:1638
+msgid "What is your website about?"
+msgstr "De quoi parle votre site web ?"
+
+#: unpress_core/chat_service.py:1278
+msgid "What main color would you like for your site?"
+msgstr "Quelle couleur principale souhaitez-vous pour votre site ?"
+
+#: unpress_core/chat_service.py:1642
+msgid "What main color would you like?"
+msgstr "Quelle couleur principale souhaitez-vous ?"
+
+#: unpress_core/chat_service.py:369
+msgid "What should it be about? A subject, an angle, anything you would tell a writer."
+msgstr "De quoi doit-il parler ? Un sujet, un angle, tout ce que vous diriez à un rédacteur."
+
+#: unpress_core/chat_service.py:1775
+msgid "What should the article be about? A subject, an angle, anything you would tell a writer."
+msgstr "De quoi doit parler l'article ? Un sujet, un angle, tout ce que vous diriez à un rédacteur."
+
+#: unpress_core/chat_service.py:1787
+msgid "What should this page be called? (e.g. \"Recruitment\", \"FAQ\", \"Pricing\")"
+msgstr "Comment cette page doit-elle s'appeler ? (ex : \"Recrutement\", \"FAQ\", \"Tarifs\")"
+
+#. Description of the 'Vision Description' (Small Text) field in DocType
+#. 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "What the photo shows — also feeds the image alt/prompt at placement time."
+msgstr ""
+
+#: unpress_core/chat_service.py:1276 unpress_core/chat_service.py:1640
+msgid "What type of site would you like?"
+msgstr "Quel type de site souhaitez-vous ?"
+
+#: unpress_core/chat_service.py:1838
+msgid "What would you like to change? Describe your feedback and I'll regenerate the homepage."
+msgstr "Que souhaitez-vous modifier ? Décrivez vos retours et je régénèrerai la page d'accueil."
+
+#. Description of the 'Use When' (Small Text) field in DocType 'Builder AI
+#. Shortcode'
+#: unpress_core/unpress_core/doctype/builder_ai_shortcode/builder_ai_shortcode.json
+msgid "When should the AI use this shortcode? (e.g., 'For e-commerce sites with shopping cart', 'For sites requiring user authentication')"
+msgstr "Quand l'IA doit-elle utiliser ce shortcode ? (ex. : « Pour les sites e-commerce avec panier », « Pour les sites nécessitant une authentification »)"
+
+#. Description of the 'Article page' (Select) field in DocType 'Website Header
+#. Footer Config'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+msgid "Where the cover image goes on an article."
+msgstr ""
+
+#. Description of the 'Available' (Check) field in DocType 'Website Plugin'
+#: unpress_core/unpress_core/doctype/website_plugin/website_plugin.json
+msgid "Whether the app providing it is present on this bench."
+msgstr ""
+
+#: unpress_core/chat_service.py:1277
+msgid "Which visual theme do you prefer for your site?"
+msgstr "Quel thème visuel préférez-vous pour votre site ?"
+
+#: unpress_core/chat_service.py:1641
+msgid "Which visual theme do you prefer?"
+msgstr "Quel thème visuel préférez-vous ?"
+
+#. Label of the show_wishlist (Check) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/templates/includes/header_footer/macros.html:40
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.js:116
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+#: unpress_core/www/404.py:35
+msgid "Wishlist"
+msgstr "Liste de souhaits"
+
+#: unpress_core/plugins.py:71
+msgid "WordPress Import"
+msgstr "Import WordPress"
+
+#: unpress_core/hf_utils/menu_integration.py:219
+msgid "Work"
+msgstr "Réalisations"
+
+#: unpress_core/chat_service.py:591 unpress_core/chat_service.py:779
+#: unpress_core/chat_service.py:863 unpress_core/chat_service.py:1685
+msgid "Would you like to add optional pages to your site?"
+msgstr "Souhaitez-vous ajouter des pages optionnelles à votre site ?"
+
+#: unpress_core/chat_service.py:2025
+msgid "Would you like to keep this information or modify it?"
+msgstr "Souhaitez-vous garder ces informations ou les modifier ?"
+
+#: unpress_core/chat_service.py:366
+msgid "Write an article"
+msgstr "Écrire un article"
+
+#: unpress_core/chat_service.py:402
+msgid "Write another"
+msgstr "En écrire un autre"
+
+#: unpress_core/blog_api.py:358
+msgid "Writing"
+msgstr "Rédaction"
+
+#: unpress_core/blog_api.py:362
+msgid "Written"
+msgstr "Rédigé"
+
+#: unpress_core/brief_view.py:144
+msgid "Yes"
+msgstr "Oui"
+
+#: unpress_core/chat_service.py:456 unpress_core/chat_service.py:457
+#: unpress_core/chat_service.py:982 unpress_core/chat_service.py:992
+#: unpress_core/chat_service.py:1855
+msgid "Yes, replace everything"
+msgstr "Oui, tout remplacer"
+
+#: unpress_core/generation.py:3132 unpress_core/generation.py:3167
+msgid "You are already subscribed to our newsletter"
+msgstr "Vous êtes déjà abonné à notre newsletter"
+
+#: unpress_core/chat_service.py:580
+msgid "You can also drop the client's own content — photos, documents, the current site — and I'll sort it and reuse it on the site."
+msgstr "Vous pouvez aussi déposer le contenu du client — photos, documents, site actuel — je le trie et le réutilise sur le site."
+
+#: unpress_core/studio_users.py:75
+msgid "You cannot change your own role"
+msgstr "Vous ne pouvez pas modifier votre propre rôle"
+
+#: unpress_core/studio_users.py:62
+msgid "You cannot disable your own account"
+msgstr "Vous ne pouvez pas désactiver votre propre compte"
+
+#. Label of the youtube_url (Data) field in DocType 'Website Header Footer
+#. Config'
+#. Variant'
+#: unpress_core/unpress_core/doctype/website_header_footer_config/website_header_footer_config.json
+#: unpress_core/unpress_core/doctype/website_header_footer_variant/website_header_footer_variant.json
+msgid "YouTube URL"
+msgstr "URL YouTube"
+
+#: unpress_core/templates/includes/header_footer/components/cart_drawer.html:8
+#: unpress_core/templates/includes/header_footer/header.html:13
+msgid "Your Cart"
+msgstr "Votre panier"
+
+#: unpress_core/templates/includes/header_footer/components/cart_drawer.html:25
+#: unpress_core/templates/includes/header_footer/header.html:14
+msgid "Your cart is empty"
+msgstr "Votre panier est vide"
+
+#: unpress_core/email_api.py:72
+msgid "Your outgoing email settings work."
+msgstr "Vos paramètres d'envoi d'e-mails fonctionnent."
+
+#. Option for the 'Role' (Select) field in DocType 'Builder Chat Message'
+#: unpress_core/unpress_core/doctype/builder_chat_message/builder_chat_message.json
+msgid "assistant"
+msgstr "assistant"
+
+#: unpress_core/chat_service.py:2011
+msgid "available"
+msgstr "disponible"
+
+#. Option for the 'Site Type' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "blog"
+msgstr "blog"
+
+#. Option for the 'Status' (Select) field in DocType 'Builder Site Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "captured"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Builder Site Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "capturing"
+msgstr ""
+
+#. Option for the 'Theme' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "corporate"
+msgstr "corporate"
+
+#. Option for the 'Theme' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "creative"
+msgstr "creative"
+
+#. Option for the 'Current Step' (Select) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/plugins.py:248
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "description"
+msgstr "description"
+
+#. Option for the 'Sentiment' (Select) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "dislike"
+msgstr ""
+
+#. Option for the 'Site Type' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "ecommerce"
+msgstr "ecommerce"
+
+#. Option for the 'Site Type' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "ecommerce_search"
+msgstr "ecommerce_search"
+
+#. Option for the 'Status' (Select) field in DocType 'Builder Content Asset'
+#. Option for the 'Status' (Select) field in DocType 'Builder Site Inspiration'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "failed"
+msgstr ""
+
+#. Option for the 'Current Step' (Select) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "feedback"
+msgstr "feedback"
+
+#. Option for the 'Generation Mode' (Select) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "full"
+msgstr "full"
+
+#. Option for the 'Current Step' (Select) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "generation"
+msgstr "generation"
+
+#. Option for the 'Theme' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "glassmorphism"
+msgstr "glassmorphism"
+
+#. Option for the 'Quality' (Select) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "high"
+msgstr ""
+
+#. Option for the 'Current Step' (Select) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "inspiration"
+msgstr "inspiration"
+
+#: unpress_core/chat_service.py:1298 unpress_core/chat_service.py:1344
+#: unpress_core/www/404.py:58
+msgid "label"
+msgstr "libellé"
+
+#. Option for the 'Orientation' (Select) field in DocType 'Builder Content
+#. Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "landscape"
+msgstr ""
+
+#. Option for the 'Sentiment' (Select) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "like"
+msgstr ""
+
+#. Option for the 'Quality' (Select) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "low"
+msgstr ""
+
+#. Option for the 'Quality' (Select) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "medium"
+msgstr ""
+
+#: unpress_core/templates/blog/post.html:40
+#: unpress_core/templates/blog/post.html:53
+msgid "min read"
+msgstr "min de lecture"
+
+#. Option for the 'Theme' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "minimal"
+msgstr "minimal"
+
+#. Option for the 'Theme' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "modern"
+msgstr "modern"
+
+#. Option for the 'Theme' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "neobrutalist"
+msgstr "neobrutalist"
+
+#. Option for the 'Sentiment' (Select) field in DocType 'Builder Site
+#. Inspiration'
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "neutral"
+msgstr ""
+
+#. Option for the 'Site Type' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "one_page"
+msgstr "one_page"
+
+#: unpress_core/ai/ingestion/visual_loop.py:133
+msgid "page_name is required"
+msgstr "page_name est requis"
+
+#. Option for the 'Current Step' (Select) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "page_selection"
+msgstr "page_selection"
+
+#. Option for the 'Current Step' (Select) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "pages"
+msgstr "pages"
+
+#. Option for the 'Status' (Select) field in DocType 'Builder Content Asset'
+#. Option for the 'Status' (Select) field in DocType 'Builder Site Inspiration'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+#: unpress_core/unpress_core/doctype/builder_site_inspiration/builder_site_inspiration.json
+msgid "pending"
+msgstr ""
+
+#. Option for the 'Site Type' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "portfolio"
+msgstr "portfolio"
+
+#. Option for the 'Orientation' (Select) field in DocType 'Builder Content
+#. Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "portrait"
+msgstr ""
+
+#. Option for the 'Generation Mode' (Select) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "progressive"
+msgstr "progressive"
+
+#. Option for the 'Site Type' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "saas"
+msgstr "saas"
+
+#. Option for the 'Orientation' (Select) field in DocType 'Builder Content
+#. Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "square"
+msgstr ""
+
+#. Option for the 'Current Step' (Select) field in DocType 'Builder Chat
+#. Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "style"
+msgstr "style"
+
+#. Option for the 'Role' (Select) field in DocType 'Builder Chat Message'
+#: unpress_core/unpress_core/doctype/builder_chat_message/builder_chat_message.json
+msgid "system"
+msgstr "system"
+
+#: unpress_core/codex_api.py:225
+msgid "the plan's default"
+msgstr "le modèle par défaut de l'abonnement"
+
+#: unpress_core/plugins.py:247
+msgid "title"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "understood"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Builder Content Asset'
+#: unpress_core/unpress_core/doctype/builder_content_asset/builder_content_asset.json
+msgid "used"
+msgstr ""
+
+#. Option for the 'Role' (Select) field in DocType 'Builder Chat Message'
+#: unpress_core/unpress_core/doctype/builder_chat_message/builder_chat_message.json
+msgid "user"
+msgstr "utilisateur"
+
+#. Option for the 'Site Type' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "vitrine"
+msgstr "vitrine"
+
+#. Option for the 'Site Type' (Select) field in DocType 'Builder Chat Session'
+#: unpress_core/unpress_core/doctype/builder_chat_session/builder_chat_session.json
+msgid "vitrine_user"
+msgstr "vitrine_user"
+
+#: unpress_core/blog_api.py:255
+msgid "{0} articles are still in this category."
+msgstr "{0} articles sont encore dans cette catégorie."
+
+#: unpress_core/plugin_install.py:220
+msgid "{0} cannot be removed."
+msgstr "{0} ne peut pas être supprimé."
+
+#: unpress_core/plugins.py:257
+msgid "{0} cannot be turned off."
+msgstr "{0} ne peut pas être désactivé."
+
+#: unpress_core/chat_service.py:855
+msgid "{0} file(s) received — I am reading them, I will tell you what I found."
+msgstr "{0} fichier(s) reçu(s) — je les lis, je vous dirai ce que j'y ai trouvé."
+
+#: unpress_core/plugin_install.py:222
+msgid "{0} is not a separate app; there is nothing to remove."
+msgstr "{0} n'est pas une application distincte ; il n'y a rien à supprimer."
+
+#: unpress_core/plugin_install.py:71
+msgid "{0} is not an allowed plugin source on this site."
+msgstr "{0} n'est pas une source de plugins autorisée sur ce site."
+
+#: unpress_core/plugins.py:142
+msgid "{0} is turned off for this site."
+msgstr "{0} est désactivé sur ce site."
+
+#: unpress_core/chat_service.py:973
+msgid ""
+"⚠️ Your site has {0} page(s) that were designed or edited by hand: {1}.\n"
+"\n"
+"Generating the new site will REPLACE all current pages. Do you want to continue?"
+msgstr ""
+"⚠️ Votre site contient {0} page(s) conçues ou modifiées à la main : {1}.\n"
+"\n"
+"Générer le nouveau site REMPLACERA toutes les pages actuelles. Voulez-vous continuer ?"
+
+
+msgid "© {year} {site_name}. All rights reserved."
+msgstr "© {year} {site_name}. Tous droits réservés."
+
+msgid "Powered by {0}"
+msgstr "Propulsé par {0}"
+
+msgid "Split"
+msgstr "Séparé"
+
+msgid "Solid"
+msgstr "Uni"
+
+#: unpress_core/www/welcome.html:8
+msgid "This site is being built."
+msgstr "Ce site est en construction."
+
+#: unpress_core/www/welcome.html:10
+msgid "There is nothing to read here yet. Come back shortly."
+msgstr "Il n'y a encore rien à lire ici. Revenez bientôt."
+
+#: unpress_core/www/welcome.html:13
+msgid "Open the Studio"
+msgstr "Ouvrir le Studio"

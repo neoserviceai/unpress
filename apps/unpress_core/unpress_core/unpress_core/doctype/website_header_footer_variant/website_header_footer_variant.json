@@ -1,0 +1,799 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:website_profile",
+ "creation": "2026-07-08 15:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "website_profile",
+  "header_tab",
+  "header_section",
+  "header_layout",
+  "sticky_header",
+  "header_height",
+  "header_border",
+  "column_break_header_1",
+  "header_bg_color",
+  "header_text_color",
+  "header_preview_section",
+  "header_preview",
+  "logo_section",
+  "logo_type",
+  "logo_text",
+  "column_break_logo_1",
+  "logo_image",
+  "logo_default_info",
+  "icons_section",
+  "search_type",
+  "column_break_icons_1",
+  "show_user",
+  "show_wishlist",
+  "show_cart",
+  "cta_section",
+  "show_cta",
+  "cta_text",
+  "column_break_cta_1",
+  "cta_url",
+  "cta_style",
+  "cta_shape",
+  "cta_size",
+  "menu_tab",
+  "menu_section",
+  "menu_items",
+  "footer_tab",
+  "footer_section",
+  "footer_template",
+  "column_break_footer_1",
+  "footer_bg_color",
+  "footer_text_color",
+  "column_break_footer_2",
+  "show_footer_logo",
+  "footer_logo_section",
+  "footer_logo_type",
+  "footer_logo_text",
+  "column_break_footer_logo",
+  "footer_logo_image",
+  "footer_content_section",
+  "footer_description",
+  "copyright_text",
+  "social_section",
+  "show_social_links",
+  "facebook_url",
+  "twitter_url",
+  "column_break_social_1",
+  "instagram_url",
+  "linkedin_url",
+  "youtube_url",
+  "newsletter_section",
+  "show_newsletter",
+  "newsletter_email_group",
+  "newsletter_title",
+  "column_break_newsletter_1",
+  "newsletter_placeholder",
+  "footer_links_section",
+  "footer_links",
+  "theme_tab",
+  "theme_colors_section",
+  "primary_color",
+  "secondary_color",
+  "column_break_theme_1",
+  "background_color",
+  "text_color",
+  "theme_typography_section",
+  "heading_font",
+  "column_break_theme_2",
+  "body_font",
+  "typography_scale_section",
+  "h1_size",
+  "h1_weight",
+  "column_break_h1",
+  "h1_line_height",
+  "h1_size_mobile",
+  "h2_settings_section",
+  "h2_size",
+  "h2_weight",
+  "column_break_h2",
+  "h2_line_height",
+  "h2_size_mobile",
+  "h3_settings_section",
+  "h3_size",
+  "h3_weight",
+  "column_break_h3",
+  "h3_line_height",
+  "h3_size_mobile",
+  "h4_settings_section",
+  "h4_size",
+  "h4_weight",
+  "column_break_h4",
+  "h4_size_mobile",
+  "body_settings_section",
+  "body_size",
+  "body_weight",
+  "column_break_body",
+  "body_line_height",
+  "body_size_mobile"
+ ],
+ "fields": [
+  {
+   "fieldname": "website_profile",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Website Profile",
+   "options": "Website Profile",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "header_tab",
+   "fieldtype": "Tab Break",
+   "label": "Header"
+  },
+  {
+   "fieldname": "header_section",
+   "fieldtype": "Section Break",
+   "label": "Header Layout"
+  },
+  {
+   "default": "Logo | Menu Center | Icons",
+   "description": "Choose the header layout structure",
+   "fieldname": "header_layout",
+   "fieldtype": "Select",
+   "label": "Layout",
+   "options": "Logo | Menu Center | Icons\nLogo | Menu Right | Icons\nMenu Left | Logo Center | Icons",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "description": "Header stays fixed at top when scrolling",
+   "fieldname": "sticky_header",
+   "fieldtype": "Check",
+   "label": "Sticky Header"
+  },
+  {
+   "default": "Standard",
+   "description": "Slim (56px) for refined designs, Standard (64px), Tall (76px)",
+   "fieldname": "header_height",
+   "fieldtype": "Select",
+   "label": "Header Height",
+   "options": "Standard\nSlim\nTall"
+  },
+  {
+   "default": "None",
+   "description": "Subtle adds a fine separation line under the header",
+   "fieldname": "header_border",
+   "fieldtype": "Select",
+   "label": "Bottom Border",
+   "options": "None\nSubtle"
+  },
+  {
+   "fieldname": "column_break_header_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "#1a1a1a",
+   "description": "Background color of the header",
+   "fieldname": "header_bg_color",
+   "fieldtype": "Color",
+   "label": "Background Color"
+  },
+  {
+   "default": "#ffffff",
+   "description": "Text and icon color in header",
+   "fieldname": "header_text_color",
+   "fieldtype": "Color",
+   "label": "Text Color"
+  },
+  {
+   "collapsible": 0,
+   "fieldname": "header_preview_section",
+   "fieldtype": "Section Break",
+   "label": "Preview"
+  },
+  {
+   "fieldname": "header_preview",
+   "fieldtype": "HTML",
+   "options": "<div id=\"header-preview\" style=\"padding: 15px; background: var(--subtle-fg); border-radius: 8px; width: 100%;\"></div>"
+  },
+  {
+   "fieldname": "logo_section",
+   "fieldtype": "Section Break",
+   "label": "Logo"
+  },
+  {
+   "default": "Image",
+   "fieldname": "logo_type",
+   "fieldtype": "Select",
+   "label": "Logo Type",
+   "options": "Text\nImage"
+  },
+  {
+   "depends_on": "eval:doc.logo_type=='Text'",
+   "fieldname": "logo_text",
+   "fieldtype": "Data",
+   "label": "Logo Text"
+  },
+  {
+   "fieldname": "column_break_logo_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.logo_type=='Image'",
+   "fieldname": "logo_image",
+   "fieldtype": "Attach Image",
+   "label": "Logo Image"
+  },
+  {
+   "depends_on": "eval:doc.logo_type=='Image' && !doc.logo_image",
+   "fieldname": "logo_default_info",
+   "fieldtype": "HTML",
+   "options": "<div style=\"display: flex; align-items: center; gap: 12px; padding: 10px; background: var(--subtle-fg); border-radius: 8px; margin-top: 8px;\"><img src=\"/files/logo-default.png\" style=\"height: 40px; max-width: 150px; object-fit: contain;\" onerror=\"this.style.display='none'\"><span style=\"color: var(--text-muted); font-size: 12px;\">Default logo will be used. Attach a different image above to override.</span></div>"
+  },
+  {
+   "fieldname": "cta_section",
+   "fieldtype": "Section Break",
+   "label": "Call to Action Button"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_cta",
+   "fieldtype": "Check",
+   "label": "Show CTA Button"
+  },
+  {
+   "default": "Contact Us",
+   "depends_on": "show_cta",
+   "fieldname": "cta_text",
+   "fieldtype": "Data",
+   "label": "CTA Text"
+  },
+  {
+   "fieldname": "column_break_cta_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "/contact",
+   "depends_on": "show_cta",
+   "fieldname": "cta_url",
+   "fieldtype": "Data",
+   "label": "CTA URL"
+  },
+  {
+   "default": "Primary",
+   "depends_on": "show_cta",
+   "fieldname": "cta_style",
+   "fieldtype": "Select",
+   "label": "CTA Style",
+   "options": "Primary\nSecondary\nOutline"
+  },
+  {
+   "default": "Rounded",
+   "fieldname": "cta_shape",
+   "fieldtype": "Select",
+   "label": "CTA Shape",
+   "options": "Rounded\nPill\nSquare"
+  },
+  {
+   "default": "Medium",
+   "description": "Small for discreet, refined buttons",
+   "fieldname": "cta_size",
+   "fieldtype": "Select",
+   "label": "CTA Size",
+   "options": "Medium\nSmall"
+  },
+  {
+   "description": "Configure header icons and search options",
+   "fieldname": "icons_section",
+   "fieldtype": "Section Break",
+   "label": "Icons & Search"
+  },
+  {
+   "default": "None",
+   "description": "Search display mode",
+   "fieldname": "search_type",
+   "fieldtype": "Select",
+   "label": "Search",
+   "options": "None\nIcon (overlay)\nSearch Bar (inline)\nSearch Bar (full width bottom)"
+  },
+  {
+   "fieldname": "column_break_icons_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Show user/account with dropdown menu",
+   "fieldname": "show_user",
+   "fieldtype": "Check",
+   "label": "User"
+  },
+  {
+   "default": "0",
+   "description": "Show wishlist heart icon",
+   "fieldname": "show_wishlist",
+   "fieldtype": "Check",
+   "label": "Wishlist"
+  },
+  {
+   "default": "0",
+   "description": "Show cart with drawer",
+   "fieldname": "show_cart",
+   "fieldtype": "Check",
+   "label": "Cart"
+  },
+  {
+   "fieldname": "menu_tab",
+   "fieldtype": "Tab Break",
+   "label": "Menu"
+  },
+  {
+   "fieldname": "menu_section",
+   "fieldtype": "Section Break",
+   "label": "Menu Items"
+  },
+  {
+   "fieldname": "menu_items",
+   "fieldtype": "Table",
+   "label": "Menu Items",
+   "options": "Website Menu Item"
+  },
+  {
+   "fieldname": "footer_tab",
+   "fieldtype": "Tab Break",
+   "label": "Footer"
+  },
+  {
+   "fieldname": "footer_section",
+   "fieldtype": "Section Break",
+   "label": "Footer Template"
+  },
+  {
+   "default": "Standard",
+   "fieldname": "footer_template",
+   "fieldtype": "Select",
+   "label": "Footer Template",
+   "options": "Minimal\nStandard\nExtended"
+  },
+  {
+   "fieldname": "column_break_footer_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "#ffffff",
+   "description": "Background color of the footer (defaults to header background)",
+   "fieldname": "footer_bg_color",
+   "fieldtype": "Color",
+   "label": "Background Color"
+  },
+  {
+   "default": "#1a1a1a",
+   "description": "Text color in footer (defaults to header text color)",
+   "fieldname": "footer_text_color",
+   "fieldtype": "Color",
+   "label": "Text Color"
+  },
+  {
+   "fieldname": "column_break_footer_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_footer_logo",
+   "fieldtype": "Check",
+   "label": "Show Logo in Footer"
+  },
+  {
+   "depends_on": "show_footer_logo",
+   "fieldname": "footer_logo_section",
+   "fieldtype": "Section Break",
+   "label": "Footer Logo"
+  },
+  {
+   "default": "Same as Header",
+   "depends_on": "show_footer_logo",
+   "fieldname": "footer_logo_type",
+   "fieldtype": "Select",
+   "label": "Footer Logo Type",
+   "options": "Text\nImage\nSame as Header"
+  },
+  {
+   "depends_on": "eval:doc.show_footer_logo && doc.footer_logo_type=='Text'",
+   "fieldname": "footer_logo_text",
+   "fieldtype": "Data",
+   "label": "Footer Logo Text"
+  },
+  {
+   "fieldname": "column_break_footer_logo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.show_footer_logo && doc.footer_logo_type=='Image'",
+   "description": "Default: /files/logo-default.png - Attach a different image to override",
+   "fieldname": "footer_logo_image",
+   "fieldtype": "Attach Image",
+   "label": "Footer Logo Image"
+  },
+  {
+   "fieldname": "footer_content_section",
+   "fieldtype": "Section Break",
+   "label": "Footer Content"
+  },
+  {
+   "description": "Short description or tagline shown in footer",
+   "fieldname": "footer_description",
+   "fieldtype": "Small Text",
+   "label": "Footer Description"
+  },
+  {
+   "default": "© {year} {site_name}. All rights reserved.",
+   "description": "Use {year} for current year, {site_name} for site name. 'Powered by Unpress' is always shown.",
+   "fieldname": "copyright_text",
+   "fieldtype": "Data",
+   "label": "Copyright Text"
+  },
+  {
+   "fieldname": "social_section",
+   "fieldtype": "Section Break",
+   "label": "Social Links"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_social_links",
+   "fieldtype": "Check",
+   "label": "Show Social Links"
+  },
+  {
+   "depends_on": "show_social_links",
+   "fieldname": "facebook_url",
+   "fieldtype": "Data",
+   "label": "Facebook URL"
+  },
+  {
+   "depends_on": "show_social_links",
+   "fieldname": "twitter_url",
+   "fieldtype": "Data",
+   "label": "Twitter/X URL"
+  },
+  {
+   "fieldname": "column_break_social_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "show_social_links",
+   "fieldname": "instagram_url",
+   "fieldtype": "Data",
+   "label": "Instagram URL"
+  },
+  {
+   "depends_on": "show_social_links",
+   "fieldname": "linkedin_url",
+   "fieldtype": "Data",
+   "label": "LinkedIn URL"
+  },
+  {
+   "depends_on": "show_social_links",
+   "fieldname": "youtube_url",
+   "fieldtype": "Data",
+   "label": "YouTube URL"
+  },
+  {
+   "fieldname": "newsletter_section",
+   "fieldtype": "Section Break",
+   "label": "Newsletter"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_newsletter",
+   "fieldtype": "Check",
+   "label": "Show Newsletter Signup"
+  },
+  {
+   "depends_on": "show_newsletter",
+   "description": "Email Group where subscribers will be added",
+   "fieldname": "newsletter_email_group",
+   "fieldtype": "Link",
+   "label": "Email Group",
+   "mandatory_depends_on": "show_newsletter",
+   "options": "Email Group"
+  },
+  {
+   "default": "Subscribe to our newsletter",
+   "depends_on": "show_newsletter",
+   "fieldname": "newsletter_title",
+   "fieldtype": "Data",
+   "label": "Newsletter Title"
+  },
+  {
+   "fieldname": "column_break_newsletter_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Enter your email",
+   "depends_on": "show_newsletter",
+   "fieldname": "newsletter_placeholder",
+   "fieldtype": "Data",
+   "label": "Newsletter Placeholder"
+  },
+  {
+   "fieldname": "footer_links_section",
+   "fieldtype": "Section Break",
+   "label": "Footer Links"
+  },
+  {
+   "fieldname": "footer_links",
+   "fieldtype": "Table",
+   "label": "Footer Links",
+   "options": "Website Footer Link"
+  },
+  {
+   "fieldname": "theme_tab",
+   "fieldtype": "Tab Break",
+   "label": "Theme"
+  },
+  {
+   "fieldname": "theme_colors_section",
+   "fieldtype": "Section Break",
+   "label": "Colors"
+  },
+  {
+   "default": "#6c5ce7",
+   "description": "Primary brand color used for buttons, links, and accents. Maps to --primary and --primary-color CSS variables.",
+   "fieldname": "primary_color",
+   "fieldtype": "Color",
+   "label": "Primary Color"
+  },
+  {
+   "default": "#00b894",
+   "description": "Secondary accent color for highlights and secondary actions. Maps to --secondary-color CSS variable.",
+   "fieldname": "secondary_color",
+   "fieldtype": "Color",
+   "label": "Secondary Color"
+  },
+  {
+   "fieldname": "column_break_theme_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "#ffffff",
+   "description": "Page background color. Maps to --background-color CSS variable.",
+   "fieldname": "background_color",
+   "fieldtype": "Color",
+   "label": "Background Color"
+  },
+  {
+   "default": "#1a1a1a",
+   "description": "Main text color. Maps to --text-color CSS variable.",
+   "fieldname": "text_color",
+   "fieldtype": "Color",
+   "label": "Text Color"
+  },
+  {
+   "fieldname": "theme_typography_section",
+   "fieldtype": "Section Break",
+   "label": "Typography"
+  },
+  {
+   "default": "Inter",
+   "description": "Font family for headings (h1-h6)",
+   "fieldname": "heading_font",
+   "fieldtype": "Select",
+   "label": "Heading Font",
+   "options": "Inter\nMontserrat\nPoppins\nRoboto\nOpen Sans\nLato\nRaleway\nPlayfair Display\nSource Sans 3\nNunito\nLora\nDM Sans\nManrope\nCormorant Garamond\nSora\nPlus Jakarta Sans\nOutfit\nSpace Grotesk\nArchivo Black\nBebas Neue\nMerriweather\nRoboto Slab"
+  },
+  {
+   "fieldname": "column_break_theme_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Inter",
+   "description": "Font family for body text",
+   "fieldname": "body_font",
+   "fieldtype": "Select",
+   "label": "Body Font",
+   "options": "Inter\nMontserrat\nPoppins\nRoboto\nOpen Sans\nLato\nRaleway\nSource Sans 3\nNunito\nMerriweather\nDM Sans\nManrope\nSpace Grotesk"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "typography_scale_section",
+   "fieldtype": "Section Break",
+   "label": "Typography Scale - H1"
+  },
+  {
+   "default": "48px",
+   "fieldname": "h1_size",
+   "fieldtype": "Data",
+   "label": "H1 Size"
+  },
+  {
+   "default": "700",
+   "fieldname": "h1_weight",
+   "fieldtype": "Select",
+   "label": "H1 Weight",
+   "options": "400\n500\n600\n700\n800"
+  },
+  {
+   "fieldname": "column_break_h1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1.2",
+   "fieldname": "h1_line_height",
+   "fieldtype": "Data",
+   "label": "H1 Line Height"
+  },
+  {
+   "default": "32px",
+   "fieldname": "h1_size_mobile",
+   "fieldtype": "Data",
+   "label": "H1 Size (Mobile)"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "h2_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Typography Scale - H2"
+  },
+  {
+   "default": "36px",
+   "fieldname": "h2_size",
+   "fieldtype": "Data",
+   "label": "H2 Size"
+  },
+  {
+   "default": "600",
+   "fieldname": "h2_weight",
+   "fieldtype": "Select",
+   "label": "H2 Weight",
+   "options": "400\n500\n600\n700\n800"
+  },
+  {
+   "fieldname": "column_break_h2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1.25",
+   "fieldname": "h2_line_height",
+   "fieldtype": "Data",
+   "label": "H2 Line Height"
+  },
+  {
+   "default": "26px",
+   "fieldname": "h2_size_mobile",
+   "fieldtype": "Data",
+   "label": "H2 Size (Mobile)"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "h3_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Typography Scale - H3"
+  },
+  {
+   "default": "24px",
+   "fieldname": "h3_size",
+   "fieldtype": "Data",
+   "label": "H3 Size"
+  },
+  {
+   "default": "600",
+   "fieldname": "h3_weight",
+   "fieldtype": "Select",
+   "label": "H3 Weight",
+   "options": "400\n500\n600\n700\n800"
+  },
+  {
+   "fieldname": "column_break_h3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1.3",
+   "fieldname": "h3_line_height",
+   "fieldtype": "Data",
+   "label": "H3 Line Height"
+  },
+  {
+   "default": "20px",
+   "fieldname": "h3_size_mobile",
+   "fieldtype": "Data",
+   "label": "H3 Size (Mobile)"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "h4_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Typography Scale - H4"
+  },
+  {
+   "default": "20px",
+   "fieldname": "h4_size",
+   "fieldtype": "Data",
+   "label": "H4 Size"
+  },
+  {
+   "default": "500",
+   "fieldname": "h4_weight",
+   "fieldtype": "Select",
+   "label": "H4 Weight",
+   "options": "400\n500\n600\n700\n800"
+  },
+  {
+   "fieldname": "column_break_h4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "18px",
+   "fieldname": "h4_size_mobile",
+   "fieldtype": "Data",
+   "label": "H4 Size (Mobile)"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "body_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Typography Scale - Body"
+  },
+  {
+   "default": "16px",
+   "fieldname": "body_size",
+   "fieldtype": "Data",
+   "label": "Body Size"
+  },
+  {
+   "default": "400",
+   "fieldname": "body_weight",
+   "fieldtype": "Select",
+   "label": "Body Weight",
+   "options": "400\n500\n600\n700"
+  },
+  {
+   "fieldname": "column_break_body",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1.6",
+   "fieldname": "body_line_height",
+   "fieldtype": "Data",
+   "label": "Body Line Height"
+  },
+  {
+   "default": "15px",
+   "fieldname": "body_size_mobile",
+   "fieldtype": "Data",
+   "label": "Body Size (Mobile)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 0,
+ "links": [],
+ "modified": "2026-07-08 15:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Unpress Core",
+ "name": "Website Header Footer Variant",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Website Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

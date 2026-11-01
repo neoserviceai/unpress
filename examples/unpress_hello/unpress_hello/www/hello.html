@@ -1,0 +1,30 @@
+{% extends "templates/web.html" %}
+
+{#
+	Extending `templates/web.html` is what puts the site's header, footer and
+	page header around this page. A plugin page that builds its own <html> is
+	how you end up with a page that looks like a different website.
+#}
+
+{% block page_content %}
+<div class="hello-plugin">
+	<p class="hello-plugin__lead">
+		{{ _("This page comes from a plugin. Turn the plugin off in the Studio and this route answers 404 — without deleting anything.") }}
+	</p>
+
+	<button class="hello-plugin__button" id="hello-greet">
+		{{ _("Say hello") }}
+	</button>
+	<p class="hello-plugin__answer" id="hello-answer" role="status"></p>
+</div>
+
+<script>
+document.getElementById("hello-greet").addEventListener("click", async () => {
+	// The endpoint refuses when the plugin is off, so the page degrades to a
+	// message rather than to a broken button.
+	const r = await fetch("/api/method/unpress_hello.api.greet?name=" + encodeURIComponent("Unpress"));
+	const out = document.getElementById("hello-answer");
+	out.textContent = r.ok ? (await r.json()).message : "{{ _('This plugin is turned off.') }}";
+});
+</script>
+{% endblock %}

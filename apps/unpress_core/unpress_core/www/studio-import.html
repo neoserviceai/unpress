@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!-- jinja -->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Importer un site WordPress — Unpress Studio</title>
+<style>
+*{margin:0;box-sizing:border-box}
+body{font-family:Inter,system-ui,-apple-system,sans-serif;background:#f8f8f8;color:#18181b;min-height:100vh}
+.top{background:#fff;border-bottom:1px solid #e4e4e7;padding:14px 24px;display:flex;align-items:center;gap:10px}
+.top .mark{width:30px;height:30px;border-radius:8px;background:#18181b;color:#fff;display:grid;place-items:center;font-weight:800}
+.top b{font-size:15px}
+.top a{margin-left:auto;color:#52525b;text-decoration:none;font-size:13.5px}
+.top a:hover{color:#18181b}
+.wrap{max-width:660px;margin:40px auto;padding:0 20px}
+h1{font-size:26px;margin-bottom:6px}
+.sub{color:#71717a;font-size:14.5px;margin-bottom:26px}
+.card{background:#fff;border:1px solid #e4e4e7;border-radius:14px;padding:22px;margin-bottom:16px}
+label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#3f3f46}
+input{width:100%;padding:10px 12px;border:1px solid #d4d4d8;border-radius:9px;font-size:14.5px;outline:none}
+input:focus{border-color:#7c3aed;box-shadow:0 0 0 3px rgba(124,58,237,.12)}
+.row{display:flex;gap:12px}.row>div{flex:1}
+.btn{display:inline-flex;align-items:center;gap:8px;background:#18181b;color:#fff;border:0;border-radius:9px;padding:10px 18px;font-size:14.5px;font-weight:600;cursor:pointer;margin-top:14px}
+.btn:hover{background:#3f3f46}.btn:disabled{opacity:.45;cursor:default}
+.btn.violet{background:#7c3aed}.btn.violet:hover{background:#6d28d9}
+.hint{font-size:12.5px;color:#71717a;margin-top:8px;line-height:1.55}
+.err{color:#dc2626;font-size:13.5px;margin-top:10px;white-space:pre-wrap}
+.probe{display:none}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 12px}
+.badge{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:999px;background:#f4f4f5;color:#3f3f46}
+.badge.ok{background:#dcfce7;color:#166534}.badge.warn{background:#fef3c7;color:#92400e}
+.kpis{display:flex;gap:20px;margin-top:6px}
+.kpis div{font-size:13px;color:#71717a}.kpis b{display:block;font-size:22px;color:#18181b}
+#creds,#run,#done{display:none}
+.stage{display:flex;align-items:center;gap:12px;font-size:14.5px;font-weight:600}
+.spin{width:18px;height:18px;border:2.5px solid #e4e4e7;border-top-color:#7c3aed;border-radius:50%;animation:r 0.8s linear infinite}
+@keyframes r{to{transform:rotate(360deg)}}
+.detail{color:#71717a;font-size:13px;margin:6px 0 14px 30px}
+.log{background:#fafafa;border:1px solid #f0f0f2;border-radius:9px;padding:10px 14px;font-size:12.5px;color:#52525b;max-height:170px;overflow-y:auto}
+.log div{padding:2px 0}
+.report td{padding:5px 14px 5px 0;font-size:14px}.report td:first-child{color:#71717a}
+.report b{font-size:16px}
+.actions{margin-top:18px;display:flex;gap:10px}
+a.btn{text-decoration:none}
+.todo{margin-top:10px;font-size:13px;color:#92400e;background:#fffbeb;border:1px solid #fde68a;border-radius:9px;padding:9px 12px}
+</style>
+</head>
+<body>
+<div class="top">
+	<span class="mark">U</span><b>Unpress Studio</b>
+	<a href="/studio-chat" style="margin-left:auto;margin-right:18px">✨ Créer avec l'IA</a><a href="/builder" style="margin-left:0">← Retour au Studio</a>
+</div>
+<div class="wrap">
+	<h1>Importer un site WordPress</h1>
+	<p class="sub">Pages, mises en page Elementor, images, menus — convertis en pages éditables dans votre Studio.</p>
+
+	<div class="card" id="step1">
+		<label for="url">Adresse du site WordPress</label>
+		<input id="url" type="url" placeholder="https://www.mon-site.ch" autocomplete="off">
+		<button class="btn" id="probeBtn">Analyser le site</button>
+		<div class="err" id="probeErr"></div>
+		<div class="probe" id="probeBox">
+			<hr style="border:none;border-top:1px solid #f0f0f2;margin:18px 0">
+			<div style="font-weight:700;font-size:15px" id="siteName"></div>
+			<div class="badges" id="badges"></div>
+			<div class="kpis">
+				<div><b id="kPages">–</b>pages</div>
+				<div><b id="kMedia">–</b>médias</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card" id="creds">
+		<label>Identifiants WordPress (administrateur)</label>
+		<div class="row">
+			<div><input id="wpUser" placeholder="Utilisateur" autocomplete="off"></div>
+			<div><input id="wpPass" type="password" placeholder="Mot de passe" autocomplete="off"></div>
+		</div>
+		<div class="hint">Sert uniquement à télécharger l'export officiel de votre site (wp-admin → Outils → Exporter), directement et en une fois. Rien n'est modifié sur votre WordPress.</div>
+		<button class="btn violet" id="startBtn">Lancer l'import</button>
+		<div class="err" id="startErr"></div>
+	</div>
+
+	<div class="card" id="run">
+		<div class="stage"><span class="spin"></span><span id="stage">Préparation…</span></div>
+		<div class="detail" id="detail"></div>
+		<div class="log" id="log"></div>
+	</div>
+
+	<div class="card" id="done">
+		<div style="font-size:18px;font-weight:700;margin-bottom:12px">✅ Import terminé</div>
+		<table class="report">
+			<tr><td>Pages importées</td><td><b id="rPages">–</b></td></tr>
+			<tr><td>Pages liées découvertes</td><td><b id="rDisc">–</b></td></tr>
+			<tr><td>Images téléchargées</td><td><b id="rMedia">–</b></td></tr>
+			<tr><td>Liens internes réécrits</td><td><b id="rLinks">–</b></td></tr>
+		</table>
+		<div class="todo" id="todos" style="display:none"></div>
+		<div class="actions">
+			<a class="btn violet" href="/builder">Ouvrir le Studio</a>
+			<a class="btn" href="/" target="_blank" style="background:#f4f4f5;color:#18181b">Voir le site</a>
+		</div>
+	</div>
+</div>
+
+<script>
+const CSRF = "{{ csrf_token }}";
+let MIG = null;
+
+async function api(method, args) {
+	const r = await fetch("/api/method/" + method, {
+		method: "POST",
+		headers: {"Content-Type": "application/json", "X-Frappe-CSRF-Token": CSRF},
+		body: JSON.stringify(args || {}),
+	});
+	const d = await r.json().catch(() => ({}));
+	if (!r.ok) {
+		let msg = d.exception || "Erreur inattendue";
+		try { msg = JSON.parse(JSON.parse(d._server_messages)[0]).message; } catch (e) {}
+		throw new Error(msg.replace(/<[^>]+>/g, ""));
+	}
+	return d.message;
+}
+
+const $ = (id) => document.getElementById(id);
+
+$("probeBtn").onclick = async () => {
+	$("probeErr").textContent = "";
+	const url = $("url").value.trim();
+	if (!url) return;
+	$("probeBtn").disabled = true;
+	$("probeBtn").textContent = "Analyse en cours…";
+	try {
+		const res = await api("wp_migrator.api.probe", {url});
+		MIG = res.name;
+		const p = res.probe;
+		$("siteName").textContent = p.site_name || url;
+		const b = $("badges");
+		b.innerHTML = "";
+		const add = (txt, cls) => { const s = document.createElement("span"); s.className = "badge " + cls; s.textContent = txt; b.appendChild(s); };
+		add(p.is_wordpress ? "WordPress détecté" : "WordPress non détecté", p.is_wordpress ? "ok" : "warn");
+		(p.detected || []).forEach((d) => add(d, ""));
+		$("kPages").textContent = (p.counts && p.counts.pages) ?? "?";
+		$("kMedia").textContent = (p.counts && p.counts.media) ?? "?";
+		$("probeBox").style.display = "block";
+		$("creds").style.display = p.is_wordpress ? "block" : "none";
+		if (!p.is_wordpress) $("probeErr").textContent = "Ce site ne semble pas être un WordPress accessible.";
+	} catch (e) {
+		$("probeErr").textContent = e.message;
+	} finally {
+		$("probeBtn").disabled = false;
+		$("probeBtn").textContent = "Analyser le site";
+	}
+};
+
+$("startBtn").onclick = async () => {
+	$("startErr").textContent = "";
+	$("startBtn").disabled = true;
+	$("startBtn").textContent = "Démarrage…";
+	try {
+		await api("wp_migrator.api.start", {name: MIG, username: $("wpUser").value, password: $("wpPass").value});
+		$("creds").style.display = "none";
+		$("step1").style.display = "none";
+		$("run").style.display = "block";
+		poll();
+	} catch (e) {
+		$("startErr").textContent = e.message;
+		$("startBtn").disabled = false;
+		$("startBtn").textContent = "Lancer l'import";
+	}
+};
+
+let lastStage = "";
+async function poll() {
+	try {
+		const s = await api("wp_migrator.api.status", {name: MIG});
+		if (s.progress && s.progress.stage) {
+			$("stage").textContent = s.progress.stage;
+			$("detail").textContent = s.progress.detail || "";
+			const key = s.progress.stage + (s.progress.detail || "");
+			if (key !== lastStage) {
+				lastStage = key;
+				const line = document.createElement("div");
+				line.textContent = "• " + s.progress.stage + (s.progress.detail ? " — " + s.progress.detail : "");
+				$("log").appendChild(line);
+				$("log").scrollTop = $("log").scrollHeight;
+			}
+		}
+		if (s.status === "Imported" && s.report) return finish(s.report);
+		if (s.status === "Failed") {
+			$("run").querySelector(".spin").style.display = "none";
+			$("stage").textContent = "Échec de l'import";
+			$("detail").textContent = (s.report && s.report.error || "").slice(0, 600);
+			return;
+		}
+	} catch (e) { /* transient */ }
+	setTimeout(poll, 2000);
+}
+
+function finish(r) {
+	$("run").style.display = "none";
+	$("done").style.display = "block";
+	$("rPages").textContent = r.pages_imported ?? "–";
+	$("rDisc").textContent = (r.discovered_pages && (r.discovered_pages.imported ?? r.discovered_pages.length)) ?? 0;
+	$("rMedia").textContent = String(r.media && (r.media.downloaded ?? 0)) + (r.media && r.media.failed && r.media.failed.length ? " (" + r.media.failed.length + " échecs)" : "");
+	$("rLinks").textContent = r.internal_links_rewritten ?? 0;
+	const todos = r.widgets_to_rebuild || {};
+	const keys = Object.keys(todos);
+	if (keys.length) {
+		$("todos").style.display = "block";
+		$("todos").textContent = "À revoir dans le Studio : " + keys.map((k) => k + " ×" + todos[k]).join(", ");
+	}
+}
+</script>
+</body>
+</html>

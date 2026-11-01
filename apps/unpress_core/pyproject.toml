@@ -1,0 +1,24 @@
+[project]
+name = "unpress_core"
+authors = [
+    { name = "Neoservice", email = "hello@neoservice.ai" },
+]
+description = "Unpress core: static site export and deploy adapters"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    # ported builder.ai subsystem (chat + generation + ingestion)
+    "ollama>=0.4.0",
+    "json-repair>=0.30.0",
+    "pillow>=10.0.0",
+    "pdfplumber>=0.11.0",
+    "pypdf>=4.0.0",
+    "python-docx>=1.1.0",
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench.dev-dependencies]

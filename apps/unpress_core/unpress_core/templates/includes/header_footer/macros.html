@@ -1,0 +1,72 @@
+{# Jinja macros for header/footer components #}
+
+{%- macro render_logo(logo) -%}
+<a href="/" class="site-logo">
+	{%- if logo.type == "Image" and logo.image -%}
+	<img src="{{ logo.image }}" alt="Logo" class="site-logo__image">
+	{%- else -%}
+	<span class="site-logo__text">{{ logo.text or "Logo" }}</span>
+	{%- endif -%}
+</a>
+{%- endmacro -%}
+
+{%- macro render_menu(items, position) -%}
+<nav class="site-nav site-nav--{{ position }}">
+	{%- for item in items -%}
+	<a href="{{ item.url }}" class="site-nav__link"
+	   {% if item.is_external or item.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
+		{{ item.label }}
+	</a>
+	{%- endfor -%}
+</nav>
+{%- endmacro -%}
+
+{%- macro render_icons(icons) -%}
+<div class="site-header__icons">
+	{# Search icon (triggers overlay) #}
+	{%- if icons.search and not icons.search_bar -%}
+	<button class="header-icon header-icon--search" aria-label="{{ _('Search') }}">
+		{% include "unpress_core/templates/includes/header_footer/icons/search.html" %}
+	</button>
+	{%- endif -%}
+
+	{# User (component with dropdown) #}
+	{%- if icons.user -%}
+	{% include "unpress_core/templates/includes/header_footer/components/user_header.html" %}
+	{%- endif -%}
+
+	{# Wishlist (simple link) #}
+	{%- if icons.wishlist -%}
+	<a href="/wishlist" class="header-icon header-icon--wishlist" aria-label="{{ _('Wishlist') }}">
+		{% include "unpress_core/templates/includes/header_footer/icons/wishlist.html" %}
+	</a>
+	{%- endif -%}
+
+	{# Cart (icon with badge, triggers drawer) #}
+	{%- if icons.cart -%}
+	<button class="header-icon header-icon--cart" aria-label="{{ _('Cart') }}">
+		{% include "unpress_core/templates/includes/header_footer/icons/cart.html" %}
+		<span class="header-icon__badge cart-badge" style="display: none;">0</span>
+	</button>
+	{%- endif -%}
+</div>
+{%- endmacro -%}
+
+{%- macro render_cta(cta) -%}
+<a href="{{ cta.url or '#' }}"
+   class="site-cta site-cta--{{ cta.style | lower }} site-cta--shape-{{ (cta.shape or 'Rounded') | lower }} site-cta--size-{{ (cta.size or 'Medium') | lower }}">
+	{{ cta.text or "Contact" }}
+</a>
+{%- endmacro -%}
+
+{%- macro render_search_bar() -%}
+{# Use the new search bar component with WebShop integration #}
+{% include "unpress_core/templates/includes/header_footer/components/search_bar.html" %}
+{%- endmacro -%}
+
+{%- macro render_social_link(link) -%}
+<a href="{{ link.url }}" class="social-link social-link--{{ link.platform }}"
+   target="_blank" rel="noopener noreferrer" aria-label="{{ link.label }}">
+	{% include "unpress_core/templates/includes/header_footer/icons/" ~ link.platform ~ ".html" ignore missing %}
+</a>
+{%- endmacro -%}

@@ -1,0 +1,321 @@
+{# User Header Component - User avatar with dropdown menu #}
+
+<div class="builder-user-header" id="builder-user-header">
+	<div class="builder-user-header__wrapper" id="builder-user-trigger">
+		{# Login view (default, shown for guests) #}
+		<span id="builder-user-login-view" class="builder-user-header__login-view">
+			{% include "unpress_core/templates/includes/header_footer/icons/user.html" %}
+			<span class="builder-user-header__text">{{ _("Log in") }}</span>
+		</span>
+
+		{# User view (hidden by default, shown when logged in) #}
+		<span id="builder-user-logged-view" class="builder-user-header__logged-view" style="display: none;">
+			<span id="builder-user-avatar" class="builder-user-header__avatar"></span>
+			<span id="builder-user-greeting" class="builder-user-header__greeting"></span>
+		</span>
+
+		{# Dropdown menu (for logged in users) #}
+		<div id="builder-user-dropdown" class="builder-user-header__dropdown" style="display: none;">
+			<a href="/me" class="builder-user-header__dropdown-item">{{ _("My account") }}</a>
+			<a href="/orders" class="builder-user-header__dropdown-item">{{ _("My orders") }}</a>
+			<a href="/wishlist" class="builder-user-header__dropdown-item">{{ _("My wishlist") }}</a>
+			<div class="builder-user-header__dropdown-divider"></div>
+			<a href="javascript:void(0);" id="builder-user-logout" class="builder-user-header__dropdown-item builder-user-header__dropdown-item--logout">{{ _("Logout") }}</a>
+		</div>
+	</div>
+</div>
+
+<style>
+/* User Header Styles */
+.builder-user-header {
+	display: inline-flex;
+	align-items: center;
+}
+
+.builder-user-header__wrapper {
+	position: relative;
+	cursor: pointer;
+}
+
+.builder-user-header__login-view,
+.builder-user-header__logged-view {
+	display: inline-flex;
+	align-items: center;
+	padding: 8px 12px;
+	border-radius: 8px;
+	transition: background-color 0.2s ease;
+	color: var(--text-color, #374151);
+}
+
+.builder-user-header__login-view:hover,
+.builder-user-header__logged-view:hover {
+	background: var(--hover-bg, #f3f4f6);
+}
+
+.builder-user-header__login-view svg {
+	width: 20px;
+	height: 20px;
+	margin-right: 8px;
+}
+
+.builder-user-header__text,
+.builder-user-header__greeting {
+	font-size: 0.9375rem;
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.builder-user-header__avatar {
+	margin-right: 8px;
+}
+
+.builder-user-header__avatar .avatar,
+.builder-user-header__avatar .avatar-frame,
+.builder-user-header__avatar .standard-image {
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--primary-color, #2563eb);
+	color: white;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.builder-user-header__avatar .avatar-frame {
+	background-size: cover;
+	background-position: center;
+}
+
+/* Dropdown Menu */
+.builder-user-header__dropdown {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	margin-top: 8px;
+	min-width: 200px;
+	background: var(--header-bg, #ffffff);
+	border: 1px solid var(--border-color, #e5e7eb);
+	border-radius: 8px;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+	z-index: 1000;
+	overflow: hidden;
+}
+
+.builder-user-header__dropdown.active {
+	display: block;
+}
+
+.builder-user-header__dropdown-item {
+	display: block;
+	padding: 10px 16px;
+	font-size: 0.9375rem;
+	color: var(--text-color, #374151);
+	text-decoration: none;
+	transition: background-color 0.2s ease;
+}
+
+.builder-user-header__dropdown-item:hover {
+	background: var(--hover-bg, #f3f4f6);
+	color: var(--text-color, #111827);
+}
+
+.builder-user-header__dropdown-item--logout {
+	color: #ef4444;
+}
+
+.builder-user-header__dropdown-item--logout:hover {
+	background: rgba(239, 68, 68, 0.1);
+	color: #dc2626;
+}
+
+.builder-user-header__dropdown-divider {
+	height: 1px;
+	background: var(--border-color, #e5e7eb);
+	margin: 4px 0;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+	.builder-user-header__text,
+	.builder-user-header__greeting {
+		display: none;
+	}
+
+	.builder-user-header__login-view svg {
+		margin-right: 0;
+	}
+
+	.builder-user-header__avatar {
+		margin-right: 0;
+	}
+}
+</style>
+
+<script>
+(function() {
+	const userHeader = document.getElementById('builder-user-header');
+	const userTrigger = document.getElementById('builder-user-trigger');
+	const loginView = document.getElementById('builder-user-login-view');
+	const loggedView = document.getElementById('builder-user-logged-view');
+	const userDropdown = document.getElementById('builder-user-dropdown');
+	const userAvatar = document.getElementById('builder-user-avatar');
+	const userGreeting = document.getElementById('builder-user-greeting');
+	const logoutBtn = document.getElementById('builder-user-logout');
+
+	let isLoggedIn = false;
+	let dropdownOpen = false;
+
+	// Load user info via API (bypasses page cache)
+	function loadUserInfo() {
+		fetch('/api/method/webshop.webshop.utils.utils.get_user_header_info', {
+			method: 'GET',
+			headers: {
+				'Accept': 'application/json',
+				'X-Requested-With': 'XMLHttpRequest'
+			},
+			credentials: 'same-origin'
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.message && data.message.is_logged_in) {
+				// User is logged in
+				isLoggedIn = true;
+				showLoggedInView(data.message);
+			} else {
+				// User is guest
+				isLoggedIn = false;
+				showGuestView();
+			}
+		})
+		.catch(error => {
+			console.error('Error loading user info:', error);
+			showGuestView();
+		});
+	}
+
+	// Show logged in view
+	function showLoggedInView(userInfo) {
+		if (loginView) loginView.style.display = 'none';
+		if (loggedView) {
+			loggedView.style.display = 'flex';
+			loggedView.style.alignItems = 'center';
+		}
+
+		// Set avatar
+		if (userAvatar && userInfo.avatar) {
+			userAvatar.innerHTML = userInfo.avatar;
+		} else if (userAvatar) {
+			// Create initials avatar
+			const initials = (userInfo.first_name || 'U').charAt(0).toUpperCase();
+			userAvatar.innerHTML = `<div class="avatar-frame standard-image">${initials}</div>`;
+		}
+
+		// Set greeting
+		if (userGreeting) {
+			userGreeting.textContent = {{ _("Hello") | to_safe_json }} + ' ' + (userInfo.first_name || '');
+		}
+
+		// Setup dropdown behavior
+		setupLoggedInBehavior();
+	}
+
+	// Show guest view
+	function showGuestView() {
+		if (loginView) loginView.style.display = 'flex';
+		if (loggedView) loggedView.style.display = 'none';
+		if (userDropdown) userDropdown.style.display = 'none';
+
+		// Setup click to login
+		if (userTrigger) {
+			userTrigger.onclick = function() {
+				// Try to show login dialog if available, otherwise redirect
+				if (typeof frappe !== 'undefined' && frappe.showLoginDialog) {
+					frappe.showLoginDialog();
+				} else {
+					window.location.href = '/login';
+				}
+			};
+		}
+	}
+
+	// Setup logged in behavior (dropdown)
+	function setupLoggedInBehavior() {
+		if (userTrigger) {
+			userTrigger.onclick = function(e) {
+				e.stopPropagation();
+				toggleDropdown();
+			};
+		}
+
+		// Close dropdown on click outside
+		document.addEventListener('click', function(e) {
+			if (dropdownOpen && userHeader && !userHeader.contains(e.target)) {
+				closeDropdown();
+			}
+		});
+
+		// Setup logout
+		if (logoutBtn) {
+			logoutBtn.addEventListener('click', handleLogout);
+		}
+	}
+
+	// Toggle dropdown
+	function toggleDropdown() {
+		if (dropdownOpen) {
+			closeDropdown();
+		} else {
+			openDropdown();
+		}
+	}
+
+	// Open dropdown
+	function openDropdown() {
+		if (userDropdown) {
+			userDropdown.style.display = 'block';
+			dropdownOpen = true;
+		}
+	}
+
+	// Close dropdown
+	function closeDropdown() {
+		if (userDropdown) {
+			userDropdown.style.display = 'none';
+			dropdownOpen = false;
+		}
+	}
+
+	// Handle logout
+	function handleLogout(e) {
+		e.preventDefault();
+
+		fetch('/api/method/logout', {
+			method: 'GET',
+			headers: {
+				'Accept': 'application/json',
+				'X-Requested-With': 'XMLHttpRequest'
+			},
+			credentials: 'same-origin'
+		})
+		.then(response => {
+			if (response.ok) {
+				window.location.reload();
+			}
+		})
+		.catch(error => {
+			console.error('Logout error:', error);
+			window.location.href = '/login';
+		});
+	}
+
+	// Initialize
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', loadUserInfo);
+	} else {
+		loadUserInfo();
+	}
+})();
+</script>

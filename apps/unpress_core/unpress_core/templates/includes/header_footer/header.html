@@ -1,0 +1,204 @@
+{# Header Template for Website Header Footer Config #}
+{%- from "unpress_core/templates/includes/header_footer/macros.html" import render_logo, render_menu, render_icons, render_cta, render_search_bar -%}
+
+{# Include search overlay if search icon mode is enabled #}
+{%- if icons.search -%}
+{% include "unpress_core/templates/includes/header_footer/components/search_overlay.html" %}
+{%- endif -%}
+
+{# Include cart drawer if cart is enabled #}
+{%- if icons.cart -%}
+{% include "unpress_core/templates/includes/header_footer/components/cart_drawer.html" %}
+{%- endif -%}
+
+<header class="site-header site-header--{{ (header_style or "Classic") | lower }}{% if sticky %} site-header--sticky{% endif %}{% if icons.search_bar_full %} site-header--with-search-bar{% endif %}" data-layout="{{ layout }}" data-style="{{ header_style or "Classic" }}" data-scroll="{{ header_scroll or "Hide going down" }}">
+	<div class="site-header__container">
+		{%- if layout == "B" -%}
+		{# Layout B: [Menu] [Logo centered] [Icons/CTA] #}
+		<div class="site-header__left">
+			{{ render_menu(menu_items, "left") }}
+		</div>
+		<div class="site-header__center">
+			{{ render_logo(logo) }}
+		</div>
+		<div class="site-header__right">
+			{%- if icons.search_bar -%}
+			{{ render_search_bar() }}
+			{%- endif -%}
+			{{ render_icons(icons) }}
+			{%- if cta -%}
+			{{ render_cta(cta) }}
+			{%- endif -%}
+		</div>
+		{%- elif menu_position == "right" -%}
+		{# Layout A - Menu Right: [Logo] [Menu] [Icons/CTA] #}
+		<div class="site-header__left">
+			{{ render_logo(logo) }}
+		</div>
+		<div class="site-header__center site-header__center--right">
+			{{ render_menu(menu_items, "right") }}
+		</div>
+		<div class="site-header__right">
+			{%- if icons.search_bar -%}
+			{{ render_search_bar() }}
+			{%- endif -%}
+			{{ render_icons(icons) }}
+			{%- if cta -%}
+			{{ render_cta(cta) }}
+			{%- endif -%}
+		</div>
+		{%- else -%}
+		{# Layout A - Menu Center: [Logo] [Menu centered] [Icons/CTA] #}
+		<div class="site-header__left">
+			{{ render_logo(logo) }}
+		</div>
+		<div class="site-header__center">
+			{{ render_menu(menu_items, "center") }}
+		</div>
+		<div class="site-header__right">
+			{%- if icons.search_bar -%}
+			{{ render_search_bar() }}
+			{%- endif -%}
+			{{ render_icons(icons) }}
+			{%- if cta -%}
+			{{ render_cta(cta) }}
+			{%- endif -%}
+		</div>
+		{%- endif -%}
+
+		{# Mobile burger menu button #}
+		<button class="site-header__burger" aria-label="Menu" aria-expanded="false">
+			<span class="burger-icon">
+				<span></span>
+				<span></span>
+				<span></span>
+			</span>
+		</button>
+	</div>
+
+	{# Mobile sidebar menu #}
+	<div class="site-header__mobile-menu" aria-hidden="true">
+		<div class="mobile-menu__overlay"></div>
+		<div class="mobile-menu__content">
+			<div class="mobile-menu__header">
+				{{ render_logo(logo) }}
+				<button class="mobile-menu__close" aria-label="Close menu">
+					{% include "unpress_core/templates/includes/header_footer/icons/close.html" %}
+				</button>
+			</div>
+			<nav class="mobile-menu__nav">
+				{%- for item in menu_items -%}
+				<a href="{{ item.url }}" class="mobile-menu__link"
+				   {% if item.is_external or item.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
+					{{ item.label }}
+				</a>
+				{%- endfor -%}
+			</nav>
+			{%- if cta -%}
+			<div class="mobile-menu__cta">
+				{{ render_cta(cta) }}
+			</div>
+			{%- endif -%}
+		</div>
+	</div>
+
+	{# Full width search bar at bottom #}
+	{%- if icons.search_bar_full -%}
+	<div class="site-header__search-bar-full">
+		<div class="site-header__search-bar-full-container">
+			{{ render_search_bar() }}
+		</div>
+	</div>
+	{%- endif -%}
+</header>
+
+<script>
+	// One listener for everything the bar does while you scroll.
+	//
+	// `is-solid`  — the transparent preset turns opaque once past the hero,
+	//               otherwise its menu is unreadable over pale content.
+	// `is-hidden` — "Hide going down": the bar slips away as you read and
+	//               comes back the moment you scroll up. A header that is
+	//               always there eats the top of every screen; one that never
+	//               follows costs a scroll to the top to navigate.
+	// `is-compact` — "Shrink": it stays, but slimmer.
+	//
+	// Passive listener, and the work happens in a rAF: reading scrollY on
+	// every scroll event is what makes a page feel heavy.
+	(function () {
+		var header = document.querySelector(".site-header");
+		if (!header) return;
+
+		var mode = header.getAttribute("data-scroll") || "Hide going down";
+		var transparent = header.classList.contains("site-header--transparent");
+		if (!transparent && mode === "Always visible") return;
+
+		// Hidden is a STATE, not a recomputation. The first version rebuilt it
+		// every frame from "are we moving down right now", so the moment a
+		// scroll came to rest the movement was zero, the condition went false
+		// and the bar sprang back — mid-flick, which is where the jump came
+		// from. It now stays hidden until an actual upward move says otherwise.
+		var TOLERANCE = 6; // below this a move is trackpad noise, not intent
+		var TOP_ZONE = 120; // near the top the bar always shows
+
+		var lastY = window.scrollY;
+		var solid = false;
+		var hidden = false;
+		var compact = false;
+		var ticking = false;
+
+		function apply() {
+			ticking = false;
+
+			// clamp: macOS rubber-banding reports positions past both ends,
+			// and a negative delta there reads as "scrolled up"
+			var max = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+			var y = Math.min(Math.max(window.scrollY, 0), max);
+			var delta = y - lastY;
+
+			if (transparent) {
+				var nextSolid = y > 24;
+				if (nextSolid !== solid) {
+					solid = nextSolid;
+					header.classList.toggle("is-solid", solid);
+				}
+			}
+
+			// In the top zone the bar is always shown, whatever the direction.
+			if (mode === "Hide going down" && y <= TOP_ZONE && hidden) {
+				hidden = false;
+				header.classList.toggle("is-hidden", false);
+			}
+
+			// Everything below reacts to a deliberate move. A smaller one leaves
+			// every state exactly as it is — including lastY, so slow scrolling
+			// still accumulates instead of being swallowed frame by frame.
+			if (Math.abs(delta) < TOLERANCE) return;
+
+			if (mode === "Hide going down") {
+				var next = y > TOP_ZONE && delta > 0;
+				if (next !== hidden) {
+					hidden = next;
+					header.classList.toggle("is-hidden", hidden);
+				}
+			} else if (mode === "Shrink") {
+				var nextCompact = y > 80;
+				if (nextCompact !== compact) {
+					compact = nextCompact;
+					header.classList.toggle("is-compact", compact);
+				}
+			}
+
+			lastY = y;
+		}
+
+		function onScroll() {
+			if (ticking) return;
+			ticking = true;
+			window.requestAnimationFrame(apply);
+		}
+
+		apply();
+		window.addEventListener("scroll", onScroll, { passive: true });
+	})();
+</script>

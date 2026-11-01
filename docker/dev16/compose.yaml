@@ -1,0 +1,90 @@
+# Unpress v16 trial bench — Frappe version-16 + builder branch `unpress`
+# (= upstream frappe/builder develop, clean base without the v15 legacy).
+#
+#   BUILDER_SRC=~/GitHub/builder-unpress docker compose up -d
+#   → http://localhost:8016 (site unpress16.localhost)
+services:
+  mariadb:
+    restart: unless-stopped
+    image: mariadb:10.6
+    command:
+      - mysqld
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+      - --skip-innodb-read-only-compressed
+    environment:
+      MYSQL_ROOT_PASSWORD: unpress
+    volumes:
+      - mariadb16-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-punpress"]
+      interval: 5s
+      retries: 30
+
+  redis-cache:
+    restart: unless-stopped
+    image: redis:7-alpine
+
+  redis-queue:
+    restart: unless-stopped
+    image: redis:7-alpine
+
+  fix-perms:
+    image: frappe/bench:latest
+    user: root
+    command: bash -c "chown frappe:frappe /home/frappe/workspace"
+    volumes:
+      - bench16-data:/home/frappe/workspace
+
+  bench:
+    restart: unless-stopped
+    image: frappe/bench:latest
+    command: bash /workspace/init-bench.sh
+    working_dir: /home/frappe
+    environment:
+      SHELL: /bin/bash
+      FRAPPE_BRANCH: version-16
+      UNPRESS_SITE: unpress16.localhost
+    volumes:
+      - bench16-data:/home/frappe/workspace
+      - ../..:/workspace/unpress:cached
+      - ${BUILDER_SRC:-../../../builder-unpress}:/workspace/vendor/builder:cached
+      - ./init-bench.sh:/workspace/init-bench.sh:ro
+      # Your host's Codex login, so the bench can drive a ChatGPT plan without
+      # pairing a second time. Harmless when the directory does not exist —
+      # docker creates it empty and the CLI simply reports "not logged in".
+      - ${CODEX_HOME:-~/.codex}:/home/frappe/.codex
+    ports:
+      - "8016:8000"
+      - "9016:9000"
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      fix-perms:
+        condition: service_completed_successfully
+
+  # Host-based multi-site routing (the dev server always serves the default
+  # site): gunicorn resolves the Frappe site from the Host header.
+  studio-web:
+    restart: unless-stopped
+    image: frappe/bench:latest
+    # No working_dir on purpose: on first boot init-bench.sh may rm -rf the
+    # half-created frappe-bench under this container's feet, leaving its cwd
+    # on a dead inode and the relative until-loop spinning forever. Absolute
+    # paths + a late cd survive that.
+    command: >
+      bash -lc "B=/home/frappe/workspace/frappe-bench;
+      until [ -d $$B/sites/unpress16.localhost ]; do sleep 5; done;
+      cd $$B && exec env/bin/gunicorn --chdir sites -b 0.0.0.0:8000 -w 2 --timeout 120 unpress_core.wsgi:application"
+    volumes:
+      - bench16-data:/home/frappe/workspace
+    ports:
+      - "8017:8000"
+    depends_on:
+      bench:
+        condition: service_started
+
+volumes:
+  mariadb16-data:
+  bench16-data:

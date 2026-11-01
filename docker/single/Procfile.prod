@@ -1,0 +1,7 @@
+# no --preload: frappe misbehaves when the app is imported in the gunicorn
+# master before forking (long-documented on our benches — hung responses,
+# frozen site resolution). The working dev16 studio-web runs without it too.
+web: env/bin/gunicorn --chdir sites -b 0.0.0.0:8000 -w ${WEB_WORKERS:-2} --timeout 120 unpress_core.wsgi:application
+socketio: node apps/frappe/socketio.js
+schedule: bench schedule
+worker: bench worker 1>> logs/worker.log 2>> logs/worker.error.log

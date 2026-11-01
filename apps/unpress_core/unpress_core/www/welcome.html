@@ -1,0 +1,62 @@
+{% extends "templates/web.html" %}
+
+{%- block title -%}{{ title }}{%- endblock -%}
+
+{% block page_content %}
+<section class="u-welcome">
+	<div class="u-welcome__inner">
+		<p class="u-welcome__eyebrow">{{ _("Coming soon") }}</p>
+		<h1 class="u-welcome__title">{{ _("This site is being built.") }}</h1>
+		<p class="u-welcome__text">
+			{{ _("There is nothing to read here yet. Come back shortly.") }}
+		</p>
+		{%- if can_build -%}
+		<a class="u-welcome__link" href="/builder">{{ _("Open the Studio") }}</a>
+		{%- endif -%}
+	</div>
+</section>
+
+<style>
+/* Self-contained: a site this young has no theme configured yet, so this page
+   cannot lean on the design tokens the rest of the site consumes. */
+.u-welcome {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 60vh;
+	padding: 64px 24px;
+}
+.u-welcome__inner {
+	max-width: 34rem;
+	text-align: center;
+}
+.u-welcome__eyebrow {
+	margin: 0 0 12px;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	opacity: 0.55;
+}
+.u-welcome__title {
+	margin: 0 0 12px;
+	font-size: clamp(1.75rem, 4vw, 2.5rem);
+	line-height: 1.15;
+}
+.u-welcome__text {
+	margin: 0;
+	font-size: 1rem;
+	line-height: 1.6;
+	opacity: 0.7;
+}
+.u-welcome__link {
+	display: inline-block;
+	margin-top: 28px;
+	padding: 12px 24px;
+	border: 1px solid currentColor;
+	border-radius: 8px;
+	font-size: 0.95rem;
+	text-decoration: none;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,433 @@
+{# Google Fonts for heading and body fonts #}
+{%- set heading_font = theme.heading_font if theme else 'Inter' -%}
+{%- set body_font = theme.body_font if theme else 'Inter' -%}
+{%- set fonts_to_load = [heading_font] -%}
+{%- if body_font != heading_font -%}
+	{%- set fonts_to_load = fonts_to_load + [body_font] -%}
+{%- endif -%}
+{%- for font in fonts_to_load -%}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ font | replace(' ', '+') }}:wght@400;500;600;700&display=swap">
+{%- endfor -%}
+
+<style>
+/* ==========================================================================
+   Theme Variables - Injected from Website Header Footer Config
+   Compatible with WebShop CSS variables
+   ========================================================================== */
+
+:root {
+	/* Primary colors - WebShop compatibility */
+	--primary: {{ theme.primary_color if theme else '#6c5ce7' }};
+	--primary-color: {{ theme.primary_color if theme else '#6c5ce7' }};
+	--primary-dark: {{ theme.primary_color if theme else '#6c5ce7' }};
+
+	/* Secondary color */
+	--secondary-color: {{ theme.secondary_color if theme else '#00b894' }};
+
+	/* Background colors */
+	--background-color: {{ theme.background_color if theme else '#ffffff' }};
+	--bg-color: {{ theme.background_color if theme else '#ffffff' }};
+
+	/* Text colors */
+	--text-color: {{ theme.text_color if theme else '#1a1a1a' }};
+	--text-muted: {{ theme.text_color if theme else '#1a1a1a' }}99;
+	--text-light: {{ theme.text_color if theme else '#1a1a1a' }}66;
+
+	/* Typography */
+	--heading-font: '{{ theme.heading_font if theme else 'Inter' }}', sans-serif;
+	--body-font: '{{ theme.body_font if theme else 'Inter' }}', sans-serif;
+	--font-family: '{{ theme.body_font if theme else 'Inter' }}', sans-serif;
+
+	/* Frappe/WebShop button variables.
+	   `website.bundle.css` paints the primary button with `.btn.btn-primary`,
+	   i.e. TWO classes: more specific than any `.btn-primary` rule written
+	   afterwards, whatever its order. The checkout therefore kept its factory
+	   black while the rest of the site wore the house colour. We feed the
+	   variable it reads rather than fight it with selectors. */
+	--btn-primary: {{ theme.primary_color if theme else '#6c5ce7' }};
+	--btn-primary-hover: {{ theme.primary_color if theme else '#6c5ce7' }}dd;
+
+	/* Derived colors for WebShop compatibility */
+	--primary-hover: {{ theme.primary_color if theme else '#6c5ce7' }}dd;
+	--primary-light: {{ theme.primary_color if theme else '#6c5ce7' }}20;
+	--primary-bg: {{ theme.primary_color if theme else '#6c5ce7' }}10;
+
+	/* Border colors */
+	--border-color: {{ theme.text_color if theme else '#1a1a1a' }}15;
+	--border-light: {{ theme.text_color if theme else '#1a1a1a' }}10;
+
+	/* Surface colors */
+	--surface-color: {{ theme.background_color if theme else '#ffffff' }};
+	--surface-muted: {{ theme.text_color if theme else '#1a1a1a' }}05;
+
+	/* Typography Scale - Desktop */
+	--h1-size: {{ theme.h1_size if theme and theme.h1_size else '48px' }};
+	--h1-weight: {{ theme.h1_weight if theme and theme.h1_weight else '700' }};
+	--h1-line-height: {{ theme.h1_line_height if theme and theme.h1_line_height else '1.2' }};
+
+	--h2-size: {{ theme.h2_size if theme and theme.h2_size else '36px' }};
+	--h2-weight: {{ theme.h2_weight if theme and theme.h2_weight else '600' }};
+	--h2-line-height: {{ theme.h2_line_height if theme and theme.h2_line_height else '1.25' }};
+
+	--h3-size: {{ theme.h3_size if theme and theme.h3_size else '24px' }};
+	--h3-weight: {{ theme.h3_weight if theme and theme.h3_weight else '600' }};
+	--h3-line-height: {{ theme.h3_line_height if theme and theme.h3_line_height else '1.3' }};
+
+	--h4-size: {{ theme.h4_size if theme and theme.h4_size else '20px' }};
+	--h4-weight: {{ theme.h4_weight if theme and theme.h4_weight else '500' }};
+
+	--body-size: {{ theme.body_size if theme and theme.body_size else '16px' }};
+	--body-weight: {{ theme.body_weight if theme and theme.body_weight else '400' }};
+	--body-line-height: {{ theme.body_line_height if theme and theme.body_line_height else '1.6' }};
+
+	/* ------------------------------------------------------------------
+	   Design system — set once in the Theme, respected everywhere.
+	   The header, the footer and every generated block read these, so a
+	   site stays coherent page to page without anyone repeating values.
+	   ------------------------------------------------------------------ */
+	{%- set radii = {"Sharp": "0px", "Subtle": "4px", "Rounded": "12px", "Soft": "20px"} -%}
+	{%- set radius = radii.get(theme.radius_style if theme and theme.radius_style else "Subtle", "4px") -%}
+	--radius: {{ radius }};
+	--radius-sm: {{ "0px" if radius == "0px" else "calc(" ~ radius ~ " / 2)" }};
+	--radius-lg: {{ "0px" if radius == "0px" else "calc(" ~ radius ~ " * 1.6)" }};
+	--radius-pill: 9999px;
+
+	{%- set shadow_style = theme.shadow_style if theme and theme.shadow_style else "Soft" -%}
+	{%- if shadow_style == "None" -%}
+	--shadow-sm: none;
+	--shadow: none;
+	--shadow-lg: none;
+	{%- elif shadow_style == "Strong" -%}
+	--shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.10);
+	--shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+	--shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.18);
+	{%- else -%}
+	--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+	--shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+	--shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
+	{%- endif -%}
+
+	{%- set motion = theme.motion_style if theme and theme.motion_style else "Calm" -%}
+	--transition: {{ "0ms" if motion == "None" else ("120ms" if motion == "Brisk" else "200ms") }} ease;
+
+	/* Typography Scale - Mobile */
+	--h1-size-mobile: {{ theme.h1_size_mobile if theme and theme.h1_size_mobile else '32px' }};
+	--h2-size-mobile: {{ theme.h2_size_mobile if theme and theme.h2_size_mobile else '26px' }};
+	--h3-size-mobile: {{ theme.h3_size_mobile if theme and theme.h3_size_mobile else '20px' }};
+	--h4-size-mobile: {{ theme.h4_size_mobile if theme and theme.h4_size_mobile else '18px' }};
+	--body-size-mobile: {{ theme.body_size_mobile if theme and theme.body_size_mobile else '15px' }};
+}
+
+/* Apply fonts to elements - !important to override Frappe/Webshop defaults */
+body {
+	font-family: var(--body-font) !important;
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+
+/* No !important here: explicit block-level fonts (.fb-* classes set in the
+   editor or by the WP migrator) must win over the theme default. */
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--heading-font);
+}
+
+/* Override Webshop product page fonts */
+.product-title, .item-card, .product-description,
+.product-page, .products-search-result,
+.like-disabled-input, .page-title {
+	font-family: var(--body-font) !important;
+}
+
+/* Typography Scale */
+h1 {
+	font-size: var(--h1-size);
+	font-weight: var(--h1-weight);
+	line-height: var(--h1-line-height);
+}
+
+h2 {
+	font-size: var(--h2-size);
+	font-weight: var(--h2-weight);
+	line-height: var(--h2-line-height);
+}
+
+h3 {
+	font-size: var(--h3-size);
+	font-weight: var(--h3-weight);
+	line-height: var(--h3-line-height);
+}
+
+h4 {
+	font-size: var(--h4-size);
+	font-weight: var(--h4-weight);
+}
+
+p {
+	font-size: var(--body-size);
+	font-weight: var(--body-weight);
+	line-height: var(--body-line-height);
+}
+
+/* Mobile Typography */
+@media (max-width: 768px) {
+	h1 { font-size: var(--h1-size-mobile); }
+	h2 { font-size: var(--h2-size-mobile); }
+	h3 { font-size: var(--h3-size-mobile); }
+	h4 { font-size: var(--h4-size-mobile); }
+	p { font-size: var(--body-size-mobile); }
+}
+
+/* Link colors */
+a {
+	color: var(--primary-color);
+}
+
+a:hover {
+	color: var(--primary-hover);
+}
+
+/* Button primary colors */
+.btn-primary,
+.btn-primary-dark {
+	background-color: var(--primary-color);
+	border-color: var(--primary-color);
+}
+
+.btn-primary:hover,
+.btn-primary-dark:hover {
+	background-color: var(--primary-hover);
+	border-color: var(--primary-hover);
+}
+
+/* ==========================================================================
+   The design system, as classes.
+
+   A generated block asks for a role — u-btn, u-card — and gets the site's
+   corners, elevation, motion and hover behaviour. Nothing repeats those
+   values per block, so nothing can drift between two pages. The header and
+   the footer read the same variables, so the CTA up top matches the CTAs
+   in the pages.
+
+   A user is still free to override any of it in the editor; the point is
+   that the default is coherent, not that it is locked.
+   ========================================================================== */
+
+{%- set hover = theme.button_hover if theme and theme.button_hover else "Darken" -%}
+
+/* The utilities below are wrapped in :where() on purpose.
+ *
+ * `.u-card` and a generated block's own `.fb-xxxxx` have the same specificity,
+ * so the winner was decided by source order — and the chrome's CSS is emitted
+ * in the body, after the page's own CSS in the head. The utility won.
+ *
+ * On a generated homepage that produced a card the AI had painted dark navy
+ * with white text: `.u-card` repainted it white, the white text stayed white,
+ * and the block rendered as an empty white rectangle. In the Builder canvas the
+ * utilities are not loaded, so the editor showed it correctly — a page that
+ * looked right while editing and was blank once published.
+ *
+ * :where() gives them zero specificity. A utility is a default; what the block
+ * declares about itself is a decision, and a decision must win.
+ *
+ * The four .u-btn--* modifiers are the exception, and keep their weight. A
+ * modifier is not a default: "make this a secondary button" states the
+ * background AND the label colour, as a pair. A block that declares only
+ * `color` while wearing one is contradictory — and on a site whose primary and
+ * secondary are the same navy, letting it win painted the label the exact
+ * colour of its own background.
+ */
+:where(.u-btn) {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 12px 24px;
+	border-radius: var(--radius);
+	border: 1px solid transparent;
+	font-family: var(--body-font);
+	font-size: 0.95rem;
+	font-weight: 500;
+	line-height: 1;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color var(--transition), color var(--transition),
+		border-color var(--transition), box-shadow var(--transition),
+		transform var(--transition), filter var(--transition);
+}
+
+.u-btn--primary {
+	background: var(--primary-color);
+	color: #ffffff;
+}
+
+.u-btn--secondary {
+	background: var(--secondary-color);
+	color: #ffffff;
+}
+
+.u-btn--outline {
+	background: transparent;
+	color: var(--primary-color);
+	border-color: var(--primary-color);
+}
+
+.u-btn--ghost {
+	background: transparent;
+	color: var(--primary-color);
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/* One hover behaviour for the whole site. */
+{%- if hover == "Darken" %}
+.u-btn:hover { filter: brightness(0.92); }
+.u-btn--outline:hover { background: var(--primary-color); color: #ffffff; filter: none; }
+{%- elif hover == "Lift" %}
+.u-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+{%- elif hover == "Grow" %}
+.u-btn:hover { transform: scale(1.03); }
+{%- endif %}
+
+.u-btn:focus-visible {
+	outline: 2px solid var(--primary-color);
+	outline-offset: 2px;
+}
+
+:where(.u-card) {
+	background: var(--surface-color);
+	border: 1px solid var(--border-color);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-sm);
+	padding: 24px;
+	transition: box-shadow var(--transition), transform var(--transition);
+}
+
+:where(.u-card--raised) {
+	box-shadow: var(--shadow);
+}
+
+:where(.u-card--flat) {
+	box-shadow: none;
+}
+
+/* Images share the site's corners — a rounded site with square photos is
+   the single most common way a generated page looks improvised. */
+:where(.u-media) {
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	display: block;
+	width: 100%;
+}
+
+:where(.u-input) {
+	border-radius: var(--radius);
+	border: 1px solid var(--border-color);
+	padding: 12px 14px;
+	font-family: var(--body-font);
+	font-size: 0.95rem;
+	background: var(--background-color);
+	color: var(--text-color);
+	transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.u-input:focus {
+	outline: none;
+	border-color: var(--primary-color);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 18%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.u-btn,
+	.u-card,
+	.u-input {
+		transition: none;
+	}
+	.u-btn:hover {
+		transform: none;
+	}
+}
+
+/* ==========================================================================
+   Reading over a photograph.
+
+   A hero looks best when the image breathes — no flat wash over the whole
+   thing. But text and buttons still have to be legible, and the model cannot
+   see the picture it just asked for, so it cannot judge the contrast.
+
+   These give it a way to ask for exactly as much help as a section needs:
+   a scrim on one edge, or a button that carries its own backing.
+   ========================================================================== */
+
+/* The section becomes the positioning context for its own scrim. */
+:where(.u-over-image) {
+	position: relative;
+	isolation: isolate;
+}
+
+.u-over-image > * {
+	position: relative;
+	z-index: 1;
+}
+
+.u-over-image::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	/* the default: darker where the text sits, gone by the middle */
+	background: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0.55) 0%,
+		rgba(0, 0, 0, 0.28) 35%,
+		rgba(0, 0, 0, 0) 65%
+	);
+}
+
+/* text at the bottom — a caption, a title over a full-bleed shot */
+.u-over-image--bottom::before {
+	background: linear-gradient(
+		to top,
+		rgba(0, 0, 0, 0.6) 0%,
+		rgba(0, 0, 0, 0.25) 30%,
+		rgba(0, 0, 0, 0) 60%
+	);
+}
+
+/* a corner, when the composition wants the diagonal free */
+.u-over-image--diagonal::before {
+	background: linear-gradient(
+		135deg,
+		rgba(0, 0, 0, 0.55) 0%,
+		rgba(0, 0, 0, 0.2) 40%,
+		rgba(0, 0, 0, 0) 70%
+	);
+}
+
+/* barely there — for an image that is already dark */
+.u-over-image--soft::before {
+	background: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0.3) 0%,
+		rgba(0, 0, 0, 0.12) 30%,
+		rgba(0, 0, 0, 0) 55%
+	);
+}
+
+/* An outline button over a photograph is the single most common thing a
+   generated hero gets wrong: the border disappears into whatever is behind
+   it. This one carries its own frosted backing, so it reads on anything. */
+.u-btn--on-image {
+	background: rgba(255, 255, 255, 0.14);
+	color: #ffffff;
+	border-color: rgba(255, 255, 255, 0.55);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+}
+
+.u-btn--on-image:hover {
+	background: rgba(255, 255, 255, 0.26);
+	border-color: #ffffff;
+	filter: none;
+}
+</style>

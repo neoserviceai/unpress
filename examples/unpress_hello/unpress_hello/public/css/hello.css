@@ -1,0 +1,34 @@
+/*
+ * Everything here is scoped to .hello-plugin*. A plugin that styles `.card`,
+ * `h2` or `.btn` will collide with the site's theme somewhere, and the site
+ * owner will have no idea which app did it.
+ *
+ * Use the theme's tokens rather than fixed values: the plugin then inherits
+ * the site's colours, corners and shadows instead of imposing its own.
+ */
+.hello-plugin {
+	max-width: var(--container-width, 1280px);
+	margin: 0 auto;
+	padding: 48px 24px;
+}
+
+.hello-plugin__lead {
+	color: var(--muted-color, #6b7280);
+	max-width: 62ch;
+	line-height: 1.6;
+}
+
+.hello-plugin__button {
+	background: var(--primary-color, #111);
+	color: #fff;
+	border: 0;
+	border-radius: var(--radius, 8px);
+	padding: 12px 24px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.hello-plugin__answer:not(:empty) {
+	margin-top: 16px;
+	font-weight: 600;
+}

@@ -1,0 +1,244 @@
+# Translations template for WP Migrator.
+# Copyright (C) 2026 Neoservice
+# This file is distributed under the same license as the WP Migrator project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Migrator VERSION\n"
+"Report-Msgid-Bugs-To: hello@neoservice.ai\n"
+"POT-Creation-Date: 2026-07-30 08:11+0000\n"
+"PO-Revision-Date: 2026-07-30 08:11+0000\n"
+"Last-Translator: hello@neoservice.ai\n"
+"Language-Team: hello@neoservice.ai\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: wp_migrator/converter/components.py:149
+msgid "&larr; Back to projects"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.js:11
+msgid "1. Analyze site"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.js:16
+msgid "2. Import into Builder"
+msgstr ""
+
+#. Label of the import_templates (Check) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Also import Elementor library templates"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:131
+msgid "Analyzing the live site"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:222
+msgid "Applying site chrome"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:89
+msgid "Attach a WordPress export file (.xml) first"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.js:30
+msgid "Attach the WXR export file (WordPress: Tools → Export → All content) to enable the import."
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:140
+msgid "Converting pages"
+msgstr ""
+
+#: wp_migrator/wxr_fetch.py:43
+msgid "Could not download the WordPress export (export.php)"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:225
+msgid "Done"
+msgstr ""
+
+#. Description of the 'Import referenced media' (Check) field in DocType 'WP
+#. Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Download images referenced by the imported pages, deduplicate by content, and rewrite URLs to local files."
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:215
+msgid "Downloading media"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Draft"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.js:7
+msgid "Enter the WordPress site URL, save, then run the analysis."
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Failed"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:654
+msgid "File too large"
+msgstr ""
+
+#. Label of the options_section (Section Break) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Import Options"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.js:23
+msgid "Import finished"
+msgstr ""
+
+#. Label of the import_media (Check) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Import referenced media"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.js:20
+msgid "Import running..."
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.js:18
+msgid "Import the attached export into Builder Pages? Existing pages with the same route will be updated."
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Imported"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Importing"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:210
+msgid "Linked pages discovered"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:237
+msgid "Media import disabled — image URLs still point to the source site."
+msgstr ""
+
+#. Label of the report (Code) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Migration Report"
+msgstr ""
+
+#: wp_migrator/api.py:13
+msgid "Not permitted"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.js:41
+msgid "Open in Builder"
+msgstr ""
+
+#. Label of the probe_results (Code) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Probe Results"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Probed"
+msgstr ""
+
+#. Label of the progress (Code) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Progress"
+msgstr ""
+
+#. Label of the publish_pages (Check) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Publish imported pages immediately"
+msgstr ""
+
+#: wp_migrator/api.py:51
+msgid "Queued"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:119
+msgid "Reading the WordPress export"
+msgstr ""
+
+#. Label of the results_section (Section Break) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Results"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:219
+msgid "Rewriting internal links"
+msgstr ""
+
+#. Label of the source_url (Data) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Source WordPress URL"
+msgstr ""
+
+#. Label of the status (Select) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Status"
+msgstr ""
+
+#. Name of a role
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "System Manager"
+msgstr ""
+
+#. Description of the 'Also import Elementor library templates' (Check) field
+#. in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "Theme kits often ship dozens of unused templates — leave unchecked to import real pages only."
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:73
+msgid "Upload the WXR export file (WordPress: Tools > Export > All content) to get Elementor layout data, then run Import."
+msgstr ""
+
+#. Name of a DocType
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "WP Migration"
+msgstr ""
+
+#. Label of the wxr_file (Attach) field in DocType 'WP Migration'
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.json
+msgid "WordPress Export File (WXR .xml)"
+msgstr ""
+
+#: wp_migrator/api.py:40
+msgid "WordPress credentials are required to fetch the export"
+msgstr ""
+
+#: wp_migrator/wxr_fetch.py:34
+msgid "WordPress login failed — check the username and password"
+msgstr ""
+
+#: wp_migrator/converter/elementor.py:321
+msgid "[Unpress TODO] widget \"{0}\" to rebuild as a Builder component"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:131
+msgid "dynamic widgets"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:222
+msgid "menu, logo, footer"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:210
+msgid "scraping the live site"
+msgstr ""
+
+#: wp_migrator/wp_migrator/doctype/wp_migration/wp_migration.py:422
+msgid "© {0} — all rights reserved"
+msgstr ""
+

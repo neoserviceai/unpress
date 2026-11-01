@@ -1,0 +1,64 @@
+{#
+	The band between the site header and the content, on pages the editor does
+	not build.
+
+	A generated page opens on a hero the AI composed for it. Everything else —
+	the blog index, a category, the 404, a section that is coming — arrived with
+	whatever heading its app happened to print, so /blog looked like a different
+	website from the rest of the site. This is the missing piece: one band, one
+	set of rules, the site's own tokens.
+
+	Like the footer, it is a PRESET plus a FILL. We draw the presets; the AI
+	picks one and picks a fill. Anything else — a band composed from scratch per
+	site — is how the interior pages ended up all different in the first place.
+
+	Deliberately not on article pages: those have a cover hero that already does
+	this job, and stacking the two would be a title above a title.
+#}
+{%- set on_image = background == "Image" -%}
+<section class="site-page-header site-page-header--{{ template | lower }} site-page-header--bg-{{ background | lower }}{% if on_dark %} site-page-header--on-dark{% endif %}"
+	{%- if fill %} style="{{ fill }}"{% endif %}>
+	<div class="site-page-header__inner">
+
+		{%- macro crumbs() -%}
+		{%- if breadcrumbs and breadcrumbs | length > 1 -%}
+		<nav class="site-page-header__crumbs" aria-label="{{ _('Breadcrumb') }}">
+			{%- for crumb in breadcrumbs -%}
+				{%- if loop.last -%}
+				<span aria-current="page">{{ crumb.label }}</span>
+				{%- else -%}
+				<a href="{{ crumb.url }}">{{ crumb.label }}</a>
+				<span class="site-page-header__sep" aria-hidden="true">/</span>
+				{%- endif -%}
+			{%- endfor -%}
+		</nav>
+		{%- endif -%}
+		{%- endmacro -%}
+
+		{#- Split — the title holds the left, the line explains on the right.
+		    Reads editorial, and only works when there IS a subtitle. -#}
+		{%- if template == "Split" and subtitle -%}
+		{{ crumbs() }}
+		<div class="site-page-header__split">
+			<h1 class="site-page-header__title">{{ title }}</h1>
+			<p class="site-page-header__subtitle">{{ subtitle }}</p>
+		</div>
+
+		{#- Minimal — breadcrumb and title, nothing else. For a site with many
+		    short pages, where the band should announce and step aside. -#}
+		{%- elif template == "Minimal" -%}
+		{{ crumbs() }}
+		<h1 class="site-page-header__title">{{ title }}</h1>
+
+		{#- Standard and Centered share a composition; only the alignment
+		    differs, and that is a class, not another branch. -#}
+		{%- else -%}
+		{{ crumbs() }}
+		<h1 class="site-page-header__title">{{ title }}</h1>
+		{%- if subtitle -%}
+		<p class="site-page-header__subtitle">{{ subtitle }}</p>
+		{%- endif -%}
+		{%- endif -%}
+
+	</div>
+</section>

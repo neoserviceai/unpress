@@ -1,0 +1,219 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "hash",
+ "creation": "2026-06-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "source_section",
+  "session_id",
+  "company",
+  "asset_type",
+  "file",
+  "original_filename",
+  "status",
+  "understanding_section",
+  "summary",
+  "suggested_section",
+  "tags",
+  "column_break_understanding",
+  "suggested_slots",
+  "orientation",
+  "quality",
+  "image_section",
+  "vision_description",
+  "dominant_colors",
+  "document_section",
+  "extracted_text",
+  "meta_section",
+  "understanding",
+  "error_message"
+ ],
+ "fields": [
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "Source"
+  },
+  {
+   "description": "Builder Chat Session this asset was uploaded for.",
+   "fieldname": "session_id",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Session ID",
+   "search_index": 1
+  },
+  {
+   "description": "Owning company — lets the asset library be reused across regenerations.",
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "default": "Image",
+   "fieldname": "asset_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Asset Type",
+   "options": "Image\nDocument",
+   "reqd": 1
+  },
+  {
+   "fieldname": "file",
+   "fieldtype": "Attach",
+   "label": "File",
+   "reqd": 1
+  },
+  {
+   "fieldname": "original_filename",
+   "fieldtype": "Data",
+   "label": "Original Filename",
+   "read_only": 1
+  },
+  {
+   "default": "pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "pending\nunderstood\nfailed\nused"
+  },
+  {
+   "fieldname": "understanding_section",
+   "fieldtype": "Section Break",
+   "label": "Understanding"
+  },
+  {
+   "description": "One-line description of what this asset is.",
+   "fieldname": "summary",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Summary"
+  },
+  {
+   "description": "Page/section this asset belongs to (home, about, services, contact, gallery…).",
+   "fieldname": "suggested_section",
+   "fieldtype": "Data",
+   "label": "Suggested Section"
+  },
+  {
+   "fieldname": "tags",
+   "fieldtype": "Small Text",
+   "label": "Tags"
+  },
+  {
+   "fieldname": "column_break_understanding",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Image slots this photo suits: hero, gallery, service, team, background…",
+   "fieldname": "suggested_slots",
+   "fieldtype": "Data",
+   "label": "Suggested Slots"
+  },
+  {
+   "fieldname": "orientation",
+   "fieldtype": "Select",
+   "label": "Orientation",
+   "options": "\nlandscape\nportrait\nsquare"
+  },
+  {
+   "fieldname": "quality",
+   "fieldtype": "Select",
+   "label": "Quality",
+   "options": "\nhigh\nmedium\nlow"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.asset_type=='Image'",
+   "fieldname": "image_section",
+   "fieldtype": "Section Break",
+   "label": "Image"
+  },
+  {
+   "description": "What the photo shows — also feeds the image alt/prompt at placement time.",
+   "fieldname": "vision_description",
+   "fieldtype": "Small Text",
+   "label": "Vision Description"
+  },
+  {
+   "fieldname": "dominant_colors",
+   "fieldtype": "JSON",
+   "label": "Dominant Colors"
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.asset_type=='Document'",
+   "fieldname": "document_section",
+   "fieldtype": "Section Break",
+   "label": "Document"
+  },
+  {
+   "description": "Text extracted from the document, available as real copy for generation.",
+   "fieldname": "extracted_text",
+   "fieldtype": "Long Text",
+   "label": "Extracted Text"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "meta_section",
+   "fieldtype": "Section Break",
+   "label": "Meta"
+  },
+  {
+   "description": "Full structured understanding result (raw).",
+   "fieldname": "understanding",
+   "fieldtype": "JSON",
+   "label": "Understanding (raw)"
+  },
+  {
+   "fieldname": "error_message",
+   "fieldtype": "Small Text",
+   "label": "Error Message",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Unpress Core",
+ "name": "Builder Content Asset",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Website Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "original_filename",
+ "track_changes": 1
+}

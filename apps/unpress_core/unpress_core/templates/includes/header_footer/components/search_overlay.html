@@ -1,0 +1,334 @@
+{# Search Overlay Component - Slide-down search for icon mode #}
+
+<div id="builder-search-overlay" class="builder-search-overlay">
+	<div class="builder-search-overlay__container">
+		<div class="builder-search-overlay__inner">
+			<input type="search"
+				   id="builder-search-input"
+				   class="builder-search-overlay__input"
+				   placeholder="{{ _('Search for Products') }}"
+				   autocomplete="off">
+			<button class="builder-search-overlay__close" id="builder-search-close" aria-label="{{ _('Close search') }}">
+				{% include "unpress_core/templates/includes/header_footer/icons/close.html" %}
+			</button>
+		</div>
+		<div id="builder-search-results" class="builder-search-overlay__results"></div>
+	</div>
+</div>
+
+<style>
+/* Search Overlay Styles */
+.builder-search-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: var(--header-bg, #ffffff);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+	z-index: 1100;
+	transform: translateY(-100%);
+	opacity: 0;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+	max-height: 80vh;
+	overflow: hidden;
+}
+
+.builder-search-overlay.active {
+	transform: translateY(0);
+	opacity: 1;
+}
+
+.builder-search-overlay__container {
+	max-width: var(--container-width, 1280px);
+	margin: 0 auto;
+	padding: 16px var(--container-padding, 24px);
+}
+
+.builder-search-overlay__inner {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.builder-search-overlay__input {
+	flex: 1;
+	padding: 12px 16px;
+	font-size: 1rem;
+	border: 1px solid var(--border-color, #e5e7eb);
+	border-radius: 8px;
+	background: var(--input-bg, #f9fafb);
+	color: var(--text-color, #111827);
+	outline: none;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.builder-search-overlay__input:focus {
+	border-color: var(--primary-color, #2563eb);
+	box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.builder-search-overlay__input::placeholder {
+	color: var(--muted-color, #9ca3af);
+}
+
+.builder-search-overlay__close {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	border: none;
+	background: transparent;
+	color: var(--text-color, #374151);
+	cursor: pointer;
+	border-radius: 8px;
+	transition: background-color 0.2s ease;
+}
+
+.builder-search-overlay__close:hover {
+	background: var(--hover-bg, #f3f4f6);
+}
+
+/* Search Results */
+.builder-search-overlay__results {
+	max-height: 400px;
+	overflow-y: auto;
+	margin-top: 16px;
+}
+
+.builder-search-overlay__results:empty {
+	display: none;
+}
+
+.builder-search-result-item {
+	display: flex;
+	align-items: center;
+	padding: 12px;
+	text-decoration: none;
+	color: var(--text-color, #374151);
+	border-radius: 8px;
+	transition: background-color 0.2s ease;
+}
+
+.builder-search-result-item:hover {
+	background: var(--hover-bg, #f3f4f6);
+}
+
+.builder-search-result-image {
+	width: 60px;
+	height: 60px;
+	border-radius: 6px;
+	object-fit: cover;
+	margin-right: 12px;
+	background: var(--input-bg, #f3f4f6);
+}
+
+.builder-search-result-info {
+	flex: 1;
+}
+
+.builder-search-result-name {
+	font-weight: 600;
+	font-size: 0.9375rem;
+	margin-bottom: 4px;
+	color: var(--text-color, #111827);
+}
+
+.builder-search-result-brand {
+	font-size: 0.8125rem;
+	color: var(--muted-color, #6b7280);
+	margin-bottom: 2px;
+}
+
+.builder-search-result-price {
+	font-weight: 600;
+	color: var(--primary-color, #2563eb);
+}
+
+.builder-search-result-price .striked {
+	text-decoration: line-through;
+	color: var(--muted-color, #9ca3af);
+	font-weight: 400;
+	margin-left: 8px;
+}
+
+.builder-search-loading {
+	text-align: center;
+	padding: 24px;
+	color: var(--muted-color, #6b7280);
+}
+
+.builder-search-no-results {
+	text-align: center;
+	padding: 24px;
+	color: var(--muted-color, #6b7280);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+	.builder-search-overlay__container {
+		padding: 12px 16px;
+	}
+
+	.builder-search-overlay__input {
+		font-size: 16px; /* Prevent iOS zoom */
+	}
+}
+</style>
+
+<script>
+(function() {
+	// Wait for DOM to be ready before querying header elements
+	// This is necessary because search_overlay.html is included BEFORE the header renders
+	function initSearch() {
+		const searchOverlay = document.getElementById('builder-search-overlay');
+		const searchInput = document.getElementById('builder-search-input');
+		const searchResults = document.getElementById('builder-search-results');
+		const searchClose = document.getElementById('builder-search-close');
+		const searchTrigger = document.querySelector('.header-icon--search');
+
+		let searchTimeout = null;
+		let isSearchOpen = false;
+
+	// Open search overlay
+	function openSearch() {
+		if (searchOverlay && !isSearchOpen) {
+			searchOverlay.classList.add('active');
+			isSearchOpen = true;
+			document.body.style.overflow = 'hidden';
+
+			// Focus input after animation
+			setTimeout(() => {
+				if (searchInput) searchInput.focus();
+			}, 100);
+		}
+	}
+
+	// Close search overlay
+	function closeSearch() {
+		if (searchOverlay && isSearchOpen) {
+			searchOverlay.classList.remove('active');
+			isSearchOpen = false;
+			document.body.style.overflow = '';
+
+			// Clear results
+			if (searchResults) searchResults.innerHTML = '';
+			if (searchInput) searchInput.value = '';
+		}
+	}
+
+	// Search function
+	function performSearch(query) {
+		if (!query || query.length < 2) {
+			searchResults.innerHTML = '';
+			return;
+		}
+
+		// Show loading
+		searchResults.innerHTML = '<div class="builder-search-loading">{{ _("Searching...") }}</div>';
+
+		// Call WebShop search API
+		fetch('/api/method/webshop.templates.pages.product_search.search', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept': 'application/json',
+				'X-Frappe-CSRF-Token': frappe?.csrf_token || ''
+			},
+			body: JSON.stringify({ query: query, limit: 10 })
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.message && data.message.results && data.message.results.length > 0) {
+				renderResults(data.message.results);
+			} else {
+				searchResults.innerHTML = '<div class="builder-search-no-results">{{ _("No results found") }}</div>';
+			}
+		})
+		.catch(error => {
+			console.error('Search error:', error);
+			searchResults.innerHTML = '<div class="builder-search-no-results">{{ _("Search error") }}</div>';
+		});
+	}
+
+	// Render search results
+	function renderResults(results) {
+		let html = '';
+
+		results.forEach(item => {
+			const image = item.website_image || item.thumbnail || '';
+			const name = item.web_item_name || item.item_name || '';
+			const brand = item.brand || '';
+			const price = item.formatted_price || '';
+			const route = item.route || '';
+
+			html += `
+				<a href="/${route}" class="builder-search-result-item">
+					${image ? `<img src="${image}" alt="${name}" class="builder-search-result-image" onerror="this.style.display='none'">` : ''}
+					<div class="builder-search-result-info">
+						${brand ? `<div class="builder-search-result-brand">${brand}</div>` : ''}
+						<div class="builder-search-result-name">${name}</div>
+						${price ? `<div class="builder-search-result-price">${price}</div>` : ''}
+					</div>
+				</a>
+			`;
+		});
+
+		searchResults.innerHTML = html;
+	}
+
+	// Event listeners
+	if (searchTrigger) {
+		searchTrigger.addEventListener('click', function(e) {
+			e.preventDefault();
+			openSearch();
+		});
+	}
+
+	if (searchClose) {
+		searchClose.addEventListener('click', closeSearch);
+	}
+
+	if (searchInput) {
+		searchInput.addEventListener('input', function(e) {
+			clearTimeout(searchTimeout);
+			searchTimeout = setTimeout(() => {
+				performSearch(e.target.value.trim());
+			}, 300);
+		});
+
+		// Close on escape
+		searchInput.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape') {
+				closeSearch();
+			}
+		});
+	}
+
+	// Close on click outside
+	if (searchOverlay) {
+		searchOverlay.addEventListener('click', function(e) {
+			if (e.target === searchOverlay) {
+				closeSearch();
+			}
+		});
+	}
+
+		// Close on escape key anywhere
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape' && isSearchOpen) {
+				closeSearch();
+			}
+		});
+	}
+
+	// Initialize when DOM is ready
+	// This ensures header icons exist before we try to attach event listeners
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initSearch);
+	} else {
+		// DOM already loaded, but use setTimeout to ensure header is rendered
+		setTimeout(initSearch, 0);
+	}
+})();
+</script>

@@ -1,0 +1,36 @@
+name: Bug report
+description: Something behaves differently from what it promises
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what happened, what you expected instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: install
+    attributes:
+      label: How is it installed
+      description: Several defects only appear on one of the two — this is the first thing we look at.
+      options:
+        - The published image (install.sh / docker compose)
+        - My own bench (bare metal)
+        - The dev16 development stack
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Frappe version
+      description: "`bench version`, or the image digest if you run the container."
+  - type: textarea
+    id: logs
+    attributes:
+      label: What the logs say
+      description: >
+        Server side, `bench --site <site> console` errors or the Error Log
+        doctype. Browser side, the console and the network tab. Paste rather
+        than summarise — the exact message is usually the answer.
+      render: shell

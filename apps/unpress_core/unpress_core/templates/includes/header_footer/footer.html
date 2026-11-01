@@ -1,0 +1,258 @@
+{# Footer Template for Website Header Footer Config #}
+{%- from "unpress_core/templates/includes/header_footer/macros.html" import render_logo, render_social_link -%}
+
+<footer class="site-footer site-footer--{{ template | lower }}">
+	<div class="site-footer__container">
+		{%- if template == "Extended" -%}
+		{# Extended footer: Logo + description + multiple columns + newsletter #}
+		<div class="site-footer__main">
+			<div class="site-footer__brand">
+				{%- if logo -%}
+				{{ render_logo(logo) }}
+				{%- endif -%}
+				{%- if description -%}
+				<p class="site-footer__description">{{ description }}</p>
+				{%- endif -%}
+				{%- if social_links -%}
+				<div class="site-footer__social">
+					{%- for link in social_links -%}
+					{{ render_social_link(link) }}
+					{%- endfor -%}
+				</div>
+				{%- endif -%}
+			</div>
+
+			{%- if footer_columns -%}
+			<div class="site-footer__columns">
+				{%- for column_name, links in footer_columns.items() -%}
+				<div class="site-footer__column">
+					<h4 class="site-footer__column-title">{{ column_name }}</h4>
+					<ul class="site-footer__links">
+						{%- for link in links -%}
+						<li>
+							<a href="{{ link.url }}" class="site-footer__link"
+							   {% if link.is_external or link.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
+								{{ link.label }}
+							</a>
+						</li>
+						{%- endfor -%}
+					</ul>
+				</div>
+				{%- endfor -%}
+			</div>
+			{%- endif -%}
+
+			{%- if show_newsletter and config.newsletter_email_group -%}
+			<div class="site-footer__newsletter">
+				<h4 class="site-footer__newsletter-title">{{ newsletter_title or _("Subscribe to our newsletter") }}</h4>
+				<form class="newsletter-form" id="newsletter-form" data-email-group="{{ config.newsletter_email_group }}">
+					<input type="email" name="email" class="newsletter-form__input" id="newsletter-email"
+					       placeholder="{{ newsletter_placeholder or _('Enter your email') }}" required>
+					<button type="submit" class="newsletter-form__button" id="newsletter-submit">{{ _("Subscribe") }}</button>
+				</form>
+				<div id="newsletter-message" class="newsletter-form__message" style="display: none;"></div>
+			</div>
+			{%- endif -%}
+		</div>
+
+		{%- elif template == "Standard" -%}
+		{# Standard footer: Logo + columns #}
+		{%- set is_simple = footer_columns and footer_columns|length == 1 -%}
+		<div class="site-footer__main{% if is_simple %} site-footer__main--simple{% endif %}">
+			<div class="site-footer__brand">
+				{%- if logo -%}
+				{{ render_logo(logo) }}
+				{%- endif -%}
+				{%- if description -%}
+				<p class="site-footer__description">{{ description }}</p>
+				{%- endif -%}
+			</div>
+
+			{%- if footer_columns -%}
+			<div class="site-footer__columns">
+				{%- for column_name, links in footer_columns.items() -%}
+				<div class="site-footer__column">
+					<h4 class="site-footer__column-title">{{ column_name }}</h4>
+					<ul class="site-footer__links">
+						{%- for link in links -%}
+						<li>
+							<a href="{{ link.url }}" class="site-footer__link"
+							   {% if link.is_external or link.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
+								{{ link.label }}
+							</a>
+						</li>
+						{%- endfor -%}
+					</ul>
+				</div>
+				{%- endfor -%}
+			</div>
+			{%- endif -%}
+
+			{%- if show_newsletter and config.newsletter_email_group -%}
+			<div class="site-footer__newsletter site-footer__newsletter--standard">
+				<h4 class="site-footer__newsletter-title">{{ newsletter_title or _("Subscribe to our newsletter") }}</h4>
+				<form class="newsletter-form" id="newsletter-form" data-email-group="{{ config.newsletter_email_group }}">
+					<input type="email" name="email" class="newsletter-form__input" id="newsletter-email"
+					       placeholder="{{ newsletter_placeholder or _('Enter your email') }}" required>
+					<button type="submit" class="newsletter-form__button" id="newsletter-submit">{{ _("Subscribe") }}</button>
+				</form>
+				<div id="newsletter-message" class="newsletter-form__message" style="display: none;"></div>
+			</div>
+			{%- endif -%}
+		</div>
+
+		{%- elif template == "Centered" -%}
+		{# Centered: logo, one row of links, social underneath. For sites with
+		   few links, where columns would look empty. #}
+		<div class="site-footer__centered">
+			{%- if logo -%}
+			<div class="site-footer__brand-logo">{{ render_logo(logo) }}</div>
+			{%- endif -%}
+			{%- if description -%}
+			<p class="site-footer__description">{{ description }}</p>
+			{%- endif -%}
+			{%- if footer_columns -%}
+			<nav class="site-footer__inline-links">
+				{%- for column_name, links in footer_columns.items() -%}
+					{%- for link in links -%}
+					<a href="{{ link.url }}" class="site-footer__link"
+					   {% if link.is_external or link.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ link.label }}</a>
+					{%- endfor -%}
+				{%- endfor -%}
+			</nav>
+			{%- endif -%}
+			{%- if social_links -%}
+			<div class="site-footer__social">
+				{%- for link in social_links -%}
+				{{ render_social_link(link) }}
+				{%- endfor -%}
+			</div>
+			{%- endif -%}
+		</div>
+
+		{%- else -%}
+		{# Minimal footer: Logo + links + social on one line. The links are a
+		   single row here — a minimal footer that cannot carry a privacy link
+		   is not minimal, it is incomplete. #}
+		<div class="site-footer__minimal">
+			{%- if logo -%}
+			{{ render_logo(logo) }}
+			{%- endif -%}
+			{%- if footer_columns -%}
+			<nav class="site-footer__inline-links">
+				{%- for column_name, links in footer_columns.items() -%}
+					{%- for link in links -%}
+					<a href="{{ link.url }}" class="site-footer__link"
+					   {% if link.is_external or link.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ link.label }}</a>
+					{%- endfor -%}
+				{%- endfor -%}
+			</nav>
+			{%- endif -%}
+			{%- if social_links -%}
+			<div class="site-footer__social">
+				{%- for link in social_links -%}
+				{{ render_social_link(link) }}
+				{%- endfor -%}
+			</div>
+			{%- endif -%}
+		</div>
+		{%- endif -%}
+
+		{# Copyright bar #}
+		{%- if footer_html -%}
+		{# The client's own embed, above the copyright line.
+
+		   `safe` is deliberate: escaping it would render the markup as text and
+		   defeat the entire point. The field is on the chrome config, which only
+		   System Manager and Website Manager can write — the same trust level as
+		   a client script. It is their code on their own site. #}
+		<div class="site-footer__custom">{{ footer_html | safe }}</div>
+		{%- endif -%}
+
+		<div class="site-footer__bottom">
+			<div class="site-footer__copyright-row">
+				<p class="site-footer__copyright">{{ copyright_text }}</p>
+				<span class="site-footer__powered-by">
+					{# both halves are ours, so marking the result safe only lets the link through #}
+					{{ _("Powered by {0}").format('<a href="https://unpress.cloud" target="_blank" rel="noopener noreferrer">Unpress</a>') | safe }}
+				</span>
+			</div>
+			{%- if template != "Extended" and social_links and template == "Standard" -%}
+			<div class="site-footer__social">
+				{%- for link in social_links -%}
+				{{ render_social_link(link) }}
+				{%- endfor -%}
+			</div>
+			{%- endif -%}
+		</div>
+	</div>
+</footer>
+
+{# Newsletter subscription script #}
+{%- if show_newsletter and config.newsletter_email_group -%}
+<script>
+(function() {
+	const form = document.getElementById('newsletter-form');
+	const emailInput = document.getElementById('newsletter-email');
+	const submitBtn = document.getElementById('newsletter-submit');
+	const messageDiv = document.getElementById('newsletter-message');
+
+	if (!form) return;
+
+	const emailGroup = form.dataset.emailGroup;
+
+	form.addEventListener('submit', function(e) {
+		e.preventDefault();
+
+		const email = emailInput.value.trim();
+		if (!email) return;
+
+		// Disable form
+		submitBtn.disabled = true;
+		submitBtn.textContent = {{ _("Subscribing...") | to_safe_json }};
+
+		// Call API
+		fetch('/api/method/builder.api.subscribe_to_newsletter', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept': 'application/json',
+				'X-Frappe-CSRF-Token': frappe?.csrf_token || ''
+			},
+			body: JSON.stringify({
+				email: email,
+				email_group: emailGroup
+			})
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.message && data.message.success) {
+				messageDiv.textContent = data.message.message;
+				messageDiv.className = 'newsletter-form__message newsletter-form__message--success';
+				messageDiv.style.display = 'block';
+				emailInput.value = '';
+			} else if (data.exc_type) {
+				{# to_safe_json: translated strings may contain quotes (e.g. French "l'inscription") #}
+				throw new Error(data._server_messages ? JSON.parse(data._server_messages)[0] : {{ _("Subscription failed") | to_safe_json }});
+			}
+		})
+		.catch(error => {
+			let errorMsg = {{ _("Failed to subscribe. Please try again.") | to_safe_json }};
+			try {
+				const parsed = JSON.parse(error.message);
+				errorMsg = parsed.message || errorMsg;
+			} catch(e) {
+				if (error.message) errorMsg = error.message;
+			}
+			messageDiv.textContent = errorMsg;
+			messageDiv.className = 'newsletter-form__message newsletter-form__message--error';
+			messageDiv.style.display = 'block';
+		})
+		.finally(() => {
+			submitBtn.disabled = false;
+			submitBtn.textContent = {{ _("Subscribe") | to_safe_json }};
+		});
+	});
+})();
+</script>
+{%- endif -%}
